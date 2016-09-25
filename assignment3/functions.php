@@ -53,6 +53,7 @@
 					echo '<p class="lead">This is my homework for INFOST 440 for week three. The table below links to the php assignment pages</p>'; 
 					//Using some php to echo some content because why not
 				?>
+				<a href="http://paulruss.uwmsois.com/assignment3/" class="btn btn-lg btn-primary">Back to Index</a>
 			</div>
 			<div class="table">
 				<table class="table table-condensed table-striped">

@@ -48,63 +48,19 @@
 		<div class="container"> 
 
 			<div class="pg-head">
-				<h1>Paul Russ Assignment 3 Documents:</h1>
+				<h1>Paul Russ Assignment 3 Quotes</h1>
+
 				<?php 
-					echo '<p class="lead">This is my homework for INFOST 440 for week three. The table below links to the php assignment pages</p>'; 
-					//Using some php to echo some content because why not
+					$var = '<em>variable</em>';
+					//using single quotes
+					echo '<p class="lead">Text can be echoed or printed using quotes to identify the string.</p><p>This paragraph uses echo and the single quote to display the string. When using single quotes, only the singlequote(\') and backslash (\\) characters need to be escaped. For the most part, single quotes avoid parsing through characters inside the quotes for code, meaning typing in a dollar sign ($) doesn\'t trigger the ensuing characters being interpreted as a variable. $var displays as-is and I would have to use the concatenation operator to translate it to '.$var.'.</p>';
+					
+					//Using double quotes
+					print "<p class=\"normal\">This text is printed using double quotes to identify the string. Inside of double quotes, I have to use the backslash (\\) to escape the dollar sign (\$) if I want to display the name of my variable \$var. if I include the variable name in my text, it gets replaced with $var </p>"; 
+					
 				?>
-			</div>
-			<div class="table">
-				<table class="table table-condensed table-striped">
-					<thead>
-						<tr>
-							<th>Item #</th>
-							<th>Desc.</th>
-							<th>Link</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>4</td>
-							<td>Escape</td>
-							<td><a href="http://paulruss.uwmsois.com/assignment3/escape.php" class="btn btn-primary btn-block">Link</a></td>
-						</tr>	
-						<tr>
-							<td>5</td>
-							<td>Quotes</td>
-							<td><a href="http://paulruss.uwmsois.com/assignment3/quotes.php" class="btn btn-primary btn-block">Link</a></td>
-						</tr>
-						<tr>
-							<td>6</td>
-							<td>Predefined</td>
-							<td><a href="http://paulruss.uwmsois.com/assignment3/predefined.php" class="btn btn-primary btn-block">Link</a></td>
-						</tr>
-						<tr>
-							<td>7</td>
-							<td>Math</td>
-							<td><a href="http://paulruss.uwmsois.com/assignment3/math.php" class="btn btn-primary btn-block">Link</a></td>
-						</tr>
-						<tr>
-							<td>8</td>
-							<td>Constant</td>
-							<td><a href="http://paulruss.uwmsois.com/assignment3/constant.php" class="btn btn-primary btn-block">Link</a></td>
-						</tr>
-						<tr>
-							<td>9</td>
-							<td>Function</td>
-							<td><a href="http://paulruss.uwmsois.com/assignment3/functions.php" class="btn btn-primary btn-block">Link</a></td>
-						</tr>
-						<tr>
-							<td>10</td>
-							<td>Condition</td>
-							<td><a href="http://paulruss.uwmsois.com/assignment3/conditions.php" class="btn btn-primary btn-block">Link</a></td>
-						</tr>
-						<tr>
-							<td>11</td>
-							<td>Form</td>
-							<td><a href="http://paulruss.uwmsois.com/assignment3/form.php" class="btn btn-primary btn-block">Link</a></td>
-						</tr>
-					</tbody>
+				
+				<a href="http://paulruss.uwmsois.com/assignment3/" class="btn btn-lg btn-primary">Back to Index</a>
 			</div>
 
 		</div><!-- end container -->
