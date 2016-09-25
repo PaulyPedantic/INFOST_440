@@ -1,126 +1,117 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-	<title>Assignment 3 Index</title>
+<html lang="en-US">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-	<!-- I'll play with materialize.css instead of bootstrap this time -->
-	<!-- CSS	-->
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<!-- Compiled and minified CSS -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
-</head>
-<body>
-	<nav class="light-blue lighten-1" role="navigation">
-		<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Logo</a>
-			<ul class="right hide-on-med-and-down">
-				<li><a href="#">Navbar Link</a></li>
-			</ul>
+		<title>Assignment 3 Index</title>
 
-			<ul id="nav-mobile" class="side-nav">
-				<li><a href="#">Navbar Link</a></li>
-			</ul>
-			<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-		</div>
-	</nav>
-	<div class="section no-pad-bot" id="index-banner">
-		<div class="container">
-			<br><br>
-			<h1 class="header center orange-text">Starter Template</h1>
-			<div class="row center">
-				<h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
-			</div>
-			<div class="row center">
-				<a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light orange">Get Started</a>
-			</div>
-			<br><br>
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		
+		<style>
+			body {
+				padding-top: 50px;
+			}
+			.pg-head {
+				padding: 40px 15px;
+				text-align: center;
+			}
+		</style>
+		
+	</head>
 
-		</div>
-	</div>
+	<body>
 
-
-	<div class="container">
-		<div class="section">
-
-			<!--	 Icon Section	 -->
-			<div class="row">
-				<div class="col s12 m4">
-					<div class="icon-block">
-						<h2 class="center light-blue-text"><i class="material-icons">flash_on</i></h2>
-						<h5 class="center">Speeds up development</h5>
-
-						<p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
-					</div>
-				</div>
-
-				<div class="col s12 m4">
-					<div class="icon-block">
-						<h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
-						<h5 class="center">User Experience Focused</h5>
-
-						<p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
-					</div>
-				</div>
-
-				<div class="col s12 m4">
-					<div class="icon-block">
-						<h2 class="center light-blue-text"><i class="material-icons">settings</i></h2>
-						<h5 class="center">Easy to work with</h5>
-
-						<p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
-					</div>
-				</div>
-			</div>
-
-		</div>
-		<br><br>
-
-		<div class="section">
-
-		</div>
-	</div>
-
-	<footer class="page-footer orange">
-		<div class="container">
-			<div class="row">
-				<div class="col l6 s12">
-					<h5 class="white-text">Company Bio</h5>
-					<p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
-
-
-				</div>
-				<div class="col l3 s12">
-					<h5 class="white-text">Settings</h5>
-					<ul>
-						<li><a class="white-text" href="#!">Link 1</a></li>
-						<li><a class="white-text" href="#!">Link 2</a></li>
-						<li><a class="white-text" href="#!">Link 3</a></li>
-						<li><a class="white-text" href="#!">Link 4</a></li>
-					</ul>
-				</div>
-				<div class="col l3 s12">
-					<h5 class="white-text">Connect</h5>
-					<ul>
-						<li><a class="white-text" href="#!">Link 1</a></li>
-						<li><a class="white-text" href="#!">Link 2</a></li>
-						<li><a class="white-text" href="#!">Link 3</a></li>
-						<li><a class="white-text" href="#!">Link 4</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<div class="footer-copyright">
+		<nav class="navbar navbar-inverse navbar-fixed-top">
 			<div class="container">
-			Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">Pauly Russ</a>
+				</div>
+				<div id="navbar" class="collapse navbar-collapse navbar-right">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="http://paulruss.uwmsois.com">Home</a></li>
+					</ul>
+				</div><!--/.nav-collapse -->
 			</div>
-		</div>
-	</footer>
+		</nav>
+	
+		<div class="container"> 
+
+			<div class="pg-head">
+				<h1>Paul Russ Assignment 3 Documents:</h1>
+				<p class="lead">This is my homework for INFOST 440 for week three. The table below links to the php assignment pages</p>
+			</div>
+			<div class="table">
+				<table class="table table-condensed table-striped">
+					<thead>
+						<tr>
+							<th>Item #</th>
+							<th>Desc.</th>
+							<th>Link</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>4</td>
+							<td>Escape</td>
+							<td><a href="http://paulruss.uwmsois.com/assignment3/escape.php" class="btn btn-primary btn-block">Link</a></td>
+						</tr>	
+						<tr>
+							<td>5</td>
+							<td>Quotes</td>
+							<td><a href="http://paulruss.uwmsois.com/assignment3/quotes.php" class="btn btn-primary btn-block">Link</a></td>
+						</tr>
+						<tr>
+							<td>6</td>
+							<td>Predefined</td>
+							<td><a href="http://paulruss.uwmsois.com/assignment3/predefined.php" class="btn btn-primary btn-block">Link</a></td>
+						</tr>
+						<tr>
+							<td>7</td>
+							<td>math</td>
+							<td><a href="http://paulruss.uwmsois.com/assignment3/math.php" class="btn btn-primary btn-block">Link</a></td>
+						</tr>
+						<tr>
+							<td>8</td>
+							<td>Constant</td>
+							<td><a href="http://paulruss.uwmsois.com/assignment3/constant.php" class="btn btn-primary btn-block">Link</a></td>
+						</tr>
+						<tr>
+							<td>9</td>
+							<td>Function</td>
+							<td><a href="http://paulruss.uwmsois.com/assignment3/functions.php" class="btn btn-primary btn-block">Link</a></td>
+						</tr>
+						<tr>
+							<td>10</td>
+							<td>Condition</td>
+							<td><a href="http://paulruss.uwmsois.com/assignment3/conditions.php" class="btn btn-primary btn-block">Link</a></td>
+						</tr>
+						<tr>
+							<td>11</td>
+							<td>Form</td>
+							<td><a href="http://paulruss.uwmsois.com/assignment3/form.php" class="btn btn-primary btn-block">Link</a></td>
+						</tr>
+					</tbody>
+			</div>
+
+		</div><!-- end container -->
 
 
-	<!--	Scripts-->
-	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+		<!-- Bootstrap core JavaScript
+		================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	</body>
 </html>
