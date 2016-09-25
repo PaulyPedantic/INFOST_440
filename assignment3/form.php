@@ -49,65 +49,49 @@
 		<div class="container"> 
 
 			<div class="pg-head">
-				<h1 class="text-center">Paul Russ Assignment 3 Documents:</h1>
-				<?php 
-					echo '<p class="lead text-center">This is my homework for INFOST 440 for week three. The table below links to the php assignment pages</p>'; 
-					//Using some php to echo some content because why not
-				?>
-				<div class="text-center"><a href="http://paulruss.uwmsois.com/assignment3/" class="btn btn-lg btn-primary">Back to Index</a></div>
+				<h1 class="text-center">Paul Russ Assignment 3 Form</h1>
 			</div>
-			<div class="table">
-				<table class="table table-condensed table-striped">
-					<thead>
-						<tr>
-							<th>Item #</th>
-							<th>Desc.</th>
-							<th>Link</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>4</td>
-							<td>Escape</td>
-							<td><a href="http://paulruss.uwmsois.com/assignment3/escape.php" class="btn btn-primary btn-block">Link</a></td>
-						</tr>	
-						<tr>
-							<td>5</td>
-							<td>Quotes</td>
-							<td><a href="http://paulruss.uwmsois.com/assignment3/quotes.php" class="btn btn-primary btn-block">Link</a></td>
-						</tr>
-						<tr>
-							<td>6</td>
-							<td>Predefined</td>
-							<td><a href="http://paulruss.uwmsois.com/assignment3/predefined.php" class="btn btn-primary btn-block">Link</a></td>
-						</tr>
-						<tr>
-							<td>7</td>
-							<td>Math</td>
-							<td><a href="http://paulruss.uwmsois.com/assignment3/math.php" class="btn btn-primary btn-block">Link</a></td>
-						</tr>
-						<tr>
-							<td>8</td>
-							<td>Constant</td>
-							<td><a href="http://paulruss.uwmsois.com/assignment3/constant.php" class="btn btn-primary btn-block">Link</a></td>
-						</tr>
-						<tr>
-							<td>9</td>
-							<td>Function</td>
-							<td><a href="http://paulruss.uwmsois.com/assignment3/functions.php" class="btn btn-primary btn-block">Link</a></td>
-						</tr>
-						<tr>
-							<td>10</td>
-							<td>Condition</td>
-							<td><a href="http://paulruss.uwmsois.com/assignment3/conditions.php" class="btn btn-primary btn-block">Link</a></td>
-						</tr>
-						<tr>
-							<td>11</td>
-							<td>Form</td>
-							<td><a href="http://paulruss.uwmsois.com/assignment3/form.php" class="btn btn-primary btn-block">Link</a></td>
-						</tr>
-					</tbody>
-			</div>
+			<div class="text-center"><a href="http://paulruss.uwmsois.com/assignment3/" class="btn btn-lg btn-primary">Back to Index</a></div>
+			<form action="http://paulyruss.net">
+				<p class="lead">Create an account</p>
+				<div class="form-group">
+					<label for="Email1">Email address</label>
+					<input type="email" class="form-control" id="Email1" placeholder="Email">
+				</div>
+				<div class="form-group">
+					<label for="password1">Password</label>
+					<input type="password" class="form-control" id="password1" placeholder="Password">
+				</div>
+				<div class="form-group">
+					<label for="confirmPassword">Re-enter to Confirm Password</label>
+					<input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password">
+				</div>
+
+				<div class="form-group">
+					<label for="about">Bio</label>
+					<textarea class="form-control" id="about" maxlength="3000" placeholder="Tell us about yourself"></textarea>
+					<p class="help-block">Limit 3000 characters</p>
+				</div>
+				<div class="form-group">
+					<label for="refer">How did you hear about us?</label>
+					<select class="form-control" id="refer">
+						<option>Google</option>
+						<option>Radio/TV</option>
+						<option>Magazine</option>
+						<option>Other</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<input type="checkbox" id="signUp1" checked > 
+					<label for="signUp1">Yes, please sign me up for the monthly newsletter.	</label>
+				</div>
+				<div class="form-group">
+					<input type="checkbox" id="signUp2" checked > 
+					<label for="signUp2">Please also send me regular news and updates.</label>
+				</div>
+				
+				<button type="submit" class="btn btn-primary btn-lg">Submit</button>
+		</form>
 
 		</div><!-- end container -->
 

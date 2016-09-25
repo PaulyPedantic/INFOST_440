@@ -62,62 +62,10 @@
 					};
 					
 					echoParagraphTwo("Here I've built a simple function to echo whatever I feed into the variable as a paragraph and I'm calling it with this text.");
-					echoParagraphTwo("I can call this over and over with as many different values as I'd like in the \$paragraph variable and each time it will echo that value between <code><p></code> and </code></p></code> tags as a new paragraph in my document.");
+					echoParagraphTwo("I can call this over and over with as many different values as I'd like in the \$paragraph variable and each time it will echo that value between <code>&lt;p&gt;</code> and <code>&lt;/p&gt;</code> tags as a new paragraph in my document.");
 					
 				?>
 				<div class="text-center"><a href="http://paulruss.uwmsois.com/assignment3/" class="btn btn-lg btn-primary">Back to Index</a></div>
-			</div>
-			<div class="table">
-				<table class="table table-condensed table-striped">
-					<thead>
-						<tr>
-							<th>Item #</th>
-							<th>Desc.</th>
-							<th>Link</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>4</td>
-							<td>Escape</td>
-							<td><a href="http://paulruss.uwmsois.com/assignment3/escape.php" class="btn btn-primary btn-block">Link</a></td>
-						</tr>	
-						<tr>
-							<td>5</td>
-							<td>Quotes</td>
-							<td><a href="http://paulruss.uwmsois.com/assignment3/quotes.php" class="btn btn-primary btn-block">Link</a></td>
-						</tr>
-						<tr>
-							<td>6</td>
-							<td>Predefined</td>
-							<td><a href="http://paulruss.uwmsois.com/assignment3/predefined.php" class="btn btn-primary btn-block">Link</a></td>
-						</tr>
-						<tr>
-							<td>7</td>
-							<td>Math</td>
-							<td><a href="http://paulruss.uwmsois.com/assignment3/math.php" class="btn btn-primary btn-block">Link</a></td>
-						</tr>
-						<tr>
-							<td>8</td>
-							<td>Constant</td>
-							<td><a href="http://paulruss.uwmsois.com/assignment3/constant.php" class="btn btn-primary btn-block">Link</a></td>
-						</tr>
-						<tr>
-							<td>9</td>
-							<td>Function</td>
-							<td><a href="http://paulruss.uwmsois.com/assignment3/functions.php" class="btn btn-primary btn-block">Link</a></td>
-						</tr>
-						<tr>
-							<td>10</td>
-							<td>Condition</td>
-							<td><a href="http://paulruss.uwmsois.com/assignment3/conditions.php" class="btn btn-primary btn-block">Link</a></td>
-						</tr>
-						<tr>
-							<td>11</td>
-							<td>Form</td>
-							<td><a href="http://paulruss.uwmsois.com/assignment3/form.php" class="btn btn-primary btn-block">Link</a></td>
-						</tr>
-					</tbody>
 			</div>
 
 		</div><!-- end container -->

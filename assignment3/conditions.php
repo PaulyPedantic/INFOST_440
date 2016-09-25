@@ -50,62 +50,38 @@
 			<div class="pg-head">
 				<h1 class="text-center">Paul Russ Assignment 3 Conditions:</h1>
 				<?php 
-					echo '<p class="lead text-center">This is my homework for INFOST 440 for week three. The table below links to the php assignment pages</p>'; 
-					//Using some php to echo some content because why not
+					echo '<p class="lead text-center">Conditions facilitate dynamic pages by allowing a script to react differently to different scenarios. The general structure is if statement evaluates to true, perform the code in the curly braces. If it does not evaluate to true, proceed to the end of the curly braces without executing the code. elseif behaves the same as if, but can only execute when the code in the original if evaluates to false. Code in an else block executes when all if and elseif statements evaluate to false. Case statements allow selecting an item, and repetetively checking its value against a list and performing the action within the block for which the original value met the criteria.</p>'; 
+					$var1 = 3;
+					$var2 = 14;
+					$sum = $var1 + $var2;
+					
+					if ($sum == 17) {
+						echo "<p>$var1 plus $var2 equals $sum. PHP can correctly do math!</p>";
+					} else {
+						echo "<p>You\'re telling me that $var1 plus $var2 is $sum and not 17?!? Apparently PHP cannot do math.</p>";
+					};
+					
+					if (1 == 0) {
+						echo "<p>This will never display</p>";
+					} elseif (1 == 2) {
+						echo "<p>This will also never display</p>";
+					} else {
+						echo "<p>This sentence is the result of a if/elseif/else statement. I set the if and else if statements to values that would never evaluate to true so I know this statement will display</p>";
+					};
+					
+					switch ($var1) {
+						case 1:
+							echo '<p>$var1 = 1</p>';
+							break;
+						case 2:
+							echo '<p>$var1 = 2</p>';
+							break;
+						case 3:
+							echo '<p>$var1 = 3</p>';
+							break;
+					};
 				?>
 				<div class="text-center"><a href="http://paulruss.uwmsois.com/assignment3/" class="btn btn-lg btn-primary">Back to Index</a></div>
-			</div>
-			<div class="table">
-				<table class="table table-condensed table-striped">
-					<thead>
-						<tr>
-							<th>Item #</th>
-							<th>Desc.</th>
-							<th>Link</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>4</td>
-							<td>Escape</td>
-							<td><a href="http://paulruss.uwmsois.com/assignment3/escape.php" class="btn btn-primary btn-block">Link</a></td>
-						</tr>	
-						<tr>
-							<td>5</td>
-							<td>Quotes</td>
-							<td><a href="http://paulruss.uwmsois.com/assignment3/quotes.php" class="btn btn-primary btn-block">Link</a></td>
-						</tr>
-						<tr>
-							<td>6</td>
-							<td>Predefined</td>
-							<td><a href="http://paulruss.uwmsois.com/assignment3/predefined.php" class="btn btn-primary btn-block">Link</a></td>
-						</tr>
-						<tr>
-							<td>7</td>
-							<td>Math</td>
-							<td><a href="http://paulruss.uwmsois.com/assignment3/math.php" class="btn btn-primary btn-block">Link</a></td>
-						</tr>
-						<tr>
-							<td>8</td>
-							<td>Constant</td>
-							<td><a href="http://paulruss.uwmsois.com/assignment3/constant.php" class="btn btn-primary btn-block">Link</a></td>
-						</tr>
-						<tr>
-							<td>9</td>
-							<td>Function</td>
-							<td><a href="http://paulruss.uwmsois.com/assignment3/functions.php" class="btn btn-primary btn-block">Link</a></td>
-						</tr>
-						<tr>
-							<td>10</td>
-							<td>Condition</td>
-							<td><a href="http://paulruss.uwmsois.com/assignment3/conditions.php" class="btn btn-primary btn-block">Link</a></td>
-						</tr>
-						<tr>
-							<td>11</td>
-							<td>Form</td>
-							<td><a href="http://paulruss.uwmsois.com/assignment3/form.php" class="btn btn-primary btn-block">Link</a></td>
-						</tr>
-					</tbody>
 			</div>
 
 		</div><!-- end container -->
