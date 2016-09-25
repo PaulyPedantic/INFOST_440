@@ -16,10 +16,9 @@
 				padding-top: 50px; /*make space for bootstrap navbar*/
 				background-color: #d4d4aa /*kind of a soft gray*/
 			}
-			/*I borrowed these styles from one of the starter templates at getbootstrap.com*/
+			/*I borrowed this spacing from one of the starter templates at getbootstrap.com*/
 			.pg-head {
 				padding: 40px 15px;
-				text-align: center;
 			}	
 		</style>
 		
@@ -49,10 +48,22 @@
 		<div class="container"> 
 
 			<div class="pg-head">
-				<h1>Paul Russ Assignment 3 Documents:</h1>
+				<h1>Paul Russ Assignment Functions</h1>
 				<?php 
-					echo '<p class="lead">This is my homework for INFOST 440 for week three. The table below links to the php assignment pages</p>'; 
-					//Using some php to echo some content because why not
+					echo '<p class="lead">Functions are essentially little, callable code pieces. They can generate powerful effects. Two large groupings of functions include built-in and user-defined. As the name suggests, the built in function have their code included in the PHP engine and simply including their name into a script allows PHP to know what to do. User-defined functions are places where the person writing a script can define a piece of functioning code that they\'d like to use over and over, and instead define it as a function to avoid writing out what it does.</p>';
+					
+					$var = 3.14;
+					$var2 = ceil($var);
+					
+					echo "<p>My variable is $var . With normal rounding rules, the .14 would get rounded down. If I want to force it to round up, I can use the built in function ceil() and I get $var2 .</p>";
+					
+					function echoParagraphTwo($paragraph) {
+						echo "<p>$paragraph</p>";
+					};
+					
+					echoParagraphTwo("Here I've built a simple function to echo whatever I feed into the variable as a paragraph and I'm calling it with this text.");
+					echoParagraphTwo("I can call this over and over with as many different values as I'd like in the \$paragraph variable and each time it will echo that value between <code><p></code> and </code></p></code> tags as a new paragraph in my document.");
+					
 				?>
 				<a href="http://paulruss.uwmsois.com/assignment3/" class="btn btn-lg btn-primary">Back to Index</a>
 			</div>
