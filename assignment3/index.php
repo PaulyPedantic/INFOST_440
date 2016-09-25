@@ -1,66 +1,126 @@
 <!DOCTYPE html>
-<html lang="en-US">
-  <head>
-    <meta charset="UTF-8">
-    <!-- Include Bootstrap Boilerplate and css supplied cdn-->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
-    <title>Index Page</title>
-    <meta name="description" content="Item 4 from wk 2 assignment page">
-    <!-- use the same styling as item 2 -->
-    <style type="text/css">
-     .container {
-       padding-top: 40px;      /*make containers space out some*/
-     }
-     .table {
-       background-color: #fff; /*make table color cover page bg*/
-	   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.15);
-     }
-     tr {
-       border:1px solid gray; /*add a border because why not*/
-       border-radius:5px;      /*I find rounded cornders pleasing*/
-     }
-     body {
-       background-color: #ffffb3; /*a lemony sunshine-y yellow this week/
-     } 
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+	<title>Assignment 3 Index</title>
 
-    </style>
-  </head>
-  <body>
-  <!-- use bootstrap classes/divs to style a header -->
-   <div class="container">
-    <div class="jumbotron">
-     <?php echo '<h1 class="text-center">Pauly Russ Assignment 3 Index</h1>';
-     //this is a line comment noting I used echo instead of print
-     ?>
-    </div> <!-- end of jumbotron -->
-   </div> <!-- end of container -->
-   <div class="container">
-    <table class="table table-condensed table-hover"> <!-- mouthful of classes makes the table look bootstrap pretty -->
-     <tr>
-      <th>
-      </th>
-      <th>
-       Item 2
-      </th>
-      <th>
-       Item 3
-      </th>
-     </tr>
-     <tr>
-      <td>
-        <?php print '<h2 class="text-center">Links:</h2>';
-       //this is a line comment noting that this time I used print instead of echo
-       ?>
-      </td>
-      <td>
-       <a href="http://paulruss.uwmsois.com" class="btn btn-primary btn-lg">Page1</a>
-      </td>
-      <td>
-       <a href="http://paulruss.uwmsois.com/assignment2/phpinfo.php" class="btn btn-primary btn-lg">Page2</a>
-      </td>
-     </tr>
-    </table>
-   </div> <!-- end of container -->
-  </body>
+	<!-- I'll play with materialize.css instead of bootstrap this time -->
+	<!-- CSS	-->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!-- Compiled and minified CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+</head>
+<body>
+	<nav class="light-blue lighten-1" role="navigation">
+		<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Logo</a>
+			<ul class="right hide-on-med-and-down">
+				<li><a href="#">Navbar Link</a></li>
+			</ul>
+
+			<ul id="nav-mobile" class="side-nav">
+				<li><a href="#">Navbar Link</a></li>
+			</ul>
+			<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+		</div>
+	</nav>
+	<div class="section no-pad-bot" id="index-banner">
+		<div class="container">
+			<br><br>
+			<h1 class="header center orange-text">Starter Template</h1>
+			<div class="row center">
+				<h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
+			</div>
+			<div class="row center">
+				<a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light orange">Get Started</a>
+			</div>
+			<br><br>
+
+		</div>
+	</div>
+
+
+	<div class="container">
+		<div class="section">
+
+			<!--	 Icon Section	 -->
+			<div class="row">
+				<div class="col s12 m4">
+					<div class="icon-block">
+						<h2 class="center light-blue-text"><i class="material-icons">flash_on</i></h2>
+						<h5 class="center">Speeds up development</h5>
+
+						<p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
+					</div>
+				</div>
+
+				<div class="col s12 m4">
+					<div class="icon-block">
+						<h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
+						<h5 class="center">User Experience Focused</h5>
+
+						<p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
+					</div>
+				</div>
+
+				<div class="col s12 m4">
+					<div class="icon-block">
+						<h2 class="center light-blue-text"><i class="material-icons">settings</i></h2>
+						<h5 class="center">Easy to work with</h5>
+
+						<p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<br><br>
+
+		<div class="section">
+
+		</div>
+	</div>
+
+	<footer class="page-footer orange">
+		<div class="container">
+			<div class="row">
+				<div class="col l6 s12">
+					<h5 class="white-text">Company Bio</h5>
+					<p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
+
+
+				</div>
+				<div class="col l3 s12">
+					<h5 class="white-text">Settings</h5>
+					<ul>
+						<li><a class="white-text" href="#!">Link 1</a></li>
+						<li><a class="white-text" href="#!">Link 2</a></li>
+						<li><a class="white-text" href="#!">Link 3</a></li>
+						<li><a class="white-text" href="#!">Link 4</a></li>
+					</ul>
+				</div>
+				<div class="col l3 s12">
+					<h5 class="white-text">Connect</h5>
+					<ul>
+						<li><a class="white-text" href="#!">Link 1</a></li>
+						<li><a class="white-text" href="#!">Link 2</a></li>
+						<li><a class="white-text" href="#!">Link 3</a></li>
+						<li><a class="white-text" href="#!">Link 4</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="footer-copyright">
+			<div class="container">
+			Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+			</div>
+		</div>
+	</footer>
+
+
+	<!--	Scripts-->
+	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+	</body>
 </html>
