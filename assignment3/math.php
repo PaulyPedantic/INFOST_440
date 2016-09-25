@@ -13,9 +13,10 @@
 		
 		<style>
 			body {
-				padding-top: 50px;
+				padding-top: 50px; /*make space for bootstrap navbar*/
 				background-color: #d4d4aa /*kind of a soft gray*/
 			}
+			/*I borrowed these styles from one of the starter templates at getbootstrap.com*/
 			.pg-head {
 				padding: 40px 15px;
 				text-align: center;
@@ -48,65 +49,35 @@
 		<div class="container"> 
 
 			<div class="pg-head">
-				<h1>Paul Russ Assignment 3 Documents:</h1>
+				<h1>Paul Russ Assignment Math</h1>
 				<?php 
-					echo '<p class="lead">This is my homework for INFOST 440 for week three. The table below links to the php assignment pages</p>'; 
-					//Using some php to echo some content because why not
+					$n1 = 3;
+					$n2 = 14;
+					$product = $n1*$n2;
+					$quotient = $n1/$n2;
+					$sum = $n1+$n2;
+					echo '<p class="lead">PHP includes math functions!</p> 
+				</div>
+				<div>';
+					echo "<p> For this page, I have two variables \$n1 and \$n2 set to 3 and 14 respectively. I will use these numbers to demonstrate how several PHP math operators function.</P>";
+					echo "<p>If I want to increment my first variable by one, I would use ++\$n1 and my result would be ". ++$n1 ." (if I used \$n1++, PHP would display the current value of \$n1 then increment the value stored in my variable, while ++\$n1 increments first, then displays.)</p>";
+					
+					echo "<p>If I want to decrement my first variable by one, I would use --\$n1 and my result would be ". --$n1 ." (if I used \$n1--, PHP would display the current value of \$n1 then decrement the value stored in my variable, while --\$n1 decrements first, then displays.)</p>";
+					
+					echo "<p>I can also do basic arithmetic. For example:
+						<ul>
+							<li>Multiplication: 3 x 14 = $product.</li>
+							<li>Division: 14 ÷ 3 = $quotient.</li>
+							<li>Addition: 14 + 3 = $sum.</li>
+						</ul>
+						</p>";
+					
 				?>
+				</div>
+				<div class = "pg-head">
 				<a href="http://paulruss.uwmsois.com/assignment3/" class="btn btn-lg btn-primary">Back to Index</a>
 			</div>
-			<div class="table">
-				<table class="table table-condensed table-striped">
-					<thead>
-						<tr>
-							<th>Item #</th>
-							<th>Desc.</th>
-							<th>Link</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>4</td>
-							<td>Escape</td>
-							<td><a href="http://paulruss.uwmsois.com/assignment3/escape.php" class="btn btn-primary btn-block">Link</a></td>
-						</tr>	
-						<tr>
-							<td>5</td>
-							<td>Quotes</td>
-							<td><a href="http://paulruss.uwmsois.com/assignment3/quotes.php" class="btn btn-primary btn-block">Link</a></td>
-						</tr>
-						<tr>
-							<td>6</td>
-							<td>Predefined</td>
-							<td><a href="http://paulruss.uwmsois.com/assignment3/predefined.php" class="btn btn-primary btn-block">Link</a></td>
-						</tr>
-						<tr>
-							<td>7</td>
-							<td>Math</td>
-							<td><a href="http://paulruss.uwmsois.com/assignment3/math.php" class="btn btn-primary btn-block">Link</a></td>
-						</tr>
-						<tr>
-							<td>8</td>
-							<td>Constant</td>
-							<td><a href="http://paulruss.uwmsois.com/assignment3/constant.php" class="btn btn-primary btn-block">Link</a></td>
-						</tr>
-						<tr>
-							<td>9</td>
-							<td>Function</td>
-							<td><a href="http://paulruss.uwmsois.com/assignment3/functions.php" class="btn btn-primary btn-block">Link</a></td>
-						</tr>
-						<tr>
-							<td>10</td>
-							<td>Condition</td>
-							<td><a href="http://paulruss.uwmsois.com/assignment3/conditions.php" class="btn btn-primary btn-block">Link</a></td>
-						</tr>
-						<tr>
-							<td>11</td>
-							<td>Form</td>
-							<td><a href="http://paulruss.uwmsois.com/assignment3/form.php" class="btn btn-primary btn-block">Link</a></td>
-						</tr>
-					</tbody>
-			</div>
+
 
 		</div><!-- end container -->
 

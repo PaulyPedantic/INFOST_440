@@ -13,9 +13,10 @@
 		
 		<style>
 			body {
-				padding-top: 50px;
+				padding-top: 50px; /*make space for bootstrap navbar*/
 				background-color: #d4d4aa /*kind of a soft gray*/
 			}
+			/*I borrowed these styles from one of the starter templates at getbootstrap.com*/
 			.pg-head {
 				padding: 40px 15px;
 				text-align: center;
@@ -54,7 +55,7 @@
 					//Using some php to echo some content because why not
 				?>
 			</div>
-			<div class="table">
+			<div class="myTable">
 				<table class="table table-condensed table-striped">
 					<thead>
 						<tr>
