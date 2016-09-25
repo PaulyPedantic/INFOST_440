@@ -48,9 +48,9 @@
 		<div class="container"> 
 
 			<div class="pg-head">
-				<h1>Paul Russ Assignment Functions</h1>
+				<h1 class="text-center">Paul Russ Assignment 3 Functions</h1>
 				<?php 
-					echo '<p class="lead">Functions are essentially little, callable code pieces. They can generate powerful effects. Two large groupings of functions include built-in and user-defined. As the name suggests, the built in function have their code included in the PHP engine and simply including their name into a script allows PHP to know what to do. User-defined functions are places where the person writing a script can define a piece of functioning code that they\'d like to use over and over, and instead define it as a function to avoid writing out what it does.</p>';
+					echo '<p class="lead text-center">Functions are essentially little, callable code pieces. They can generate powerful effects. Two large groupings of functions include built-in and user-defined. As the name suggests, the built in function have their code included in the PHP engine and simply including their name into a script allows PHP to know what to do. User-defined functions are places where the person writing a script can define a piece of functioning code that they\'d like to use over and over, and instead define it as a function to avoid writing out what it does.</p>';
 					
 					$var = 3.14;
 					$var2 = ceil($var);
@@ -65,7 +65,7 @@
 					echoParagraphTwo("I can call this over and over with as many different values as I'd like in the \$paragraph variable and each time it will echo that value between <code><p></code> and </code></p></code> tags as a new paragraph in my document.");
 					
 				?>
-				<a href="http://paulruss.uwmsois.com/assignment3/" class="btn btn-lg btn-primary">Back to Index</a>
+				<div class="text-center"><a href="http://paulruss.uwmsois.com/assignment3/" class="btn btn-lg btn-primary">Back to Index</a></div>
 			</div>
 			<div class="table">
 				<table class="table table-condensed table-striped">

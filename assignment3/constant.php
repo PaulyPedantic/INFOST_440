@@ -48,14 +48,14 @@
 		<div class="container"> 
 
 			<div class="pg-head">
-				<h1>Paul Russ Assignment Constants:</h1>
+				<h1 class="text-center">Paul Russ Assignment 3 Constants:</h1>
 				<?php 
 					define('MYCONSTANT',3.14); //I use pi everywhere, defining it as myConstant makes it global
 					define('AUTHOR','Paul Russ'); //I wrote this page, if I make author a constant, no other scripts can change it
-					echo '<p class="lead">By definition, if something is constant, it cannot be changed. Unlike variables, PHP constants can\'t be set to a new value once declared. For example, if I wanted to set a value for <em>author</em> that couldn\'t be changed later in the script, I could define it as a constant and no matter what, the value of <em>author</em> would always be ' . AUTHOR . '. Constants are also global, meaning they are accessible outside of the local function. So if I use ' . MYCONSTANT . ' all over the place, defining it into a constant gives me more flexibility to reuse it than if it were in a variable.</p>'; 
+					echo '<p class="lead text-center">By definition, if something is constant, it cannot be changed. Unlike variables, PHP constants can\'t be set to a new value once declared. For example, if I wanted to set a value for <em>author</em> that couldn\'t be changed later in the script, I could define it as a constant and no matter what, the value of <em>author</em> would always be ' . AUTHOR . '. Constants are also global, meaning they are accessible outside of the local function. So if I use ' . MYCONSTANT . ' all over the place, defining it into a constant gives me more flexibility to reuse it than if it were in a variable.</p>'; 
 					
 				?>
-				<a href="http://paulruss.uwmsois.com/assignment3/" class="btn btn-lg btn-primary">Back to Index</a>
+				<div class="text-center"><a href="http://paulruss.uwmsois.com/assignment3/" class="btn btn-lg btn-primary">Back to Index</a></div>
 			</div>
 
 		</div><!-- end container -->

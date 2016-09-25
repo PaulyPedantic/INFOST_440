@@ -48,19 +48,19 @@
 		<div class="container"> 
 
 			<div class="pg-head">
-				<h1>Paul Russ Assignment 3 Quotes</h1>
+				<h1 class="text-center">Paul Russ Assignment 3 Quotes</h1>
 
 				<?php 
 					$var = '<em>variable</em>';
 					//using single quotes
-					echo '<p class="lead">Text can be echoed or printed using quotes to identify the string.</p><p>This paragraph uses echo and the single quote to display the string. When using single quotes, only the singlequote(\') and backslash (\\) characters need to be escaped. For the most part, single quotes avoid parsing through characters inside the quotes for code, meaning typing in a dollar sign ($) doesn\'t trigger the ensuing characters being interpreted as a variable. $var displays as-is and I would have to use the concatenation operator to translate it to '.$var.'.</p>';
+					echo '<p class="lead text-center">Text can be echoed or printed using quotes to identify the string.</p><p>This paragraph uses echo and the single quote to display the string. When using single quotes, only the singlequote(\') and backslash (\\) characters need to be escaped. For the most part, single quotes avoid parsing through characters inside the quotes for code, meaning typing in a dollar sign ($) doesn\'t trigger the ensuing characters being interpreted as a variable. $var displays as-is and I would have to use the concatenation operator to translate it to '.$var.'.</p>';
 					
 					//Using double quotes
 					print "<p class=\"normal\">This text is printed using double quotes to identify the string. Inside of double quotes, I have to use the backslash (\\) to escape the dollar sign (\$) if I want to display the name of my variable \$var. if I include the variable name in my text, it gets replaced with $var </p>"; 
 					
 				?>
 				
-				<a href="http://paulruss.uwmsois.com/assignment3/" class="btn btn-lg btn-primary">Back to Index</a>
+				<div class="text-center"><a href="http://paulruss.uwmsois.com/assignment3/" class="btn btn-lg btn-primary">Back to Index</a></div>
 			</div>
 
 		</div><!-- end container -->

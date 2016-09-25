@@ -48,9 +48,9 @@
 		<div class="container"> 
 
 			<div class="pg-head">
-				<h1>Paul Russ Assignment 3 Documents:</h1>
+				<h1 class="text-center">Paul Russ Assignment 3 Documents:</h1>
 				<?php 
-					echo '<p class="lead">This is my homework for INFOST 440 for week three. The table below links to the php assignment pages</p>'; 
+					echo '<p class="lead text-center">This is my homework for INFOST 440 for week three. The table below links to the php assignment pages</p>'; 
 					//Using some php to echo some content because why not
 				?>
 			</div>

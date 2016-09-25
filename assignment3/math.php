@@ -48,14 +48,14 @@
 		<div class="container"> 
 
 			<div class="pg-head">
-				<h1>Paul Russ Assignment Math</h1>
+				<h1 class="text-center">Paul Russ Assignment 3 Math</h1>
 				<?php 
 					$n1 = 3; /*declare n1 variable*/
 					$n2 = 14; /*declare n2 variable*/
 					$product = $n1*$n2; /*calculate product of n1 and n2*/
 					$quotient = $n1/$n2; /*calculate quotient of n1 and n2*/
 					$sum = $n1+$n2; /*calculate sum of n1 and n2*/
-					echo '<p class="lead">PHP includes math functions!</p> 
+					echo '<p class="lead text-center">PHP includes math functions!</p> 
 				</div>
 				<div>';
 					echo "<p> For this page, I have two variables \$n1 and \$n2 set to 3 and 14 respectively. I will use these numbers to demonstrate how several PHP math operators function.</P>";
@@ -74,7 +74,7 @@
 				?>
 				</div>
 				<div class = "pg-head">
-				<a href="http://paulruss.uwmsois.com/assignment3/" class="btn btn-lg btn-primary">Back to Index</a>
+				<div class="text-center"><a href="http://paulruss.uwmsois.com/assignment3/" class="btn btn-lg btn-primary">Back to Index</a></div>
 			</div>
 
 

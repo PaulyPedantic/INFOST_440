@@ -48,16 +48,16 @@
 		<div class="container"> 
 
 			<div class="pg-head">
-				<h1>Paul Russ Assignment 3 Predefined:</h1>
+				<h1 class="text-center">Paul Russ Assignment 3 Predefined:</h1>
 				<?php 
 					$ua = $_SERVER['HTTP_USER_AGENT']; //identify user agent accessing site
 					$time = date('r',$_SERVER['REQUEST_TIME']); 
 					//get the timestamp of the request and use the date function for format it
 					//'r' according to the documentation is rfc 2822 formatted date
 					
-					echo "<p>User defined variables provide access to pieces of information that are generally common to all php scripts and therefore accessible to any php script. For example, this request was processed by the server at: </p><p>$time. </p><p>You are currently accessing information from: </p><p>$ua</p>"; 
+					echo "<p class=\"lead\">User defined variables provide access to pieces of information that are generally common to all php scripts and therefore accessible to any php script. For example, this request was processed by the server at: </p><p>$time. </p><p class=\"lead\">You are currently accessing information from: </p><p>$ua</p>"; 
 				?>
-				<a href="http://paulruss.uwmsois.com/assignment3/" class="btn btn-lg btn-primary">Back to Index</a>
+				<div class="text-center"><a href="http://paulruss.uwmsois.com/assignment3/" class="btn btn-lg btn-primary">Back to Index</a></div>
 			</div>
 			
 
