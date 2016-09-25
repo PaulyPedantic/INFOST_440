@@ -53,6 +53,7 @@
 					echo "<p class=\"lead\">I'm using a php echo statement to display this piece of text and the double quote (\") to identify it as a string. In order to make the double quotes in the html class assignment as well as any included in the text not be interpreted as the end of the string, I have to escape them using the backslash character (\\)</p>"; 
 					//I used double quotes in the echo statement and therefore needed to use the backslash to escape the double quotes in my html
 				?>
+				<a href="http://paulruss.uwmsois.com/assignment3/" class="btn btn-lg btn-primary">Back to Index</a>
 			</div>
 
 		</div><!-- end container -->
