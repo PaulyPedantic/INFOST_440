@@ -49,64 +49,14 @@
 		<div class="container"> 
 
 			<div class="pg-head">
-				<h1>Paul Russ Assignment 3 Documents:</h1>
+				<h1>Paul Russ Assignment Constants:</h1>
 				<?php 
-					echo '<p class="lead">This is my homework for INFOST 440 for week three. The table below links to the php assignment pages</p>'; 
-					//Using some php to echo some content because why not
+					define('myConstant',3.14); //I use pi everywhere, defining it as myConstant makes it global
+					define('author','Paul Russ') //I wrote this page, if I make author a constant, no other scripts can change it
+					echo '<p class="lead">By definition, if something is constant, it cannot be changed. Unlike variables, PHP constants can not be set to a new value once declared. For example, if I wanted to set a value for <em>author</em> that couldn\'t be changed later in the script, I could define it as a constant and no matter what the value of <em>author</em> would always be ' . author . '. Constants are also global, meaning they are accessible outside of the local function. So if I use ' . myConstant . ' all over the place, defining it into a constant gives me more flexibility to reuse it than if it were in a variale.</p>'; 
+					
 				?>
 				<a href="http://paulruss.uwmsois.com/assignment3/" class="btn btn-lg btn-primary">Back to Index</a>
-			</div>
-			<div class="table">
-				<table class="table table-condensed table-striped">
-					<thead>
-						<tr>
-							<th>Item #</th>
-							<th>Desc.</th>
-							<th>Link</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>4</td>
-							<td>Escape</td>
-							<td><a href="http://paulruss.uwmsois.com/assignment3/escape.php" class="btn btn-primary btn-block">Link</a></td>
-						</tr>	
-						<tr>
-							<td>5</td>
-							<td>Quotes</td>
-							<td><a href="http://paulruss.uwmsois.com/assignment3/quotes.php" class="btn btn-primary btn-block">Link</a></td>
-						</tr>
-						<tr>
-							<td>6</td>
-							<td>Predefined</td>
-							<td><a href="http://paulruss.uwmsois.com/assignment3/predefined.php" class="btn btn-primary btn-block">Link</a></td>
-						</tr>
-						<tr>
-							<td>7</td>
-							<td>Math</td>
-							<td><a href="http://paulruss.uwmsois.com/assignment3/math.php" class="btn btn-primary btn-block">Link</a></td>
-						</tr>
-						<tr>
-							<td>8</td>
-							<td>Constant</td>
-							<td><a href="http://paulruss.uwmsois.com/assignment3/constant.php" class="btn btn-primary btn-block">Link</a></td>
-						</tr>
-						<tr>
-							<td>9</td>
-							<td>Function</td>
-							<td><a href="http://paulruss.uwmsois.com/assignment3/functions.php" class="btn btn-primary btn-block">Link</a></td>
-						</tr>
-						<tr>
-							<td>10</td>
-							<td>Condition</td>
-							<td><a href="http://paulruss.uwmsois.com/assignment3/conditions.php" class="btn btn-primary btn-block">Link</a></td>
-						</tr>
-						<tr>
-							<td>11</td>
-							<td>Form</td>
-							<td><a href="http://paulruss.uwmsois.com/assignment3/form.php" class="btn btn-primary btn-block">Link</a></td>
-						</tr>
-					</tbody>
 			</div>
 
 		</div><!-- end container -->
