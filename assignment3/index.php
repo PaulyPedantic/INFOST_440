@@ -14,11 +14,12 @@
 		<style>
 			body {
 				padding-top: 50px;
+				background-color: #d4d4aa /*kind of a soft gray*/
 			}
 			.pg-head {
 				padding: 40px 15px;
 				text-align: center;
-			}
+			}	
 		</style>
 		
 	</head>
@@ -27,7 +28,7 @@
 
 		<nav class="navbar navbar-inverse navbar-fixed-top">
 			<div class="container">
-				<div class="navbar-header">
+				<div class="navbar-header"> <!-- Standard code for responsive navbar -->
 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 						<span class="sr-only">Toggle navigation</span>
 						<span class="icon-bar"></span>
@@ -77,7 +78,7 @@
 						</tr>
 						<tr>
 							<td>7</td>
-							<td>math</td>
+							<td>Math</td>
 							<td><a href="http://paulruss.uwmsois.com/assignment3/math.php" class="btn btn-primary btn-block">Link</a></td>
 						</tr>
 						<tr>
