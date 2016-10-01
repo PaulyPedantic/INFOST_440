@@ -6,37 +6,45 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-		<title>Form</title>
+		<title>Russ Assign 4</title>
 
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 		
 		<style>
-			body {
+			.body {
 				padding-top: 50px; /*make space for bootstrap navbar*/
 				background-color: #d4d4aa /*kind of a soft gray*/
 			}
 			/*I borrowed this spacing from one of the starter templates at getbootstrap.com*/
 			.pg-head {
 				padding: 40px 15px;
-			}	
-			}	
+			}
+			.logo {
+				height: 51px; /*set logo image height to fill navbar*/
+				width: 135px; /*width keeps logo proportionate*/
+				position: absolute; /*override bootstrap defaults and push logo to top of navbar*/
+				top: 0px;
+			}
 		</style>
 		
 	</head>
 
 	<body>
 
-		<nav class="navbar navbar-inverse navbar-fixed-top">
+		<!-- my navbar lives here -->
+
+		<nav class="navbar navbar-default navbar-fixed-top">
 			<div class="container">
-				<div class="navbar-header"> <!-- Standard code for responsive navbar -->
+				<!-- Standard code for responsive navbar -->
+				<div class="navbar-header"> 
 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 						<span class="sr-only">Toggle navigation</span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="#">Pauly Russ</a>
+					<a class="navbar-brand" href="http://paulruss.uwmsois.com/assignment4"><img src="images/logo.png" alt="Low Rent Social Media Logo" class="img-responsive logo"></a>
 				</div>
 				<div id="navbar" class="collapse navbar-collapse navbar-right">
 					<ul class="nav navbar-nav">
@@ -46,14 +54,17 @@
 			</div>
 		</nav>
 	
+		<!-- Done with the navbar -->
+
+		<!--begin main page content -->
+
 		<div class="container"> 
 
 			<div class="pg-head">
-				<h1 class="text-center">Paul Russ Assignment 3 Form</h1>
+				<h1 class="text-center">Welcome to Low-Rent Social Media!</h1>
 			</div>
-			<div class="text-center"><a href="http://paulruss.uwmsois.com/assignment3/" class="btn btn-lg btn-primary">Back to Index</a></div>
-			<form action="http://paulyruss.net">
-				<p class="lead">Create an account</p>
+				<p class="lead">Please fill in your profile information below</p>
+			<form action="http://paulruss.uwmsois.com/assignment4/index.phpnet" method="POST">
 				<div class="form-group">
 					<label for="Email1">Email address</label>
 					<input type="email" class="form-control" id="Email1" placeholder="Email">
