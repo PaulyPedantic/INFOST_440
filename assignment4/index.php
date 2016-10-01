@@ -44,7 +44,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="http://paulruss.uwmsois.com/assignment4"><img src="images/logo.png" alt="Low Rent Social Media Logo" class="img-responsive logo"></a>
+					<a class="navbar-brand" href="http://paulruss.uwmsois.com/assignment4"><img src="images/logo.png" alt="Low Rent Social Media Logo" class="img-responsive img-rounded logo"></a>
 				</div>
 				<div id="navbar" class="collapse navbar-collapse navbar-right">
 					<ul class="nav navbar-nav">
@@ -63,44 +63,101 @@
 			<div class="pg-head">
 				<h1 class="text-center">Welcome to Low-Rent Social Media!</h1>
 			</div>
-				<p class="lead">Please fill in your profile information below</p>
-			<form action="http://paulruss.uwmsois.com/assignment4/index.phpnet" method="POST">
+			<p class="lead">Please fill in your profile information below</p>
+
+			<!-- begin form -->
+			<form action="http://paulruss.uwmsois.com/assignment4/index.phpnet" method="POST" class="form-horizontal">
 				<div class="form-group">
-					<label for="Email1">Email address</label>
-					<input type="email" class="form-control" id="Email1" placeholder="Email">
+					<label for="name" class="col-sm-2 control-label">Full Name</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="name" placeholder="Full Name">
+					</div>
 				</div>
 				<div class="form-group">
-					<label for="password1">Password</label>
-					<input type="password" class="form-control" id="password1" placeholder="Password">
+					<label for="Email1" class="col-sm-2 control-label">Email address</label>
+					<div class="col-sm-10">
+						<input type="email" class="form-control" id="Email1" placeholder="Email">
+					</div>
 				</div>
 				<div class="form-group">
-					<label for="confirmPassword">Re-enter to Confirm Password</label>
-					<input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password">
+					<label for="password1" class="col-sm-2 control-label">Password</label>
+					<div class="col-sm-10">
+						<input type="password" class="form-control" id="password1" placeholder="Password">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="confirmPassword" class="col-sm-2 control-label">Re-enter to Confirm </label>
+					<div class="col-sm-10">
+						<input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password">
+					</div>
 				</div>
 
 				<div class="form-group">
-					<label for="about">Bio</label>
-					<textarea class="form-control" id="about" maxlength="3000" placeholder="Tell us about yourself"></textarea>
-					<p class="help-block">Limit 3000 characters</p>
+					<label for="about" class="col-sm-2 control-label">Bio</label>
+					<div class="col-sm-10">
+						<textarea class="form-control" id="about" maxlength="3000" placeholder="Tell us about yourself"></textarea>
+						<p class="help-block">Limit 3000 characters</p>
+					</div>
 				</div>
 				<div class="form-group">
-					<label for="refer">How did you hear about us?</label>
-					<select class="form-control" id="refer">
-						<option>Google</option>
-						<option>Radio/TV</option>
-						<option>Magazine</option>
-						<option>Other</option>
-					</select>
+					<label for="bday" class="col-sm-2 control-label">Birthday</label>
+					<div class="form-inline col-sm-10" id="bday">
+						<label for="mm">Month</label>
+						<select class="form-control" id="mm">
+							<option>1</option>
+							<?php
+								//use php array later to generate all possible options
+							?>
+						</select>
+						<label for="dd">Day</label>
+						<select class="form-control" id="dd">
+							<option>1</option>
+							<?php
+								//use php array later to generate all possible options
+							?>
+						</select>
+						<label for="yy">Year</label>
+						<select class="form-control" id="yy">
+							<option>2016</option>
+							<?php
+								//use php array later to generate all possible options
+							?>
+						</select>
+					</div> <!-- end of inline form -->
+				</div> <!-- end of birthday form group -->
+				<div class="form-group">
+					<label for="refer" class="col-sm-2 control-label">How did you find Low-Rent?</label>
+					<div class="col-sm-10">
+ 						<label class="radio-inline">
+						  <input type="radio" name="refer" id="search" value="search"> Search Engine
+						</label>
+						<label class="radio-inline">
+						  <input type="radio" name="refer" id="radio" value="radio"> Radio
+						</label>
+						<label class="radio-inline">
+						  <input type="radio" name="refer" id="tv" value="tv"> TV
+						</label>
+						<label class="radio-inline">
+						  <input type="radio" name="refer" id="print" value="print"> Magazine
+						</label>
+						<label class="radio-inline">
+						  <input type="radio" name="refer" id="other" value="other"> Other
+						</label>
+					</div>
 				</div>
 				<div class="form-group">
 					<input type="checkbox" id="signUp1" checked > 
 					<label for="signUp1">Yes, please sign me up for the monthly newsletter.	</label>
 				</div>
-				<div class="form-group">
+						<div class="form-group">
 					<input type="checkbox" id="signUp2" checked > 
 					<label for="signUp2">Please also send me regular news and updates.</label>
 				</div>
-				
+				<div class="form-group">
+					<input type="checkbox" id="findMe" checked > 
+					<label for="findMe">Allow other users to find me by searching my email address.</label>
+				</div>
+		
 				<button type="submit" class="btn btn-primary btn-lg">Submit</button>
 		</form>
 
