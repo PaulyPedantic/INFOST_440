@@ -76,9 +76,9 @@ if ( ($_POST['name'] != NULL) &&
 			($_POST['mm'] != NULL) &&
 			($_POST['dd'] != NULL) &&
 			($_POST['yy'] != NULL)) {
-				echo "http://paulruss.uwmsois.com/assignment4/index.phpnet";
+				echo "http://paulruss.uwmsois.com/assignment4/thanks.php";
 			} else {
-				echo ".php";
+				echo "http://paulruss.uwmsois.com/assignment4/index.php";
 			}
 ?>" method="POST" class="form-horizontal">
 				<div class="form-group">
