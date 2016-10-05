@@ -66,73 +66,106 @@
 			<p class="lead">Please fill in your profile information below</p>
 
 			<!-- begin form -->
-			<form action="<?php
+			<form action=<?php
 /*Validate fields populated and direct to thanks or back to index*/
-if ( ($_POST['name'] != NULL) &&
-			($_POST['email'] != NULL) &&
-			($_POST['password'] != NULL) &&
-			($_POST['confirmPass'] != NULL) &&
-			($_POST['about'] != NULL) &&
-			($_POST['mm'] != NULL) &&
-			($_POST['dd'] != NULL) &&
-			($_POST['yy'] != NULL)) {
-				echo "http://paulruss.uwmsois.com/assignment4/thanks.php";
-			} else {
-				echo "http://paulruss.uwmsois.com/assignment4/index.php";
-			}
-?>" method="POST" class="form-horizontal">
-				<div class="form-group">
+				if (($_POST['name']) != "") {/*||
+						($_POST['email'] != NULL) ||
+						($_POST['password'] != NULL) ||
+						($_POST['confirmPass'] != NULL) ||
+						($_POST['about'] != NULL) ||
+						($_POST['mm'] != NULL) ||
+						($_POST['dd'] != NULL) ||
+						($_POST['yy'] != NULL)) {*/
+							echo '"http://paulruss.uwmsois.com/assignment4/thanks.php" method="POST" class="form-horizontal">';
+						} else {
+							echo '"http://paulruss.uwmsois.com/assignment4/index.php" method="POST" class="form-horizontal">';/*
+							echo '<p id="help" class="text-danger">Please be sure all fields are filled in before submitting</p>';
+						*/} ?>
+				<div class="form-group <?php
+//Validate name and show error
+					if (($_POST['name']) == "") {
+						echo 'has-error has-feedback';
+					}
+					?>">
 					<label for="name" class="col-sm-2 control-label">Full Name</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" id="name" placeholder="Full Name">
+						<input name="name" type="text" class="form-control" id="name" placeholder="Full Name">
 					</div>
 				</div>
-				<div class="form-group">
-					<label for="Email1" class="col-sm-2 control-label">Email address</label>
+				<div class="form-group <?php
+//Validate email and show error
+					if (($_POST['email']) == NULL) {
+						echo 'has-error has-feedback';
+					}
+					?>">
+					<label for="email" class="col-sm-2 control-label">Email address</label>
 					<div class="col-sm-10">
 						<input type="email" class="form-control" id="email" placeholder="Email">
 					</div>
 				</div>
-				<div class="form-group">
-					<label for="password1" class="col-sm-2 control-label">Password</label>
+				<div class="form-group <?php
+//Validate password and show error
+					if (($_POST['password']) == NULL) {
+						echo 'has-error has-feedback';
+					}
+					?>">
+					<label for="password" class="col-sm-2 control-label">Password</label>
 					<div class="col-sm-10">
 						<input type="password" class="form-control" id="password" placeholder="Password">
 					</div>
 				</div>
-				<div class="form-group">
-					<label for="confirmPassword" class="col-sm-2 control-label">Re-enter to Confirm </label>
+				<div class="form-group <?php
+//Validate confirmPass and show error
+					if (($_POST['confirmPass']) == NULL || ($_POST['confirmPass']) != ($_POST['password'])) {
+						echo 'has-error has-feedback';
+					}
+					?>">
+					<label for="confirmPass" class="col-sm-2 control-label">Re-enter to Confirm </label>
 					<div class="col-sm-10">
 						<input type="password" class="form-control" id="confirmPass" placeholder="Confirm Password">
 					</div>
 				</div>
 
-				<div class="form-group">
+				<div class="form-group <?php
+//Validate about and show error
+					if (($_POST['about']) == NULL) {
+						echo 'has-error has-feedback';
+					}
+					?>">
 					<label for="about" class="col-sm-2 control-label">Bio</label>
 					<div class="col-sm-10">
 						<textarea class="form-control" id="about" maxlength="3000" placeholder="Tell us about yourself"></textarea>
 						<p class="help-block">Limit 3000 characters</p>
 					</div>
 				</div>
-				<div class="form-group">
+				<div class="form-group <?php
+//Validate birthdate and show error
+					if (($_POST['mm']) == NULL||($_POST['dd']) == NULL || ($_POST['yy']) == NULL) {
+						echo 'has-error has-feedback';
+					}
+					?>">
 					<label for="bday" class="col-sm-2 control-label">Birthday</label>
 					<div class="form-inline col-sm-10" id="bday">
 						<label for="mm">Month</label>
 						<select class="form-control" id="mm">
-							<option>1</option>
+							<option selected>MM</option>
+							<option value="1">1</option>
 							<?php
 								//use php array later to generate all possible options
 							?>
 						</select>
 						<label for="dd">Day</label>
 						<select class="form-control" id="dd">
-							<option>1</option>
+							<option selected>DD</option>
+							<option value="1">1</option>
 							<?php
 								//use php array later to generate all possible options
 							?>
 						</select>
 						<label for="yy">Year</label>
 						<select class="form-control" id="yy">
-							<option>2016</option>
+							<option selected>YYYY</option>
+							<option value="2016">2016</option>
 							<?php
 								//use php array later to generate all possible options
 							?>
@@ -172,7 +205,7 @@ if ( ($_POST['name'] != NULL) &&
 					<label for="findMe">Allow other users to find me by searching my email address.</label>
 				</div>
 
-				<button type="submit" class="btn btn-primary btn-lg">Submit</button>
+				<input type="submit" name="submit" value="Submit" class="btn btn-primary btn-lg">
 		</form>
 
 		</div><!-- end container -->
