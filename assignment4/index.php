@@ -10,7 +10,7 @@
 
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-		
+
 		<style>
 			.body {
 				padding-top: 50px; /*make space for bootstrap navbar*/
@@ -27,7 +27,7 @@
 				top: 0px;
 			}
 		</style>
-		
+
 	</head>
 
 	<body>
@@ -37,7 +37,7 @@
 		<nav class="navbar navbar-default navbar-fixed-top">
 			<div class="container">
 				<!-- Standard code for responsive navbar -->
-				<div class="navbar-header"> 
+				<div class="navbar-header">
 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 						<span class="sr-only">Toggle navigation</span>
 						<span class="icon-bar"></span>
@@ -53,12 +53,12 @@
 				</div><!--/.nav-collapse -->
 			</div>
 		</nav>
-	
+
 		<!-- Done with the navbar -->
 
 		<!--begin main page content -->
 
-		<div class="container"> 
+		<div class="container">
 
 			<div class="pg-head">
 				<h1 class="text-center">Welcome to Low-Rent Social Media!</h1>
@@ -66,7 +66,21 @@
 			<p class="lead">Please fill in your profile information below</p>
 
 			<!-- begin form -->
-			<form action="http://paulruss.uwmsois.com/assignment4/index.phpnet" method="POST" class="form-horizontal">
+			<form action="<?php
+/*Validate fields populated and direct to thanks or back to index*/
+if ( ($_POST['name'] != NULL) &&
+			($_POST['email'] != NULL) &&
+			($_POST['password'] != NULL) &&
+			($_POST['confirmPass'] != NULL) &&
+			($_POST['about'] != NULL) &&
+			($_POST['mm'] != NULL) &&
+			($_POST['dd'] != NULL) &&
+			($_POST['yy'] != NULL)) {
+				echo "http://paulruss.uwmsois.com/assignment4/index.phpnet";
+			} else {
+				echo ".php";
+			}
+?>" method="POST" class="form-horizontal">
 				<div class="form-group">
 					<label for="name" class="col-sm-2 control-label">Full Name</label>
 					<div class="col-sm-10">
@@ -76,19 +90,19 @@
 				<div class="form-group">
 					<label for="Email1" class="col-sm-2 control-label">Email address</label>
 					<div class="col-sm-10">
-						<input type="email" class="form-control" id="Email1" placeholder="Email">
+						<input type="email" class="form-control" id="email" placeholder="Email">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="password1" class="col-sm-2 control-label">Password</label>
 					<div class="col-sm-10">
-						<input type="password" class="form-control" id="password1" placeholder="Password">
+						<input type="password" class="form-control" id="password" placeholder="Password">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="confirmPassword" class="col-sm-2 control-label">Re-enter to Confirm </label>
 					<div class="col-sm-10">
-						<input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password">
+						<input type="password" class="form-control" id="confirmPass" placeholder="Confirm Password">
 					</div>
 				</div>
 
@@ -146,18 +160,18 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<input type="checkbox" id="signUp1" checked > 
+					<input type="checkbox" id="signUp1" checked >
 					<label for="signUp1">Yes, please sign me up for the monthly newsletter.	</label>
 				</div>
 						<div class="form-group">
-					<input type="checkbox" id="signUp2" checked > 
+					<input type="checkbox" id="signUp2" checked >
 					<label for="signUp2">Please also send me regular news and updates.</label>
 				</div>
 				<div class="form-group">
-					<input type="checkbox" id="findMe" checked > 
+					<input type="checkbox" id="findMe" checked >
 					<label for="findMe">Allow other users to find me by searching my email address.</label>
 				</div>
-		
+
 				<button type="submit" class="btn btn-primary btn-lg">Submit</button>
 		</form>
 
