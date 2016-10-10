@@ -68,61 +68,132 @@
 			<!-- begin form -->
 			<form action=<?php
 /*Validate fields populated and direct to thanks or back to index*/
-				if (($_POST['name']) != "") {/*||
-						($_POST['email'] != NULL) ||
-						($_POST['password'] != NULL) ||
-						($_POST['confirmPass'] != NULL) ||
-						($_POST['about'] != NULL) ||
-						($_POST['mm'] != NULL) ||
-						($_POST['dd'] != NULL) ||
-						($_POST['yy'] != NULL)) {*/
+					if (($_POST['name']) != "" &&
+						($_POST['email'] != "") &&
+						($_POST['password'] != "") &&
+						($_POST['confirmPass'] != "") &&
+						($_POST['about'] != "") &&
+						($_POST['mm'] != "") &&
+						($_POST['dd'] != "") &&
+						($_POST['yy'] != "") &&
+						($_POST['confirmPass']) == ($_POST['password'])) {
 							echo '"http://paulruss.uwmsois.com/assignment4/thanks.php" method="POST" class="form-horizontal">';
 						} else {
-							echo '"http://paulruss.uwmsois.com/assignment4/index.php" method="POST" class="form-horizontal">';/*
+							echo '"http://paulruss.uwmsois.com/assignment4/index.php" method="POST" class="form-horizontal">';
 							echo '<p id="help" class="text-danger">Please be sure all fields are filled in before submitting</p>';
-						*/} ?>
+						} 
+				?>
+						
+						<!-- it would make more sense to use javascript or jquery to display bootstrap form contexts and only use php to validate form input before sending to the server
+						     but I'm doing it with php because this assignment is focused on working with php -->
 				<div class="form-group <?php
 //Validate name and show error
-					if (($_POST['name']) == "") {
-						echo 'has-error has-feedback';
+					if ($_SERVER['REQUEST_METHOD'] == "POST") { //add this to each conditional formatting statement to make form pretty on initial load
+						if (($_POST['name']) == "") {
+							echo 'has-error has-feedback';
+						} else {
+							echo 'has-success has-feedback';
+						}
 					}
 					?>">
 					<label for="name" class="col-sm-2 control-label">Full Name</label>
 					<div class="col-sm-10">
-						<input name="name" type="text" class="form-control" id="name" placeholder="Full Name">
+						<input name="name" type="text" class="form-control" id="name" placeholder="Full Name" value="<?php
+//Make sticky
+						if (isset($_POST['name'])) {
+							echo $_POST['name'];
+						}
+						?>">
+						<?php		//add error icon and message text for screen reader if validation fails
+					if (($_POST['name']) == "") {
+						echo '<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>';
+						echo '<span id="nameError" class="sr-only">(error)</span>';
+					} else {
+						echo '<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>';
+						echo '<span id="nameSuccess" class="sr-only">(success)</span>';
+					}
+					?>
 					</div>
 				</div>
 				<div class="form-group <?php
 //Validate email and show error
 					if (($_POST['email']) == NULL) {
 						echo 'has-error has-feedback';
+					} else {
+						echo 'has-success has-feedback';
 					}
 					?>">
 					<label for="email" class="col-sm-2 control-label">Email address</label>
 					<div class="col-sm-10">
-						<input type="email" class="form-control" id="email" placeholder="Email">
+						<input type="email" class="form-control" id="email" name="email" placeholder="Email" value="<?php
+//Make sticky
+						if (isset($_POST['email'])) {
+							echo $_POST['email'];
+						}
+						?>">
+						<?php		//add error icon and message text for screen reader if validation fails
+					if (($_POST['email']) == "") {
+						echo '<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>';
+						echo '<span id="nameError" class="sr-only">(error)</span>';
+					} else {
+						echo '<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>';
+						echo '<span id="nameSuccess" class="sr-only">(success)</span>';
+					}
+					?>
 					</div>
 				</div>
 				<div class="form-group <?php
 //Validate password and show error
 					if (($_POST['password']) == NULL) {
 						echo 'has-error has-feedback';
+					} else {
+						echo 'has-success has-feedback';
 					}
 					?>">
 					<label for="password" class="col-sm-2 control-label">Password</label>
 					<div class="col-sm-10">
-						<input type="password" class="form-control" id="password" placeholder="Password">
+						<input type="password" class="form-control" id="password" name="password" placeholder="Password" value="<?php
+//Make sticky
+						if (isset($_POST['password'])) {
+							echo $_POST['password'];
+						}
+						?>">
+						<?php		//add error icon and message text for screen reader if validation fails
+					if (($_POST['password']) == "") {
+						echo '<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>';
+						echo '<span id="nameError" class="sr-only">(error)</span>';
+					} else {
+						echo '<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>';
+						echo '<span id="nameSuccess" class="sr-only">(success)</span>';
+					}
+					?>
 					</div>
 				</div>
 				<div class="form-group <?php
 //Validate confirmPass and show error
 					if (($_POST['confirmPass']) == NULL || ($_POST['confirmPass']) != ($_POST['password'])) {
 						echo 'has-error has-feedback';
+					} else {
+						echo 'has-success has-feedback';
 					}
 					?>">
 					<label for="confirmPass" class="col-sm-2 control-label">Re-enter to Confirm </label>
 					<div class="col-sm-10">
-						<input type="password" class="form-control" id="confirmPass" placeholder="Confirm Password">
+						<input type="password" class="form-control" id="confirmPass" name="confirmPass" placeholder="Confirm Password" value="<?php
+//Make sticky
+						if (isset($_POST['confirmPass'])) {
+							echo $_POST['confirmPass'];
+						}
+						?>">
+						<?php		//add error icon and message text for screen reader if validation fails
+					if (($_POST['confirmPass']) == "" || ($_POST['confirmPass']) != ($_POST['password'])) {
+						echo '<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>';
+						echo '<span id="nameError" class="sr-only">(error)</span>';
+					} else {
+						echo '<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>';
+						echo '<span id="nameSuccess" class="sr-only">(success)</span>';
+					}
+					?>
 					</div>
 				</div>
 
@@ -130,44 +201,84 @@
 //Validate about and show error
 					if (($_POST['about']) == NULL) {
 						echo 'has-error has-feedback';
+					} else {
+						echo 'has-success has-feedback';
 					}
 					?>">
 					<label for="about" class="col-sm-2 control-label">Bio</label>
 					<div class="col-sm-10">
-						<textarea class="form-control" id="about" maxlength="3000" placeholder="Tell us about yourself"></textarea>
+						<textarea class="form-control" id="about" maxlength="3000" name="about" placeholder="Tell us about yourself"><?php
+//Make sticky
+						if (isset($_POST['about'])) {
+							echo $_POST['about'];
+						}
+						?></textarea>
 						<p class="help-block">Limit 3000 characters</p>
+						<?php		//add error icon and message text for screen reader if validation fails
+					if (($_POST['about']) == "") {
+						echo '<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>';
+						echo '<span id="nameError" class="sr-only">(error)</span>';
+					} else {
+						echo '<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>';
+						echo '<span id="nameSuccess" class="sr-only">(success)</span>';
+					}
+					?>
 					</div>
 				</div>
 				<div class="form-group <?php
 //Validate birthdate and show error
 					if (($_POST['mm']) == NULL||($_POST['dd']) == NULL || ($_POST['yy']) == NULL) {
 						echo 'has-error has-feedback';
+					} else {
+						echo 'has-success has-feedback';
 					}
 					?>">
 					<label for="bday" class="col-sm-2 control-label">Birthday</label>
 					<div class="form-inline col-sm-10" id="bday">
 						<label for="mm">Month</label>
-						<select class="form-control" id="mm">
-							<option selected>MM</option>
-							<option value="1">1</option>
-							<?php
-								//use php array later to generate all possible options
+						<select class="form-control" id="mm" name="mm">
+						<?php
+							if (!isset($_POST['mm'])) {
+							
+								echo '<option value="" selected>MM</option> <!-- default option names column and has no value -->';
+							
+								$month = range(1,12);
+								
+								foreach($month as $thism) {
+									echo "<option value=\"$thism\">$thism</option>";
+								} 
+							} else {
+								echo '<option selected value="' . $_POST['mm'] . '">' . $_POST['mm'] . '</option>';  //this method introduced bug of repeated value
+								echo '<option value="" >MM</option> <!-- default option names column and has no value -->'; //try to play around and see if you can fix this
+							
+								$month = range(1,12);
+								
+								foreach($month as $thism) {
+									echo "<option value=\"$thism\">$thism</option>";
+								} 
+							}
 							?>
 						</select>
 						<label for="dd">Day</label>
-						<select class="form-control" id="dd">
-							<option selected>DD</option>
-							<option value="1">1</option>
+						<select class="form-control" id="dd" name="dd">
+							<option value="" selected>DD</option>
 							<?php
-								//use php array later to generate all possible options
+								$day = range(1,31);
+								
+								foreach($day as $thisd) {
+									echo "<option value=\"$thisd\">$thisd</option>";
+								} 
 							?>
 						</select>
 						<label for="yy">Year</label>
-						<select class="form-control" id="yy">
-							<option selected>YYYY</option>
-							<option value="2016">2016</option>
+						<select class="form-control" id="yy" name="yy">
+							<option value="" selected>YYYY</option>
 							<?php
-								//use php array later to generate all possible options
+								$year = range(1940,2010);
+								rsort($year);
+								foreach($year as $thisy) {
+									echo "<option value=\"$thisy\">$thisy</option>";
+								} 
 							?>
 						</select>
 					</div> <!-- end of inline form -->
