@@ -19,6 +19,9 @@
      body {
        background-color: #c1d0f0; /*a soft airy blue because I'm a fancy pants*/
      }
+	 .btn {
+		 margin-top: 15px;    /*give buttons some breathing room*/
+	 }
     </style>
   </head>
  <body>
@@ -46,6 +49,23 @@
 <p>I did this because I found information online that said single quotes will show the text $var3 as-is while double quotes allow php to recogize the $ symbol delimiting the start of a variable within a string</p>'; ?>
      </div> <!-- end of 8 grid col -->
     </div> <!-- end of row -->
+	<div class="row">
+		<div class="col-md-4">
+			<h2> Assignment Directories: </h2>
+		</div> <!-- end of 4 grid col -->
+		<div class="col-md-2">
+			<a href="http://paulruss.uwmsois.com/assignment2/" class="btn btn-success">Assignment 2</a>
+		</div> <!-- end of 2 grid col -->
+		<div class="col-md-2">
+			<a href="http://paulruss.uwmsois.com/assignment3/" class="btn btn-success">Assignment 3</a>
+		</div> <!-- end of 2 grid col -->
+		<div class="col-md-2">
+			<a href="http://paulruss.uwmsois.com/assignment4/" class="btn btn-success">Assignment 4</a>
+		</div> <!-- end of 2 grid col -->
+		<div class="col-md-2">
+			<a href="http://paulruss.uwmsois.com/assignment5/" class="btn btn-success">Assignment 5</a>
+		</div> <!-- end of 2 grid col -->
+	</div> <!-- end of row -->
   </div> <!-- end of container -->
  </body>
 </html>
