@@ -8,7 +8,7 @@
     <title>Basic PHP Page</title>
     <meta name="description" content="Item 2 from wk 2 assignment">
     <!-- define some styling -->
-    <style type="text/css"> 
+    <style type="text/css">
      .container {
        padding-top: 40px;      /*make containers space out some*/
      }
@@ -38,14 +38,14 @@
      <div class="col-md-4">
       <?php print '<h2 class="text-center">Hello <br />  World</h2>';
       //this is a line comment noting that this time I used print instead of echo
-      ?> 
+      ?>
      </div> <!-- end of 4 grid col -->
      <div class="col-md-8">
-      <?php 
+      <?php
        $var1 = 'variable #1';
        $var2 = 'variable #2';
        /*get ready, this next part is fun and explains itself*/
-       echo "<p>This piece of text is made using double quotes to recognize $var1 and the concatenation operator to recognize " . $var2 . '</p> 
+       echo "<p>This piece of text is made using double quotes to recognize $var1 and the concatenation operator to recognize " . $var2 . '</p>
 <p>I did this because I found information online that said single quotes will show the text $var3 as-is while double quotes allow php to recogize the $ symbol delimiting the start of a variable within a string</p>'; ?>
      </div> <!-- end of 8 grid col -->
     </div> <!-- end of row -->
@@ -60,10 +60,10 @@
 			<a href="http://paulruss.uwmsois.com/assignment3/" class="btn btn-success">Assignment 3</a>
 		</div> <!-- end of 2 grid col -->
 		<div class="col-md-2">
-			<a href="http://paulruss.uwmsois.com/assignment4/" class="btn btn-success">Assignment 4</a>
+			<a href="http://paulruss.uwmsois.com/assignment4/" class="btn btn-success">Assignment 4-5</a>
 		</div> <!-- end of 2 grid col -->
 		<div class="col-md-2">
-			<a href="http://paulruss.uwmsois.com/assignment5/" class="btn btn-success">Assignment 5</a>
+			<a href="http://paulruss.uwmsois.com/assignment6/" class="btn btn-success">Assignment 6</a>
 		</div> <!-- end of 2 grid col -->
 	</div> <!-- end of row -->
   </div> <!-- end of container -->
