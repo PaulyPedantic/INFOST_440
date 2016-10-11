@@ -1,63 +1,4 @@
-<!DOCTYPE html>
-<html lang="en-US">
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
-		<title>Russ Assign 4</title>
-
-		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-		<style>
-			.body {
-				padding-top: 50px; /*make space for bootstrap navbar*/
-				background-color: #d4d4aa /*kind of a soft gray*/
-			}
-			/*I borrowed this spacing from one of the starter templates at getbootstrap.com*/
-			.pg-head {
-				padding: 40px 15px;
-			}
-			.logo {
-				height: 51px; /*set logo image height to fill navbar*/
-				width: 135px; /*width keeps logo proportionate*/
-				position: absolute; /*override bootstrap defaults and push logo to top of navbar*/
-				top: 0px;
-			}
-		</style>
-
-	</head>
-
-	<body>
-
-		<!-- my navbar lives here -->
-
-		<nav class="navbar navbar-default navbar-fixed-top">
-			<div class="container">
-				<!-- Standard code for responsive navbar -->
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="http://paulruss.uwmsois.com/assignment4"><img src="images/logo.png" alt="Low Rent Social Media Logo" class="img-responsive img-rounded logo"></a>
-				</div>
-				<div id="navbar" class="collapse navbar-collapse navbar-right">
-					<ul class="nav navbar-nav">
-						<li class="active"><a href="http://paulruss.uwmsois.com">Home</a></li>
-					</ul>
-				</div><!--/.nav-collapse -->
-			</div>
-		</nav>
-
-		<!-- Done with the navbar -->
-
-		<!--begin main page content -->
-
+<?php include("/home/paulruss/public_html/assignment4/header.php") ?>
 		<div class="container">
 
 			<div class="pg-head">
@@ -66,26 +7,32 @@
 			<p class="lead">Please fill in your profile information below</p>
 
 			<!-- begin form -->
-			<form action=<?php
+			<form id="lrform" action=<?php
 /*Validate fields populated and direct to thanks or back to index*/
-					if (($_POST['name']) != "" &&
-						($_POST['email'] != "") &&
-						($_POST['password'] != "") &&
-						($_POST['confirmPass'] != "") &&
-						($_POST['about'] != "") &&
-						($_POST['mm'] != "") &&
-						($_POST['dd'] != "") &&
-						($_POST['yy'] != "") &&
-						($_POST['confirmPass']) == ($_POST['password'])) {
-							echo '"http://paulruss.uwmsois.com/assignment4/thanks.php" method="POST" class="form-horizontal">';
-						} else {
-							echo '"http://paulruss.uwmsois.com/assignment4/index.php" method="POST" class="form-horizontal">';
-							echo '<p id="help" class="text-danger">Please be sure all fields are filled in before submitting</p>';
-						} 
+					if ($_SERVER['REQUEST_METHOD'] != "POST") {   //on initial load, don't validate
+						echo '"http://paulruss.uwmsois.com/assignment4/index.php" method="POST" class="form-horizontal">';
+					} else {        //validate fields and change submit action or show error
+						if (($_POST['name']) != "" &&
+							($_POST['email'] != "") &&
+							($_POST['phone'] != "") &&
+							($_POST['password'] != "") &&
+							($_POST['confirmPass'] != "") &&
+							($_POST['about'] != "") &&
+							($_POST['mm'] != "") &&
+							($_POST['dd'] != "") &&
+							($_POST['yy'] != "") &&
+							($_POST['confirmPass']) == ($_POST['password'])) {
+								echo '"http://paulruss.uwmsois.com/assignment4/thanks.php" method="POST" class="form-horizontal">';
+								$submit = true;
+							} else {
+								echo '"http://paulruss.uwmsois.com/assignment4/index.php" method="POST" class="form-horizontal">';
+								echo '<p id="help" class="text-danger">Please be sure all fields are filled in before submitting</p>';
+							}
+						}
 				?>
-						
+
 						<!-- it would make more sense to use javascript or jquery to display bootstrap form contexts and only use php to validate form input before sending to the server
-						     but I'm doing it with php because this assignment is focused on working with php -->
+						     but doing it with php because this assignment is focused on working with php -->
 				<div class="form-group <?php
 //Validate name and show error
 					if ($_SERVER['REQUEST_METHOD'] == "POST") { //add this to each conditional formatting statement to make form pretty on initial load
@@ -105,22 +52,26 @@
 						}
 						?>">
 						<?php		//add error icon and message text for screen reader if validation fails
-					if (($_POST['name']) == "") {
-						echo '<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>';
-						echo '<span id="nameError" class="sr-only">(error)</span>';
-					} else {
-						echo '<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>';
-						echo '<span id="nameSuccess" class="sr-only">(success)</span>';
+					if ($_SERVER['REQUEST_METHOD'] == "POST") {
+						if (($_POST['name']) == "") {
+							echo '<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>';
+							echo '<span id="nameError" class="sr-only">(error)</span>';
+						} else {
+							echo '<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>';
+							echo '<span id="nameSuccess" class="sr-only">(success)</span>';
+						}
 					}
 					?>
 					</div>
 				</div>
 				<div class="form-group <?php
 //Validate email and show error
-					if (($_POST['email']) == NULL) {
-						echo 'has-error has-feedback';
-					} else {
-						echo 'has-success has-feedback';
+					if ($_SERVER['REQUEST_METHOD'] == "POST") {
+						if (($_POST['email']) == NULL) {
+							echo 'has-error has-feedback';
+						} else {
+							echo 'has-success has-feedback';
+						}
 					}
 					?>">
 					<label for="email" class="col-sm-2 control-label">Email address</label>
@@ -132,22 +83,57 @@
 						}
 						?>">
 						<?php		//add error icon and message text for screen reader if validation fails
-					if (($_POST['email']) == "") {
-						echo '<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>';
-						echo '<span id="nameError" class="sr-only">(error)</span>';
-					} else {
-						echo '<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>';
-						echo '<span id="nameSuccess" class="sr-only">(success)</span>';
+					if ($_SERVER['REQUEST_METHOD'] == "POST") {
+						if (($_POST['email']) == "") {
+							echo '<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>';
+							echo '<span id="nameError" class="sr-only">(error)</span>';
+						} else {
+							echo '<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>';
+							echo '<span id="nameSuccess" class="sr-only">(success)</span>';
+						}
+					}
+					?>
+					</div>
+				</div>
+				<div class="form-group <?php
+				//Validate phone and show error
+					if ($_SERVER['REQUEST_METHOD'] == "POST") {
+						if (($_POST['phone']) == NULL) {
+							echo 'has-error has-feedback';
+						} else {
+							echo 'has-success has-feedback';
+						}
+					}
+					?>">
+					<label for="phone" class="col-sm-2 control-label">Phone Number</label>
+					<div class="col-sm-10">
+						<input type="phone" class="form-control" id="phone" name="phone" placeholder="Phone" value="<?php
+				//Make sticky
+						if (isset($_POST['phone'])) {
+							echo $_POST['phone'];
+						}
+						?>">
+						<?php		//add error icon and message text for screen reader if validation fails
+					if ($_SERVER['REQUEST_METHOD'] == "POST") {
+						if (($_POST['phone']) == "") {
+							echo '<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>';
+							echo '<span id="nameError" class="sr-only">(error)</span>';
+						} else {
+							echo '<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>';
+							echo '<span id="nameSuccess" class="sr-only">(success)</span>';
+						}
 					}
 					?>
 					</div>
 				</div>
 				<div class="form-group <?php
 //Validate password and show error
-					if (($_POST['password']) == NULL) {
-						echo 'has-error has-feedback';
-					} else {
-						echo 'has-success has-feedback';
+					if ($_SERVER['REQUEST_METHOD'] == "POST") {
+						if (($_POST['password']) == NULL) {
+							echo 'has-error has-feedback';
+						} else {
+							echo 'has-success has-feedback';
+						}
 					}
 					?>">
 					<label for="password" class="col-sm-2 control-label">Password</label>
@@ -159,22 +145,26 @@
 						}
 						?>">
 						<?php		//add error icon and message text for screen reader if validation fails
-					if (($_POST['password']) == "") {
-						echo '<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>';
-						echo '<span id="nameError" class="sr-only">(error)</span>';
-					} else {
-						echo '<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>';
-						echo '<span id="nameSuccess" class="sr-only">(success)</span>';
+					if ($_SERVER['REQUEST_METHOD'] == "POST") {
+						if (($_POST['password']) == "") {
+							echo '<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>';
+							echo '<span id="nameError" class="sr-only">(error)</span>';
+						} else {
+							echo '<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>';
+							echo '<span id="nameSuccess" class="sr-only">(success)</span>';
+						}
 					}
 					?>
 					</div>
 				</div>
 				<div class="form-group <?php
 //Validate confirmPass and show error
-					if (($_POST['confirmPass']) == NULL || ($_POST['confirmPass']) != ($_POST['password'])) {
-						echo 'has-error has-feedback';
-					} else {
-						echo 'has-success has-feedback';
+					if ($_SERVER['REQUEST_METHOD'] == "POST") {
+						if (($_POST['confirmPass']) == NULL || ($_POST['confirmPass']) != ($_POST['password'])) {
+							echo 'has-error has-feedback';
+						} else {
+							echo 'has-success has-feedback';
+						}
 					}
 					?>">
 					<label for="confirmPass" class="col-sm-2 control-label">Re-enter to Confirm </label>
@@ -186,12 +176,14 @@
 						}
 						?>">
 						<?php		//add error icon and message text for screen reader if validation fails
-					if (($_POST['confirmPass']) == "" || ($_POST['confirmPass']) != ($_POST['password'])) {
-						echo '<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>';
-						echo '<span id="nameError" class="sr-only">(error)</span>';
-					} else {
-						echo '<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>';
-						echo '<span id="nameSuccess" class="sr-only">(success)</span>';
+					if ($_SERVER['REQUEST_METHOD'] == "POST") {
+						if (($_POST['confirmPass']) == "" || ($_POST['confirmPass']) != ($_POST['password'])) {
+							echo '<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>';
+							echo '<span id="nameError" class="sr-only">(error)</span>';
+						} else {
+							echo '<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>';
+							echo '<span id="nameSuccess" class="sr-only">(success)</span>';
+						}
 					}
 					?>
 					</div>
@@ -199,10 +191,12 @@
 
 				<div class="form-group <?php
 //Validate about and show error
-					if (($_POST['about']) == NULL) {
-						echo 'has-error has-feedback';
-					} else {
-						echo 'has-success has-feedback';
+					if ($_SERVER['REQUEST_METHOD'] == "POST") {
+						if (($_POST['about']) == NULL) {
+							echo 'has-error has-feedback';
+						} else {
+							echo 'has-success has-feedback';
+						}
 					}
 					?>">
 					<label for="about" class="col-sm-2 control-label">Bio</label>
@@ -215,22 +209,26 @@
 						?></textarea>
 						<p class="help-block">Limit 3000 characters</p>
 						<?php		//add error icon and message text for screen reader if validation fails
-					if (($_POST['about']) == "") {
-						echo '<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>';
-						echo '<span id="nameError" class="sr-only">(error)</span>';
-					} else {
-						echo '<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>';
-						echo '<span id="nameSuccess" class="sr-only">(success)</span>';
+					if ($_SERVER['REQUEST_METHOD'] == "POST") {
+						if (($_POST['about']) == "") {
+							echo '<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>';
+							echo '<span id="nameError" class="sr-only">(error)</span>';
+						} else {
+							echo '<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>';
+							echo '<span id="nameSuccess" class="sr-only">(success)</span>';
+						}
 					}
 					?>
 					</div>
 				</div>
 				<div class="form-group <?php
 //Validate birthdate and show error
-					if (($_POST['mm']) == NULL||($_POST['dd']) == NULL || ($_POST['yy']) == NULL) {
-						echo 'has-error has-feedback';
-					} else {
-						echo 'has-success has-feedback';
+					if ($_SERVER['REQUEST_METHOD'] == "POST") {
+						if (($_POST['mm']) == NULL||($_POST['dd']) == NULL || ($_POST['yy']) == NULL) {
+							echo 'has-error has-feedback';
+						} else {
+							echo 'has-success has-feedback';
+						}
 					}
 					?>">
 					<label for="bday" class="col-sm-2 control-label">Birthday</label>
@@ -239,47 +237,114 @@
 						<select class="form-control" id="mm" name="mm">
 						<?php
 							if (!isset($_POST['mm'])) {
-							
-								echo '<option value="" selected>MM</option> <!-- default option names column and has no value -->';
-							
-								$month = range(1,12);
-								
-								foreach($month as $thism) {
-									echo "<option value=\"$thism\">$thism</option>";
-								} 
-							} else {
-								echo '<option selected value="' . $_POST['mm'] . '">' . $_POST['mm'] . '</option>';  //this method introduced bug of repeated value
-								echo '<option value="" >MM</option> <!-- default option names column and has no value -->'; //try to play around and see if you can fix this
-							
-								$month = range(1,12);
-								
-								foreach($month as $thism) {
-									echo "<option value=\"$thism\">$thism</option>";
-								} 
+
+								$headm[] = "MM";         //define dropdown header as array
+								$month = range(1,12);    //use range function to build array of possible months
+
+								$monthlist=array_merge($headm,$month);    //use array_merge function to combine header and array
+
+								foreach($monthlist as $thism) {     //loop through array to create an option for the header and each year
+									if ($thism == "MM"){            //since $_post is not set, select the header
+										echo "<option value=\"\" selected>$thism</option>";
+									} else {
+										echo "<option value=\"$thism\">$thism</option>";
+									}
+								}
+								} else {
+
+								$headm[] = "mm";	     //define dropdown header as array
+								$month = range(1,12);    //use range function to build array of possible years
+
+								$monthlist=array_merge($headm,$month);  //use array_merge function to combine header and array
+
+								foreach($monthlist as $thism) {   //loop through array to create an option for the header and each year
+									if ($_POST['mm'] == $thism && $_POST['mm'] == "MM") {   //check each array item against the $_post value
+										echo "<option value=\"\" selected>$thism</option>";   //when $_post value matches and its the header, use selected to make sticky with no value
+									} else if ($_POST['mm'] == $thism) {
+										echo "<option value=\"$thism\" selected>$thism</option>";   //when $_post value matches, use selected to make sticky
+									} else {
+										echo "<option value=\"$thism\">$thism</option>";   //when $_post doesn't match, echo array option unselected so it can be changed
+									}
+								}
 							}
 							?>
 						</select>
 						<label for="dd">Day</label>
 						<select class="form-control" id="dd" name="dd">
-							<option value="" selected>DD</option>
 							<?php
-								$day = range(1,31);
-								
-								foreach($day as $thisd) {
-									echo "<option value=\"$thisd\">$thisd</option>";
-								} 
-							?>
+								if (!isset($_POST['dd'])) {
+
+									$headd[] = "DD";       //define dropdown header as array
+									$day = range(1,31);    //use range function to build array of possible days
+
+									$daylist=array_merge($headd,$day);    //use array_merge function to combine header and array
+
+									foreach($daylist as $thisd) {     //loop through array to create an option for the header and each day
+										if ($thisd == "DD"){            //since $_post is not set, select the header
+											echo "<option value=\"\" selected>$thisd</option>";
+										} else {
+											echo "<option value=\"$thisd\">$thisd</option>";
+										}
+									}
+								} else {
+
+									$headd[] = "dd";	     //define dropdown header as array
+									$day = range(1,31);    //use range function to build array of possible days
+
+									$daylist=array_merge($headd,$day);  //use array_merge function to combine header and array
+
+									foreach($daylist as $thisd) {   //loop through array to create an option for the header and each day
+										if ($_POST['dd'] == $thisd && $_POST['dd'] == "DD") {   //check each array item against the $_post value
+											echo "<option value=\"\" selected>$thisd</option>";   //when $_post value matches and its the header, use selected to make sticky with no value
+										} else if ($_POST['dd'] == $thisd) {
+											echo "<option value=\"$thisd\" selected>$thisd</option>";   //when $_post value matches, use selected to make sticky
+										} else {
+											echo "<option value=\"$thisd\">$thisd</option>";   //when $_post doesn't match, echo array option unselected so it can be changed
+										}
+									}
+								}
+								?>
 						</select>
 						<label for="yy">Year</label>
 						<select class="form-control" id="yy" name="yy">
 							<option value="" selected>YYYY</option>
 							<?php
-								$year = range(1940,2010);
-								rsort($year);
-								foreach($year as $thisy) {
-									echo "<option value=\"$thisy\">$thisy</option>";
-								} 
-							?>
+								if (!isset($_POST['yy'])) {
+
+									$heady[] = "YY";       //define dropdown header as array
+									$year = range(1940,2010);    //use range function to build array of possible years
+
+									rsort($year);
+
+									$yearlist=array_merge($heady,$year);    //use array_merge function to combine header and array
+
+									foreach($yearlist as $thisy) {     //loop through array to create an option for the header and each year
+										if ($thisy == "YY"){            //since $_post is not set, select the header
+											echo "<option value=\"\" selected>$thisy</option>";
+										} else {
+											echo "<option value=\"$thisy\">$thisy</option>";
+										}
+									}
+									} else {
+
+									$heady[] = "yy";	     //define dropdown header as array
+									$year = range(1940,2010);    //use range function to build array of possible years
+
+									rsort($year);
+
+									$yearlist=array_merge($heady,$year);  //use array_merge function to combine header and array
+
+									foreach($yearlist as $thisy) {   //loop through array to create an option for the header and each year
+										if ($_POST['yy'] == $thisy && $_POST['yy'] == "YY") {   //check each array item against the $_post value
+											echo "<option value=\"\" selected>$thisy</option>";   //when $_post value matches and its the header, use selected to make sticky with no value
+										} else if ($_POST['yy'] == $thisy) {
+											echo "<option value=\"$thisy\" selected>$thisy</option>";   //when $_post value matches, use selected to make sticky
+										} else {
+											echo "<option value=\"$thisy\">$thisy</option>";   //when $_post doesn't match, echo array option unselected so it can be changed
+										}
+									}
+								}
+								?>
 						</select>
 					</div> <!-- end of inline form -->
 				</div> <!-- end of birthday form group -->
@@ -304,30 +369,26 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<input type="checkbox" id="signUp1" checked >
+					<input type="checkbox" id="signUp1" name="signup1" value="yes" checked >
 					<label for="signUp1">Yes, please sign me up for the monthly newsletter.	</label>
 				</div>
 						<div class="form-group">
-					<input type="checkbox" id="signUp2" checked >
+					<input type="checkbox" id="signUp2" name="signup2" checked >
 					<label for="signUp2">Please also send me regular news and updates.</label>
 				</div>
 				<div class="form-group">
-					<input type="checkbox" id="findMe" checked >
+					<input type="checkbox" id="findMe" name="findme" value="yes" checked >
 					<label for="findMe">Allow other users to find me by searching my email address.</label>
 				</div>
 
+				<?php
+					if ($submit) {  //Submit form if all required fields are filled out
+    				echo"<script>document.getElementById('lrform').submit();</script> ";
+					}
+				?>
 				<input type="submit" name="submit" value="Submit" class="btn btn-primary btn-lg">
 		</form>
 
 		</div><!-- end container -->
 
-
-		<!-- Bootstrap core JavaScript
-		================================================== -->
-		<!-- Placed at the end of the document so the pages load faster -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-		<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-		<!-- Latest compiled and minified JavaScript -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-	</body>
-</html>
+<?php include("/home/paulruss/public_html/assignment4/footer.php") ?>
