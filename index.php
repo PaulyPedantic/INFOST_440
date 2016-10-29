@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+	<!DOCTYPE html>
 <html lang="en-US">
   <head>
     <meta charset="UTF-8">
@@ -63,7 +63,7 @@
 			<a href="http://paulruss.uwmsois.com/assignment4/" class="btn btn-success">Assignment 4-5</a>
 		</div> <!-- end of 2 grid col -->
 		<div class="col-md-2">
-			<a href="http://paulruss.uwmsois.com/assignment6/" class="btn btn-success">Assignment 6</a>
+			<a href="http://paulruss.uwmsois.com/assignment8/" class="btn btn-success">Assignment 8</a>
 		</div> <!-- end of 2 grid col -->
 	</div> <!-- end of row -->
   </div> <!-- end of container -->
