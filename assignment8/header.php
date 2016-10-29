@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-  <title>Starter Template - Materialize</title>
+  <title>Pauly's Guestbook</title>
 
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -12,18 +12,20 @@
 </head>
 <!--based on template from materializecss.com -->
 <body>
-  <nav class="cyan lighten-1" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="http://paulruss.uwmsois.com" class="brand-logo">PaulyRuss</a>
+  <nav class="amber darken-3" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="http://paulruss.uwmsois.com/" class="brand-logo">PaulyRuss</a>
       <ul class="right hide-on-med-and-down">
-				<li><a href="/leave.php">New Comment</a></li>
-        <li><a href="/update.php">Edit Comment</a></li>
-				<li><a href="/delete.php">Delete Comment</a></a></li>
+				<li><a href="index.php">Guestbook Home</a></li>
+				<li><a href="leave.php">New Comment</a></li>
+        <li><a href="update.php">Edit Comment</a></li>
+				<li><a href="delete.php">Delete Comment</a></a></li>
       </ul>
 
       <ul id="nav-mobile" class="side-nav">
-				<li><a href="/leave.php">New Comment</a></li>
-				<li><a href="/update.php">Edit Comment</a></li>
-				<li><a href="/delete.php">Delete Comment</a></a></li>
+				<li><a href="index.php">Guestbook Home</a></li>
+				<li><a href="leave.php">New Comment</a></li>
+				<li><a href="update.php">Edit Comment</a></li>
+				<li><a href="delete.php">Delete Comment</a></a></li>
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
