@@ -31,7 +31,5 @@ VALUES (null,?,?,?,CURRENT_TIMESTAMP,?,?)")) {
 			mysqli_close($db);
 		};
 	};
-	echo "<p class=\"red-text text-darken-3\">
-	$error
-	</p>"
+	echo "<p class=\"red-text text-darken-3\">$error</p>";
 ?>
