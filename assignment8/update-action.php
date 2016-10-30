@@ -6,7 +6,9 @@
 	//define the username and pass for the session
 	$id = $_POST['id'];
 	$email = $_POST['email'];
-		//Fname and Lname are being captured but not displayed, so not letting them be updated
+	//I'm requiring id and email to update and not displaying email so that theoretically, the only person who can update
+	//a comment is the person who posted it or a site admin with DB access. Cheaper than having login sessions control it
+	//Fname and Lname are being captured but not displayed, so not letting them be updated
 	$dispname = $_POST['displayname'];
 	$comment = $_POST['comment'];
 
@@ -20,10 +22,11 @@
 		$check->bind_param("ss", $id, $email);
 		$check->execute();
 		$returned = $check->get_result();
+		$numberrows = $returned->num_rows;
 
 		if(empty($_POST['email']) || empty($_POST['comment'])) {
 			$error = "All posts must include an Email and a comment. Your Email will not be publicly visible.";
-		} else if (!$returned){
+		} else if ($numberrows == 0){
 			$error = "Sorry, we can\'t find a comment with that ID and Email combination. Please enter the exact ID and email used to submit the comment";
 		} else {
 
@@ -40,10 +43,9 @@
 			} else {
 				$error="Something went wrong while submitting. Please try again.";
 			}
-
-			mysqli_close($db);
 		}
 	}
+	mysqli_close($db);
 	echo '<div class="container">';
 	if ($success){
 		echo "<p class=\"green-text text-darken-3\">$success</p>";

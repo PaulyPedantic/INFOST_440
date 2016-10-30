@@ -6,9 +6,30 @@
  * Made By MaterializeCSS.com
  */
 
+
+
 .icon-block {
   padding: 0 15px;
 }
 .icon-block .material-icons {
 	font-size: inherit;
+}
+
+/*In addition to the below, I edited the materialize.css sheet, updating the btn class and btn:hover pseudoclass to set the btn color to match my color scheme
+* this addressed some issues I was having where layering the color classes from the materialize css site broke the animation behavior of the buttons
+* The CSS below this line is mine, above is from the materializeCSS template
+*/
+.mylight {
+	font-size: 0.8em;
+	font-weight: 200;
+	color: black;
+	margin-top: 0;
+}
+
+.myicon{
+	margin-bottom: 15px;
+}
+
+p {
+	margin-bottom: 10px;
 }

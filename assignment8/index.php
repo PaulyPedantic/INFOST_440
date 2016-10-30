@@ -9,7 +9,7 @@ include("connect.php");
         <h5 class="header col s12 light">Let me know what you think, eh?</h5>
       </div>
       <div class="row center">
-        <a href="leave.php" class="btn-large waves-effect waves-light deep-purple white-text">Comment</a>
+        <a href="leave.php" class="btn-large waves-effect waves-light">Leave a Comment</a>
       </div>
 
     </div>
@@ -21,7 +21,7 @@ include("connect.php");
       <!-- display posts -->
 
 			<?php
-			$sel = "SELECT id, displayname, comment, DATE_FORMAT(commentdate,'%b %d %Y %h:%i %p') AS commentdate FROM paulruss_assignment8.content ORDER BY commentdate DESC";
+			$sel = "SELECT id, displayname, comment, DATE_FORMAT(commentdate,'%h:%i %p %c/%d/%Y') AS commentdate FROM paulruss_assignment8.content ORDER BY commentdate DESC";
 
 			//This issues our command to the database server
 			$result = $db->query($sel);
@@ -52,15 +52,15 @@ include("connect.php");
 		          echo '<div class="icon-block">';
 								//if user provided a displayname, use verified_user icon, otherwise use perm_identity icon
 								if (strtoupper($row["displayname"]) == "ANONYMOUS" || $row["displayname"] == "") {
-		            	echo '<h2 class="center deep-purple-text text-darken-2"><i class="material-icons">perm_identity</i></h2>';
+		            	echo '<h2 class="center deep-purple-text text-darken-2 myicon"><i class="material-icons">perm_identity</i></h2>';
 								} else {
-									echo '<h2 class="center deep-purple-text text-darken-2"><i class="material-icons">verified_user</i></h2>';
+									echo '<h2 class="center deep-purple-text text-darken-2 myicon"><i class="material-icons">verified_user</i></h2>';
 								}
 		            echo '<h5 class="center">'.$row["displayname"].'</h5>';
 
 		            echo '<p>'.$row["comment"].'</p>';
-								echo '<p class="light">CommentID: '.$row["id"].'</p>';
-								echo '<p class="light">Posted: '.$row["commentdate"].'</p>';
+								echo '<p class="light mylight">CommentID: '.$row["id"].'</br>';
+								echo 'Posted: '.$row["commentdate"].'</p>';
 		          echo '</div>';
 		        echo '</div>';
 					if ($htmlendrow){
