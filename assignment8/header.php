@@ -11,7 +11,7 @@
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 <!--based on template from materializecss.com -->
-<body>
+<body class="yellow lighten-4">
   <nav class="amber darken-3" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="http://paulruss.uwmsois.com/" class="brand-logo">PaulyRuss</a>
       <ul class="right hide-on-med-and-down">
