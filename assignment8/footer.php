@@ -11,7 +11,7 @@
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="js/materialize.min.js"></script>
 <script src="js/init.js"></script>
-<script src="js/myscript.js"></script>
+<script src="js/myscript.js"></script>  <!-- really basic javascript to prompt for comfirmation before deleting a comment -->
 
 </body>
 </html>

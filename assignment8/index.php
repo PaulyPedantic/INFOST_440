@@ -21,12 +21,19 @@ include("connect.php");
       <!-- display posts -->
 
 			<?php
-			$sel = "SELECT id, displayname, comment, DATE_FORMAT(commentdate,'%h:%i %p %c/%d/%Y') AS commentdate FROM paulruss_assignment8.content ORDER BY commentdate DESC";
+			$sel = "SELECT id, displayname, comment, DATE_FORMAT(commentdate,'%h:%i %p %c/%d/%Y') AS cdate FROM paulruss_assignment8.content ORDER BY commentdate DESC";
+			//in my first draft, the order by wasn't working.
+			//I used commentdate as the alias, and the order by was sorting by the alias (so time first, then date) redoing my alias fixed the sort
 
-			//This issues our command to the database server
-			$result = $db->query($sel);
+			//I am not displaying all fields. My goal with this was to set up to capture the required fields into the DB, but ape a chan site and allow
+			//anonymous posts with minimal information shared. If a user provides a display name, I show a different icon to identify anon from named comments
+
+
+			$result = $db->query($sel);  //oop format to execute statement above
 				/*as I've been working and turning to Google U for help, I've noticed my code is inconsistent between object oriented and procedural styles
-				of PHP writing. It all seems to work, but if I wanted prettier code, I should clean this up and consistently use either style*/
+				of PHP writing. Read a few stack overflow threads and looked through the text book and will need to work on more thoroughly understanding how
+				functions like those in the mysqli class are grouped so I can make more educated decisions about when to use which and where*/
+
 			$numberrows = $result->num_rows; //define variable to hold total number of rows in my query result
 
 			if ($numberrows > 0) {
@@ -45,7 +52,7 @@ include("connect.php");
 					} else {
 						$htmlendrow = '';
 					}
-					if ($htmlnewrow) {
+					if ($htmlnewrow) {  //if the statement above identified the start of a row, echo the appropriate div tag
 						echo $htmlnewrow;
 					}
 		        echo '<div class="col s12 m4">';
@@ -60,16 +67,18 @@ include("connect.php");
 
 		            echo '<p>'.$row["comment"].'</p>';
 								echo '<p class="light mylight">CommentID: '.$row["id"].'</br>';
-								echo 'Posted: '.$row["commentdate"].'</p>';
+								echo 'Posted: '.$row["cdate"].'</p>';
 		          echo '</div>';
 		        echo '</div>';
-					if ($htmlendrow){
+					if ($htmlendrow){   //if the statement above identified the end of a row, echo the close tag for the row div
 						echo $htmlendrow;
 					}
-					$rownum++;
+					$rownum++; //increment the variable tracking the number of the current row before restarting the while loop
     		}
-			} else {
-    		echo "0 results";
+			} else {		//if the number of rows returned is 0, there aren't any entries in the table yet.
+    		echo "<p>
+				There are no entries in the Guestbook yet. You should be the first
+				</p>";
 			}
 			mysqli_close($db);
 			?>
