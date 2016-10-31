@@ -14,25 +14,41 @@ include("update-action.php");
 		<form class="col s12" method="POST" action="update.php">
 			<div class="row">
 				<div class="input-field col s12">
-					<input name="id" type="number" class="validate">
+					<input name="id" type="number" class="validate" value="<?php
+					if ($_server["REQUEST_METHOD"] == "POST" && ($_POST['id'])) {			//Make values sticky
+						 echo $_POST['id'];
+					}
+					?>">
 					<label for="id">Comment ID to Edit:</label>
 				</div>
 			</div>
 			<div class="row">
 				<div class="input-field col s12">
-					<input name="email" type="email" class="validate">
-					<label for="displayname">Email:</label>
+					<input name="email" type="email" class="validate" value="<?php
+					if ($_server["REQUEST_METHOD"] == "POST" && ($_POST['email'])) {			//Make values sticky
+						 echo $_POST['email'];
+					}
+					?>">
+					<label for="email">Email:</label>
 				</div>
 			</div>
 			<div class="row">
 				<div class="input-field col s12">
-					<input name="displayname" type="text" class="validate">
+					<input name="displayname" type="text" class="validate" value="<?php
+					if ($_server["REQUEST_METHOD"] == "POST" && ($_POST['displayname'])) {			//Make values sticky
+						 echo $_POST['displayname'];
+					}
+					?>">
 					<label for="displayname">Name to Display with Comment:</label>
 				</div>
 			</div>
 			<div class="row">
 				<div class="input-field col s12">
-					<textarea name="comment" class="materialize-textarea"></textarea>
+					<textarea name="comment" class="materialize-textarea" value="<?php
+					if ($_server["REQUEST_METHOD"] == "POST" && ($_POST['comment'])) {			//Make values sticky
+						 echo $_POST['comment'];
+					}
+					?>"></textarea>
 					<label for="comment">Comment:</label>
 				</div>
 			</div>

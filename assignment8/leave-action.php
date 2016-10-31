@@ -25,7 +25,7 @@ VALUES (null,?,?,?,CURRENT_TIMESTAMP,?,?)")) {
 			$leave->bind_param("sssss", $email, $fname, $lname, $dispname, $comment);
 
 			if ($leave->execute()) {
-				$success = "Your comment has been posted. Return to the <a href=\"http://paulruss.uwmsois.com/assignment8\">Guesbook home page</a> to view.";
+				$success = "Your comment has been posted. Return to the <a href=\"http://paulruss.uwmsois.com/assignment8\">Guestbook home page</a> to view.";
 			} else {
 				$error="Something went wrong while submitting. Please try again.";
 			}

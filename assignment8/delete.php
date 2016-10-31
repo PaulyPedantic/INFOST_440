@@ -14,14 +14,22 @@ include("delete-action.php");
 		<form class="col s12" method="POST" action="delete.php">
 			<div class="row">
 				<div class="input-field col s12">
-					<input name="id" type="number" class="validate">
+					<input name="id" type="number" class="validate" value="<?php
+					if ($_server["REQUEST_METHOD"] == "POST" && ($_POST['id'])) {			//Make values sticky
+						 echo $_POST['id'];
+					}
+					?>">
 					<label for="id">Comment ID to Delete:</label>
 				</div>
 			</div>
 			<div class="row">
 				<div class="input-field col s12">
-					<input name="email" type="email" class="validate">
-					<label for="displayname">Email used to leave comment:</label>
+					<input name="email" type="email" class="validate" value="<?php
+					if ($_server["REQUEST_METHOD"] == "POST" && ($_POST['email'])) {			//Make values sticky
+						 echo $_POST['email'];
+					}
+					?>">
+					<label for="email">Email used to leave comment:</label>
 				</div>
 			</div>
 

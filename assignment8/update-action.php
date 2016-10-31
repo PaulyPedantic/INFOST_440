@@ -27,7 +27,7 @@
 		if(empty($_POST['email']) || empty($_POST['comment'])) {
 			$error = "All posts must include an Email and a comment. Your Email will not be publicly visible.";
 		} else if ($numberrows == 0){
-			$error = "Sorry, we can\'t find a comment with that ID and Email combination. Please enter the exact ID and email used to submit the comment";
+			$error = "Sorry, we can't find a comment with that ID and Email combination. Please enter the exact ID and email used to submit the comment";
 		} else {
 
 
@@ -39,7 +39,7 @@
 			$update->bind_param("ssss", $dispname, $comment, $id, $email);
 
 			if ($update->execute()) {
-				$success = "Your comment has been updated. Return to the <a href=\"http://paulruss.uwmsois.com/assignment8\">Guesbook home page</a> to view.";
+				$success = "Your comment has been updated. Return to the <a href=\"http://paulruss.uwmsois.com/assignment8\">Guestbook home page</a> to view.";
 			} else {
 				$error="Something went wrong while submitting. Please try again.";
 			}

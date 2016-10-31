@@ -18,7 +18,7 @@
 		if(empty($_POST['email']) || empty($_POST['id'])) {
 			$error = "You must provide a comment ID and the email used when it was submitted to delete.";
 		} else if ($numberrows == 0){
-			$error = "Sorry, we can\'t find a comment with that ID and Email combination. Please enter the exact ID and email used to submit the comment";
+			$error = "Sorry, we can't find a comment with that ID and Email combination. Please enter the exact ID and email used to submit the comment";
 		} else {
 
 			//using mysqli prepared statement object oriented style from php.net to avoid sql injection
@@ -27,7 +27,7 @@
 				$delete->bind_param("ss", $id, $email);
 
 				if ($delete->execute()) {
-					$success = "Your comment has been deleted. Return to the <a href=\"http://paulruss.uwmsois.com/assignment8\">Guesbook home page</a> to confirm.";
+					$success = "Your comment has been deleted. Return to the <a href=\"http://paulruss.uwmsois.com/assignment8\">Guestbook home page</a> to confirm.";
 				} else {
 					$error="Something went wrong while deleting. Please try again.";
 				}
