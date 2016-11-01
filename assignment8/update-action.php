@@ -4,13 +4,13 @@
 	$success = ''; //declare a variable to use for a success message
 
 	//define the username and pass for the session
-	$id = $_POST['id'];
-	$email = $_POST['email'];
+	$id = filter_var($_POST['id'], FILTER_SANITIZE_STRING);
+	$email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
 	//I'm requiring id and email to update and not displaying email so that theoretically, the only person who can update
 	//a comment is the person who posted it or a site admin with DB access. Cheaper than having login sessions control it
 	//Fname and Lname are being captured but not displayed, so not letting them be updated
-	$dispname = $_POST['displayname'];
-	$comment = $_POST['comment'];
+	$dispname = filter_var($_POST['displayname'], FILTER_SANITIZE_STRING);
+	$comment = filter_var($_POST['comment'], FILTER_SANITIZE_STRING);
 
 	if (empty($dispname)) {
 		$dispname = 'anonymous';  /*I set the db to default displayname to anonymous, but it seems php passes an empty string rather than NULL

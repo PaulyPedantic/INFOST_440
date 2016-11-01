@@ -7,11 +7,11 @@
 			$error = 'All posts must include an Email and a comment. Your Email will not be publicly visible.';
 		} else {
 			//define the username and pass for the session
-			$email = $_POST['email'];
-			$fname = $_POST['fname'];
-			$lname = $_POST['lname'];
-			$dispname = $_POST['displayname'];
-			$comment = $_POST['comment'];
+			$email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+			$fname = filter_var($_POST['fname'], FILTER_SANITIZE_STRING);
+			$lname = filter_var($_POST['lname'], FILTER_SANITIZE_STRING);
+			$dispname = filter_var($_POST['displayname'], FILTER_SANITIZE_STRING);
+			$comment = filter_var($_POST['comment'], FILTER_SANITIZE_STRING);
 
 			if (empty($dispname)) {
 				$dispname = 'anonymous';  /*I set the db to default displayname to anonymous, but it seems php passes an empty string rather than NULL
