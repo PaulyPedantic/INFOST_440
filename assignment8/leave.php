@@ -7,7 +7,7 @@ include("leave-action.php");
 		<h1 class="header center cyan-text text-darken-1">Welcome to Pauly's Guestbook!</h1>
 
 		<div class="row center">
-			<h5 class="header col s12 light">Fill out the form below to leave a comment</h5>
+			<p class="header col s12">Please fill out the form below to leave a comment. You must provide an email address. It will not be displayed publicly but will be required if you want to change or delete your comment later.</p>
 		</div>
 
   	<div class="row">

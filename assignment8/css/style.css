@@ -6,7 +6,9 @@
  * Made By MaterializeCSS.com
  */
 
-
+.fullH {
+	height:55vh;
+}
 
 .icon-block {
   padding: 0 15px;
@@ -30,8 +32,8 @@
 	margin-bottom: 15px;
 }
 
-p {
-	margin-bottom: 10px;
+* > p, * > div {         /*add a little breathing room above any p or div that is a child of another element*/
+	margin-top: 10px;
 }
 
 .btn, .btn-large {

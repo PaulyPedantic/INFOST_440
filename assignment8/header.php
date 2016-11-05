@@ -5,19 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
 
 	<?PHP
-	switch (basename(__file__, '.php')) {
-		case 'leave':
-			$title = '- Leave a Comment';
-			break;
-		case 'delete':
-			$title = '- Delete a Comment';
-			break;
-		case 'update':
-			$title = '- Update a Comment';
-			break;
-	default:
-		$title = '- Welcome';
-	}
+		$page = trim(basename($_SERVER['PHP_SELF'], '.php'));  //check name of currently executing file and case to update title per page
+		switch ($page) {                                   //note to me: __file__ doesn't work because I'm using includes. __file__ gives the name of the included file not the
+			case 'leave':																     //file it is being included in
+				$title = '- Leave a Comment';
+				break;
+			case 'delete':
+				$title = '- Delete a Comment';
+				break;
+			case 'update':
+				$title = '- Update a Comment';
+				break;
+		default:
+			$title = '- Welcome';
+		}
 
 	echo "<title>Pauly's Guestbook $title</title>"
 

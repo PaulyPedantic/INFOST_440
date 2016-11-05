@@ -7,7 +7,7 @@ include("update-action.php");
 	<h1 class="header center cyan-text text-darken-1">Welcome to Pauly's Guestbook!</h1>
 
 	<div class="row center">
-		<h5 class="header col s12 light">Fill out the form below to edit a comment</h5>
+		<p class="header col s12">Fill out the form below to edit a comment. The comment ID is on the Guestbook homepage and the email MUST match the email used to submit the comment.</p>
 	</div>
 
 	<div class="row">

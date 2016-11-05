@@ -1,7 +1,7 @@
 <?php
 include("header.php");
 include("connect.php");
-?>
+?>	
   <div class="section no-pad-bot" id="index-banner">
     <div class="container">
       <h1 class="header center cyan-text text-darken-1">Welcome to Pauly's Guestbook!</h1>
