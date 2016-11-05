@@ -47,3 +47,16 @@
 .btn:focus, .btn-large:focus {
 	background-color: #0097a7; /*cyan darken-3, override default button focus which darkens default button*/
 }
+
+.btn-floating {
+	margin: 3px;
+
+}
+
+.fixed-action-btn, .fixed-action-btn ul {
+	position: relative;
+}
+.fixed-action-btn.horizontal ul {
+	right:33em;
+	top: -2.5em;
+}

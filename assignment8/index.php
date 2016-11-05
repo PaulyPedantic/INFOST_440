@@ -1,7 +1,7 @@
 <?php
 include("header.php");
 include("connect.php");
-?>	
+?>
   <div class="section no-pad-bot" id="index-banner">
     <div class="container">
       <h1 class="header center cyan-text text-darken-1">Welcome to Pauly's Guestbook!</h1>
@@ -59,16 +59,31 @@ include("connect.php");
 		          echo '<div class="icon-block">';
 								//if user provided a displayname, use verified_user icon, otherwise use perm_identity icon
 								if (strtoupper($row["displayname"]) == "ANONYMOUS" || $row["displayname"] == "") {
-		            	echo '<h2 class="center cyan-text text-darken-1myicon"><i class="material-icons">perm_identity</i></h2>';
+		            	echo '<h2 class="center cyan-text text-darken-1 myicon"><i class="material-icons">perm_identity</i></h2>';
 								} else {
-									echo '<h2 class="center cyan-text text-darken-1myicon"><i class="material-icons">verified_user</i></h2>';
+									echo '<h2 class="center cyan-text text-darken-1 myicon"><i class="material-icons">verified_user</i></h2>';
 								}
 		            echo '<h5 class="center">'.$row["displayname"].'</h5>';
 
 		            echo '<p>'.$row["comment"].'</p>';
-								echo '<p class="light mylight">CommentID: '.$row["id"].'</br>';
-								echo 'Posted: '.$row["cdate"].'</p>';
-		          echo '</div>';
+								echo '<div class="row">';
+									echo '<div class="col s12 m6">';
+										echo '<p class="light mylight">CommentID: '.$row["id"].'</br>';
+										echo 'Posted: '.$row["cdate"].'</p>';
+									echo '</div>';
+									echo '<div class="col s12 m6">';
+										echo '<div class="fixed-action-btn horizontal">';
+											echo '<a class="btn-floating btn-large red">';
+												echo '<i class="large material-icons">view_headline</i>';
+											echo '</a>';
+											echo '<ul>';
+												echo '<li><a class="btn-floating yellow darken-2"><i class="material-icons">mode_edit</i></a></li>';
+												echo '<li><a class="btn-floating cyan darken-1"><i class="material-icons">delete</i></a></li>';
+											echo '</ul>';
+										echo '</div>';
+									echo '</div>';
+								echo '</div>';
+							echo '</div>';
 		        echo '</div>';
 					if ($htmlendrow){   //if the statement above identified the end of a row, echo the close tag for the row div
 						echo $htmlendrow;
