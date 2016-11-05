@@ -5,7 +5,6 @@
  *
  * Made By MaterializeCSS.com
  */
-
 .fullH {
 	height:55vh;
 }
@@ -52,11 +51,28 @@
 	margin: 3px;
 
 }
-
+.fixed-action-btn {
+	left: 3em;
+	right: auto;
+	bottom: auto;
+}
 .fixed-action-btn, .fixed-action-btn ul {
 	position: relative;
 }
+
 .fixed-action-btn.horizontal ul {
-	right:33em;
-	top: -2.5em;
+	right:25rem;
+	top: -2.2rem;
+	width: 25rem;
+}
+
+@media screen and (max-width: 600px) {    /*Fixed action buttons weren't behaving correctly on mobile. Using this to adjust placement at small breakpoint*/
+	.fixed-action-btn.horizontal {
+		left: 18rem;
+		right: auto;
+		top: -6rem;
+	}
+	/*.fixed-action-btn.horizontal ul {
+		right:36rem;
+	}*/
 }

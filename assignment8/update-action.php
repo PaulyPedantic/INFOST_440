@@ -17,7 +17,7 @@
 		so the DB default doesn't work. Using if statement to set default here*/
 	}
 
-	if($_SERVER["REQUEST_METHOD"] == "POST"){
+	if($_SERVER["REQUEST_METHOD"] == "POST"){       //UPDATE FORM SENDS VIA POST
 		$check = $db->prepare("SELECT * FROM paulruss_assignment8.content WHERE id = ? AND email = ?");
 		$check->bind_param("ss", $id, $email);
 		$check->execute();
@@ -53,5 +53,18 @@
 		echo "<p class=\"red-text text-darken-3\">$error</p>";
 	}
 	echo '</div>';
+} else {                      //ACTION BUTTONS ACCESS SCRIPT THROUGH GET METHOD
+	$id = trim(filter_var($_GET['id'],FILTER_SANITIZE_NUMBER_INT));
+	if (empty($id)) {
+		$error = "Something went wrong, ID passed is not valid. Please fill in the information below to update a comment.";
+	} else {
+			$get = $db->prepare("SELECT * FROM paulruss_assignment8.content where id=?");
+			$get->bind_param("s",$id);
+			if ($get->execute()) {
+				$prefill = mysqli_fetch_array($get->get_result(),MYSQLI_ASSOC);
+			} else {
+				$error = "Something went wrong. Please fill in the information below to update a comment.";
+			}
+	}
 };
 ?>

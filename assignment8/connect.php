@@ -7,5 +7,9 @@ DEFINE ('DB_NAME', 'paulruss_assignment8'); //Database Name
 
 //This connects us to the database
 $db = @ new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME) OR die ('Could not connect to SOIS MySQL server with error: ' . mysqli_connect_error());
+if($mysqli->connect_error)
+{
+    die("$mysqli->connect_errno: $mysqli->connect_error");
+}
 
 ?>

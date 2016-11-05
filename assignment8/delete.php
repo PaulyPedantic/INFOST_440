@@ -18,6 +18,8 @@ include("delete-action.php");
 						<input name="id" type="number" class="validate" value="<?php
 						if ($_server["REQUEST_METHOD"] == "POST" && ($_POST['id'])) {			//Make values sticky
 						 	echo $_POST['id'];
+						} else if ($del) {
+							echo $del;
 						}
 						?>">
 						<label for="id">Comment ID to Delete:</label>
@@ -33,11 +35,11 @@ include("delete-action.php");
 						<label for="email">Email used to leave comment:</label>
 					</div>
 				</div>
-				
+
 				<button class="btn waves-effect waves-light" type="submit" name="action" onclick="return confDelete()">Submit
 					<i class="material-icons right">send</i>
 				</button>
-				
+
 			</form>
 		</div>
 	</div>

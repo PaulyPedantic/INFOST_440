@@ -33,7 +33,8 @@
 				}
 			}
 		}
-		mysqli_close($db);
+		$db->mysqli_close;
+
 		echo '<div class="container">';
 		if ($success){
 			echo "<p class=\"green-text text-darken-3\">$success</p>";
@@ -41,5 +42,12 @@
 			echo "<p class=\"red-text text-darken-3\">$error</p>";
 		}
 		echo '</div>';
+	} else {
+		$del = trim(filter_var($_GET['id'],FILTER_SANITIZE_NUMBER_INT));
+
+		if (empty($del)) {
+			$error = "Something went wrong, ID passed is not valid. Please fill in the information below to delete a comment.";
+		}
+		$db->mysqli_close;
 	}
 ?>
