@@ -4,8 +4,8 @@
 	$success = ''; //declare a variable to use for a success message
 
 	//define the username and pass for the session
-	$id = $_POST['id'];
-	$email = $_POST['email'];
+	$id = filter_var($_POST['id'], FILTER_SANITIZE_NUMBER_INT);
+	$email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
 	//I'm requiring id and email for deletion and not displaying email so that theoretically, the only person who can delete
 	//a comment is the person who posted it or a site admin with DB access. Cheaper than having login sessions control it
 	if($_SERVER["REQUEST_METHOD"] == "POST"){

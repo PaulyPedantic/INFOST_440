@@ -4,7 +4,7 @@ include("connect.php");
 ?>
   <div class="section no-pad-bot" id="index-banner">
     <div class="container">
-      <h1 class="header center deep-purple-text text-darken-2">Welcome to Pauly's Guestbook!</h1>
+      <h1 class="header center cyan-text text-darken-1">Welcome to Pauly's Guestbook!</h1>
       <div class="row center">
         <h5 class="header col s12 light">Let me know what you think, eh?</h5>
       </div>
@@ -59,9 +59,9 @@ include("connect.php");
 		          echo '<div class="icon-block">';
 								//if user provided a displayname, use verified_user icon, otherwise use perm_identity icon
 								if (strtoupper($row["displayname"]) == "ANONYMOUS" || $row["displayname"] == "") {
-		            	echo '<h2 class="center deep-purple-text text-darken-2 myicon"><i class="material-icons">perm_identity</i></h2>';
+		            	echo '<h2 class="center cyan-text text-darken-1myicon"><i class="material-icons">perm_identity</i></h2>';
 								} else {
-									echo '<h2 class="center deep-purple-text text-darken-2 myicon"><i class="material-icons">verified_user</i></h2>';
+									echo '<h2 class="center cyan-text text-darken-1myicon"><i class="material-icons">verified_user</i></h2>';
 								}
 		            echo '<h5 class="center">'.$row["displayname"].'</h5>';
 

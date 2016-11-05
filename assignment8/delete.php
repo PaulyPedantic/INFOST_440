@@ -4,7 +4,7 @@ include("delete-action.php");
 ?>
 
 <div class="container">
-	<h1 class="header center deep-purple-text text-darken-2">Welcome to Pauly's Guestbook!</h1>
+	<h1 class="header center cyan-text text-darken-1">Welcome to Pauly's Guestbook!</h1>
 
 	<div class="row center">
 		<h5 class="header col s12 light"></h5>

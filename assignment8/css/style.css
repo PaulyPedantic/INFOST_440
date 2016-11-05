@@ -33,3 +33,15 @@
 p {
 	margin-bottom: 10px;
 }
+
+.btn, .btn-large {
+	background-color: #0097a7; /*cyan darken-2, override default button color*/
+}
+
+.btn:hover, .btn-large:hover {
+	background-color: #00BCD4; /*cyan darken-1, override default button hover which lightens default button*/
+}
+
+.btn:focus, .btn-large:focus {
+	background-color: #0097a7; /*cyan darken-3, override default button focus which darkens default button*/
+}

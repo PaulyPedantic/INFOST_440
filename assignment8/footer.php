@@ -1,6 +1,6 @@
-<footer class="page-footer amber darken-3">
-	<div class="footer-copyright amber darken-3">
-		<div class="container amber darken-3">
+<footer class="page-footer yellow darken-2">
+	<div class="footer-copyright yellow darken-2">
+		<div class="container yellow darken-2">
 		Made by Pauly Russ based on MaterializeCSS template
 		</div>
 	</div>
