@@ -80,6 +80,41 @@ menu {
 	width: 25rem;
 }
 
+* > p, * > div {         /*add a little breathing room above any p or div that is a child of another element*/
+	margin-top: 10px;
+}
+
+.btn, .btn-large {
+	background-color: #0097a7; /*cyan darken-2, override default button color*/
+}
+
+.btn:hover, .btn-large:hover {
+	background-color: #00BCD4; /*cyan darken-1, override default button hover which lightens default button*/
+}
+
+.btn:focus, .btn-large:focus {
+	background-color: #0097a7; /*cyan darken-3, override default button focus which darkens default button*/
+}
+
+.btn-floating {
+	margin: 3px;
+
+}
+.fixed-action-btn {
+	left: 3em;
+	right: auto;
+	bottom: auto;
+}
+.fixed-action-btn, .fixed-action-btn ul {
+	position: relative;
+}
+
+.fixed-action-btn.horizontal ul {
+	right:25rem;
+	top: -2.2rem;
+	width: 25rem;
+}
+
 @media screen and (max-width: 600px) {    /*Fixed action buttons weren't behaving correctly on mobile. Using this to adjust placement at small breakpoint*/
 	.fixed-action-btn.horizontal {
 		left: 18rem;

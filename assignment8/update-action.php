@@ -18,7 +18,9 @@
 	}
 
 	if($_SERVER["REQUEST_METHOD"] == "POST"){       //UPDATE FORM SENDS VIA POST
+
 		$check = $db->prepare("SELECT * FROM $content WHERE id = ? AND email = ?");
+
 		$check->bind_param("ss", $id, $email);
 		$check->execute();
 		$returned = $check->get_result();
@@ -59,6 +61,7 @@
 		$error = "Something went wrong, ID passed is not valid. Please fill in the information below to update a comment.";
 	} else {
 			$get = $db->prepare("SELECT * FROM $content where id=?");
+
 			$get->bind_param("s",$id);
 			if ($get->execute()) {
 				$prefill = mysqli_fetch_array($get->get_result(),MYSQLI_ASSOC);
