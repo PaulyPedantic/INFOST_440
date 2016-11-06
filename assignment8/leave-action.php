@@ -19,7 +19,7 @@
 			}
 
 			//using mysqli prepared statement object oriented style from php.net to avoid sql injection
-			if ($leave = $db->prepare("INSERT INTO paulruss_assignment8.content (id ,email ,fname ,lname ,commentdate ,displayname ,comment)
+			if ($leave = $db->prepare("INSERT INTO $content (id ,email ,fname ,lname ,commentdate ,displayname ,comment)
 VALUES (null,?,?,?,CURRENT_TIMESTAMP,?,?)")) {
 
 			$leave->bind_param("sssss", $email, $fname, $lname, $dispname, $comment);

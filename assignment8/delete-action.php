@@ -4,12 +4,12 @@
 	$success = ''; //declare a variable to use for a success message
 
 	//define the username and pass for the session
-	$id = $_POST['id'];
-	$email = $_POST['email'];
+	$id = filter_var($_POST['id'], FILTER_SANITIZE_NUMBER_INT);
+	$email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
 	//I'm requiring id and email for deletion and not displaying email so that theoretically, the only person who can delete
 	//a comment is the person who posted it or a site admin with DB access. Cheaper than having login sessions control it
 	if($_SERVER["REQUEST_METHOD"] == "POST"){
-		$check = $db->prepare("SELECT * FROM paulruss_assignment8.content WHERE id = ? AND email = ?");
+		$check = $db->prepare("SELECT * FROM $content WHERE id = ? AND email = ?");
 		$check->bind_param("ss", $id, $email);
 		$check->execute();
 		$result = $check->get_result();
@@ -22,7 +22,7 @@
 		} else {
 
 			//using mysqli prepared statement object oriented style from php.net to avoid sql injection
-			if ($delete = $db->prepare("DELETE FROM paulruss_assignment8.content WHERE id = ? AND email = ?")) {
+			if ($delete = $db->prepare("DELETE FROM $content WHERE id = ? AND email = ?")) {
 
 				$delete->bind_param("ss", $id, $email);
 
@@ -33,7 +33,8 @@
 				}
 			}
 		}
-		mysqli_close($db);
+		$db->mysqli_close;
+
 		echo '<div class="container">';
 		if ($success){
 			echo "<p class=\"green-text text-darken-3\">$success</p>";
@@ -41,5 +42,12 @@
 			echo "<p class=\"red-text text-darken-3\">$error</p>";
 		}
 		echo '</div>';
+	} else {
+		$del = trim(filter_var($_GET['id'],FILTER_SANITIZE_NUMBER_INT));
+
+		if (empty($del)) {
+			$error = "Something went wrong, ID passed is not valid. Please fill in the information below to delete a comment.";
+		}
+		$db->mysqli_close;
 	}
 ?>
