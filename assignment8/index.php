@@ -2,7 +2,9 @@
 include("header.php");
 include("connect.php");
 
+$baseurl = 'http://paulruss.uwmsois.com/assignment8/index.php';
 $sort = trim(filter_var($_GET['s'],FILTER_SANITIZE_STRING));
+//$filter = trim(filter_var($_GET['h'],FILTER_SANITIZE_STRING));
 $where = '';
 
 	switch ($sort) {
@@ -20,6 +22,10 @@ $where = '';
 		$order = 'commentdate DESC';
 		break;
 	}
+
+	/*if ($filter == 't') {   //later, add functionality to make anonymous a persistent filter
+		$where = 'WHERE TRIM(displayname) != "anonymous"';
+	}*/
 
 
 ?>
@@ -48,10 +54,12 @@ $where = '';
 						<p>Sort and Filter: </p>
 					</div>
 					<div class="col s9 mymenu">
-						<a href="http://paulruss.uwmsois.com/assignment8/index.php?s=N">Newest First</a>
-						<a href="http://paulruss.uwmsois.com/assignment8/index.php?s=O">Oldest First</a>
-						<a href="http://paulruss.uwmsois.com/assignment8/index.php?s=U">Username</a>
-						<a href="http://paulruss.uwmsois.com/assignment8/index.php?s=H">Hide Anonymous</a>
+						<?php
+						echo '<a href="'.$baseurl.'?s=N">Newest First</a>';
+						echo '<a href="'.$baseurl.'?s=O">Oldest First</a>';
+						echo '<a href="'.$baseurl.'?s=U">Username</a>';
+						echo '<a href="'.$baseurl.'?s=H">Hide Anonymous</a>';
+						?>
 					</div>
 				</div>
 			</menu>
@@ -59,7 +67,7 @@ $where = '';
 
 			<?php
 			if (isset($_GET['p']) && is_numeric($_GET['p'])) { // Already been determined.
-				$curpg = $_GET['p'];
+				$curpg = +$_GET['p'];								//use + operator to cast variable as int
 			} else { // Need to determine.
 			 	// Count the number of records:
 				$curpg = 1;
@@ -76,12 +84,11 @@ $where = '';
 			// Calculate the number of pages...
 			if ($reccount > $limit) { // More than 1 page.
 				$pgcount = ceil ($reccount/$limit);
-				$skipcnt = $curpg * $limit;
+				$skipcnt = ($curpg -1) * $limit;   //skip records shown on previous pages
 			} else {
 				$pgcount = 1;
 				$skipcnt = 0;
 			}
-
 
 			$sel = "SELECT id, displayname, comment, DATE_FORMAT(commentdate,'%h:%i %p %c/%d/%Y') AS cdate FROM $content $where ORDER BY $order LIMIT $skipcnt, $limit";
 			//I am not displaying all fields. My goal with this was to set up to capture the required fields into the DB, but ape a chan site and allow
@@ -155,6 +162,65 @@ $where = '';
 				There are no entries in the Guestbook yet. You should be the first
 				</p>";
 			}
+
+			if ($pgcount > 1) {
+
+				echo '<ul class="pagination">';
+				// If it's the first page, disable the previous button:
+				if ($curpg != 1) {
+					echo '<li class="waves-effect"><a href="'.$baseurl.'?p=' . ($curpg - 1) . '&s=' . $sort . '"><i class="material-icons">chevron_left</i></a></li>';
+					echo '<li class="waves-effect"><a href="'.$baseurl.'?p=1&s=' . $sort . '">1</a></li>';
+				} else {
+					echo '<li class="waves-effect disabled"><a href="'.$baseurl.'?p=' . ($curpg - 1) . '&s=' . $sort . '"><i class="material-icons">chevron_left</i></a></li>';
+					echo '<li class="waves-effect active"><a href="#">1</a></li>';
+				}
+
+				if (($curpg > 4) && ($pgcount > 7)) {
+					echo '<li class="waves-effect">...</li>';
+				}
+
+				if (($curpg <= 3) || (($pgcount - 5) < 2)) {
+					for ($i = 2; ($i <= 6) && ($i < $pgcount); $i++) {
+						if ($i != $curpg) {
+							echo '<li class="waves-effect"><a href="'.$baseurl.'?p=' . $i . '&s=' . $sort . '">' . $i . '</a></li>';
+						} else {
+							echo '<li class="waves-effect active"><a href="#">' .$i . '</a></li>';
+						}
+					}
+				} else if ($curpg >= ($pgcount - 3)) {
+					for ($i = ($pgcount - 5); $i < $pgcount; $i++) {
+						if ($i != $curpg) {
+							echo '<li class="waves-effect"><a href="'.$baseurl.'?p=' . $i . '&s=' . $sort . '">' . $i . '</a></li>';
+						} else {
+							echo '<li class="waves-effect active"><a href="#">' .$i . '</a></li>';
+						}
+					}
+				} else {
+					for ($i = ($curpg - 2); $i <= ($curpg +2); $i++) {
+						if ($i != $curpg) {
+							echo '<li class="waves-effect"><a href="'.$baseurl.'?p=' . $i . '&s=' . $sort . '">' . $i . '</a></li>';
+						} else {
+							echo '<li class="waves-effect active"><a href="#">' .$i . '</a></li>';
+						}
+					}
+				}
+
+				if ($pgcount > 7 && $curpg <= $pgcount - 5) {
+					echo '<li class="waves-effect">...</li>';
+				}
+				// If it's the last page, disable next page:
+				if ($curpg != $pgcount) {
+					echo '<li class="waves-effect"><a href="'.$baseurl.'?p='.$pgcount.'&s=' . $sort . '">'.$pgcount.'</a></li>';
+					echo '<li class="waves-effect"><a href="'.$baseurl.'?p=' . ($curpg + 1) . '&s=' . $sort . '"><i class="material-icons">chevron_right</i></a></li>';
+				} else {
+					echo '<li class="waves-effect active"><a href="#">'.$pgcount.'</a></li>';
+					echo '<li class="waves-effect disabled"><a href="'.$baseurl.'?p=' . ($curpg + 1) . '&s=' . $sort . '"><i class="material-icons">chevron_right</i></a></li>';
+				}
+
+				echo '</ul>';
+
+			}
+
 			mysqli_close($db);
 			?>
     </div>
