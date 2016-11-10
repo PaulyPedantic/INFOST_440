@@ -16,8 +16,8 @@ include("delete-action.php");
 				<div class="row">
 					<div class="input-field col s12">
 						<input name="id" type="number" class="validate" value="<?php
-						if ($_server["REQUEST_METHOD"] == "POST" && ($_POST['id'])) {			//Make values sticky
-						 	echo $_POST['id'];
+						if ($id) {			//Make values sticky
+						 	echo $id;
 						} else if ($del) {
 							echo $del;
 						}
@@ -28,8 +28,8 @@ include("delete-action.php");
 				<div class="row">
 					<div class="input-field col s12">
 						<input name="email" type="email" class="validate" value="<?php
-						if ($_server["REQUEST_METHOD"] == "POST" && ($_POST['email'])) {			//Make values sticky
-						 	echo $_POST['email'];
+						if ($email) {			//Make values sticky
+						 	echo $email;
 						}
 						?>">
 						<label for="email">Email used to leave comment:</label>

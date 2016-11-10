@@ -4,8 +4,7 @@ include("connect.php");
 
 $baseurl = 'http://paulruss.uwmsois.com/assignment8/index.php';
 $sort = trim(filter_var($_GET['s'],FILTER_SANITIZE_STRING));
-//$filter = trim(filter_var($_GET['h'],FILTER_SANITIZE_STRING));
-$where = '';
+$filter = trim(filter_var($_GET['h'],FILTER_SANITIZE_STRING));
 
 	switch ($sort) {
 		case 'O':
@@ -16,16 +15,18 @@ $where = '';
 			break;
 		case 'H':
 			$order = 'displayname ASC';
-			$where = 'WHERE TRIM(displayname) != "anonymous"';
+		#	$where = 'WHERE TRIM(displayname) != "anonymous"';
 			break;
 	default:
 		$order = 'commentdate DESC';
 		break;
 	}
 
-	/*if ($filter == 't') {   //later, add functionality to make anonymous a persistent filter
+	if ($filter == 't') {   //later, add functionality to make anonymous a persistent filter
 		$where = 'WHERE TRIM(displayname) != "anonymous"';
-	}*/
+	} else {
+		$where = '';
+	}
 
 
 ?>
@@ -58,7 +59,8 @@ $where = '';
 						echo '<a href="'.$baseurl.'?s=N">Newest First</a>';
 						echo '<a href="'.$baseurl.'?s=O">Oldest First</a>';
 						echo '<a href="'.$baseurl.'?s=U">Username</a>';
-						echo '<a href="'.$baseurl.'?s=H">Hide Anonymous</a>';
+						echo '<a href="'.$baseurl.'?h=t">Hide Anonymous</a>';
+						echo '<a href="'.$baseurl.'?h=f">Show Anonymous</a>';
 						?>
 					</div>
 				</div>
@@ -73,7 +75,7 @@ $where = '';
 				$curpg = 1;
 			}
 
-			$cntq = "SELECT COUNT(*) FROM $content";
+			$cntq = "SELECT COUNT(*) FROM $content $where";
 			$res = @mysqli_query ($db, $cntq);
 			$resarr = @mysqli_fetch_array ($res, MYSQLI_NUM);
 			$reccount = $resarr[0];

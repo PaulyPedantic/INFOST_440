@@ -26,7 +26,7 @@
 		$returned = $check->get_result();
 		$numberrows = $returned->num_rows;
 
-		if(empty($_POST['email']) || empty($_POST['comment'])) {
+		if(empty($email) || empty($comment)) {
 			$error = "All posts must include an Email and a comment. Your Email will not be publicly visible.";
 		} else if ($numberrows == 0){
 			$error = "Sorry, we can't find a comment with that ID and Email combination. Please enter the exact ID and email used to submit the comment";
@@ -47,14 +47,6 @@
 			}
 		}
 	}
-	mysqli_close($db);
-	echo '<div class="container">';
-	if ($success){
-		echo "<p class=\"green-text text-darken-3\">$success</p>";
-	} else {
-		echo "<p class=\"red-text text-darken-3\">$error</p>";
-	}
-	echo '</div>';
 } else {                      //ACTION BUTTONS ACCESS SCRIPT THROUGH GET METHOD
 	$id = trim(filter_var($_GET['id'],FILTER_SANITIZE_NUMBER_INT));
 	if (empty($id)) {
@@ -70,4 +62,13 @@
 			}
 	}
 };
+
+mysqli_close($db);
+echo '<div class="container">';
+if ($success){
+	echo "<p class=\"green-text text-darken-3\"><i class=\"material-icons\">done</i>$success</p>";
+} else {
+	echo "<p class=\"red-text text-darken-3\"><i class=\"material-icons\">error</i>$error</p>";
+}
+echo '</div>';
 ?>

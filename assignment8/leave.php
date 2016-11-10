@@ -15,16 +15,16 @@ include("leave-action.php");
       	<div class="row">
         	<div class="input-field col s6">
           	<input name="fname" type="text" class="validate" value="<?php
-						if ($_server["REQUEST_METHOD"] == "POST" && ($_POST['fname'])) {			//Make values sticky
-						   echo $_POST['fname'];
+						if ($fname) {			//Make values sticky
+						   echo $fname;
 						}
 						?>">
           	<label for="fname">First Name:</label>
         	</div>
         	<div class="input-field col s6">
           	<input name="lname" type="text" class="validate" value="<?php
-						if ($_server["REQUEST_METHOD"] == "POST" && ($_POST['lname'])) {			//Make values sticky
-						   echo $_POST['lname'];
+						if ($lname) {			//Make values sticky
+						   echo $lname;
 						}
 						?>">
           	<label for="lname">Last Name:</label>
@@ -33,8 +33,8 @@ include("leave-action.php");
 				<div class="row">
         	<div class="input-field col s12">
           	<input name="email" type="email" class="validate" value="<?php
-						if ($_server["REQUEST_METHOD"] == "POST" && ($_POST['email'])) {			//Make values sticky
-						   echo $_POST['email'];
+						if ($email) {			//Make values sticky
+						   echo $email;
 						}
 						?>">
           	<label for="email">Email:</label>
@@ -43,23 +43,23 @@ include("leave-action.php");
       	<div class="row">
         	<div class="input-field col s12">
           	<input name="displayname" type="text" class="validate" value="<?php
-						if ($_server["REQUEST_METHOD"] == "POST" && ($_POST['displayname'])) {			//Make values sticky
-						   echo $_POST['displayname'];
+						if ($dispname) {			//Make values sticky
+						   echo $dispname;
 						}
 						?>">
           	<label for="displayname">Name to Display with Comment:</label>
         	</div>
       	</div>
-      	<div class="row">
-      		<div class="input-field col s12">
-        		<textarea name="comment" class="materialize-textarea" value="<?php
-						if ($_server["REQUEST_METHOD"] == "POST" && ($_POST['comment'])) {			//Make values sticky
-						   echo $_POST['comment'];
+				<div class="row">
+					<div class="input-field col s12">
+						<textarea name="comment" class="materialize-textarea"><?php
+						if ($comment) {			//Make values sticky
+							 echo $comment;
 						}
-						?>"></textarea>
-        		<label for="comment">Comment:</label>
-      		</div>
-      	</div>
+						?></textarea>
+						<label for="comment">Comment:</label>
+					</div>
+				</div>
 
   			<button class="btn waves-effect waves-light" type="submit" name="action">Submit
     			<i class="material-icons right">send</i>

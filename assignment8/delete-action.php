@@ -15,7 +15,7 @@
 		$result = $check->get_result();
 		$numberrows = $result->num_rows;
 
-		if(empty($_POST['email']) || empty($_POST['id'])) {
+		if(empty($email) || empty($id)) {
 			$error = "You must provide a comment ID and the email used when it was submitted to delete.";
 		} else if ($numberrows == 0){
 			$error = "Sorry, we can't find a comment with that ID and Email combination. Please enter the exact ID and email used to submit the comment";
@@ -37,9 +37,9 @@
 
 		echo '<div class="container">';
 		if ($success){
-			echo "<p class=\"green-text text-darken-3\">$success</p>";
+			echo "<p class=\"green-text text-darken-3\"><i class=\"material-icons\">done</i>$success</p>";
 		} else {
-			echo "<p class=\"red-text text-darken-3\">$error</p>";
+			echo "<p class=\"red-text text-darken-3\"><i class=\"material-icons\">error</i>$error</p>";
 		}
 		echo '</div>';
 	} else {
