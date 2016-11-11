@@ -56,11 +56,11 @@ $filter = trim(filter_var($_GET['h'],FILTER_SANITIZE_STRING));
 					</div>
 					<div class="col s9 mymenu">
 						<?php
-						echo '<a href="'.$baseurl.'?s=N">Newest First</a>';
-						echo '<a href="'.$baseurl.'?s=O">Oldest First</a>';
-						echo '<a href="'.$baseurl.'?s=U">Username</a>';
-						echo '<a href="'.$baseurl.'?h=t">Hide Anonymous</a>';
-						echo '<a href="'.$baseurl.'?h=f">Show Anonymous</a>';
+						echo '<a href="'.$baseurl.'?s=N&h=' . $filter . '">Newest First</a>';
+						echo '<a href="'.$baseurl.'?s=O&h=' . $filter . '">Oldest First</a>';
+						echo '<a href="'.$baseurl.'?s=U&h=' . $filter . '">Username</a>';
+						echo '<a href="'.$baseurl.'?s=' . $sort . '&h=t">Hide Anonymous</a>';
+						echo '<a href="'.$baseurl.'?s=' . $sort . '&h=f">Show Anonymous</a>';
 						?>
 					</div>
 				</div>
@@ -170,10 +170,10 @@ $filter = trim(filter_var($_GET['h'],FILTER_SANITIZE_STRING));
 				echo '<ul class="pagination">';
 				// If it's the first page, disable the previous button:
 				if ($curpg != 1) {
-					echo '<li class="waves-effect"><a href="'.$baseurl.'?p=' . ($curpg - 1) . '&s=' . $sort . '"><i class="material-icons">chevron_left</i></a></li>';
-					echo '<li class="waves-effect"><a href="'.$baseurl.'?p=1&s=' . $sort . '">1</a></li>';
+					echo '<li class="waves-effect"><a href="'.$baseurl.'?p=' . ($curpg - 1) . '&s=' . $sort . '&h=' . $filter . '"><i class="material-icons">chevron_left</i></a></li>';
+					echo '<li class="waves-effect"><a href="'.$baseurl.'?p=1&s=' . $sort . '&h=' . $filter . '">1</a></li>';
 				} else {
-					echo '<li class="waves-effect disabled"><a href="'.$baseurl.'?p=' . ($curpg - 1) . '&s=' . $sort . '"><i class="material-icons">chevron_left</i></a></li>';
+					echo '<li class="waves-effect disabled"><a href="'.$baseurl.'?p=' . ($curpg - 1) . '&s=' . $sort . '&h=' . $filter . '"><i class="material-icons">chevron_left</i></a></li>';
 					echo '<li class="waves-effect active"><a href="#">1</a></li>';
 				}
 
@@ -184,7 +184,7 @@ $filter = trim(filter_var($_GET['h'],FILTER_SANITIZE_STRING));
 				if (($curpg <= 3) || (($pgcount - 5) < 2)) {
 					for ($i = 2; ($i <= 6) && ($i < $pgcount); $i++) {
 						if ($i != $curpg) {
-							echo '<li class="waves-effect"><a href="'.$baseurl.'?p=' . $i . '&s=' . $sort . '">' . $i . '</a></li>';
+							echo '<li class="waves-effect"><a href="'.$baseurl.'?p=' . $i . '&s=' . $sort . '&h=' . $filter . '">' . $i . '</a></li>';
 						} else {
 							echo '<li class="waves-effect active"><a href="#">' .$i . '</a></li>';
 						}
@@ -192,7 +192,7 @@ $filter = trim(filter_var($_GET['h'],FILTER_SANITIZE_STRING));
 				} else if ($curpg >= ($pgcount - 3)) {
 					for ($i = ($pgcount - 5); $i < $pgcount; $i++) {
 						if ($i != $curpg) {
-							echo '<li class="waves-effect"><a href="'.$baseurl.'?p=' . $i . '&s=' . $sort . '">' . $i . '</a></li>';
+							echo '<li class="waves-effect"><a href="'.$baseurl.'?p=' . $i . '&s=' . $sort . '&h=' . $filter . '">' . $i . '</a></li>';
 						} else {
 							echo '<li class="waves-effect active"><a href="#">' .$i . '</a></li>';
 						}
@@ -200,23 +200,23 @@ $filter = trim(filter_var($_GET['h'],FILTER_SANITIZE_STRING));
 				} else {
 					for ($i = ($curpg - 2); $i <= ($curpg +2); $i++) {
 						if ($i != $curpg) {
-							echo '<li class="waves-effect"><a href="'.$baseurl.'?p=' . $i . '&s=' . $sort . '">' . $i . '</a></li>';
+							echo '<li class="waves-effect"><a href="'.$baseurl.'?p=' . $i . '&s=' . $sort . '&h=' . $filter . '">' . $i . '</a></li>';
 						} else {
 							echo '<li class="waves-effect active"><a href="#">' .$i . '</a></li>';
 						}
 					}
 				}
 
-				if ($pgcount > 7 && $curpg <= $pgcount - 5) {
+				if ($pgcount > 7 && $curpg < $pgcount - 3) {
 					echo '<li class="waves-effect">...</li>';
 				}
 				// If it's the last page, disable next page:
 				if ($curpg != $pgcount) {
-					echo '<li class="waves-effect"><a href="'.$baseurl.'?p='.$pgcount.'&s=' . $sort . '">'.$pgcount.'</a></li>';
-					echo '<li class="waves-effect"><a href="'.$baseurl.'?p=' . ($curpg + 1) . '&s=' . $sort . '"><i class="material-icons">chevron_right</i></a></li>';
+					echo '<li class="waves-effect"><a href="'.$baseurl.'?p='.$pgcount.'&s=' . $sort . '&h=' . $filter . '">'.$pgcount.'</a></li>';
+					echo '<li class="waves-effect"><a href="'.$baseurl.'?p=' . ($curpg + 1) . '&s=' . $sort . '&h=' . $filter . '"><i class="material-icons">chevron_right</i></a></li>';
 				} else {
 					echo '<li class="waves-effect active"><a href="#">'.$pgcount.'</a></li>';
-					echo '<li class="waves-effect disabled"><a href="'.$baseurl.'?p=' . ($curpg + 1) . '&s=' . $sort . '"><i class="material-icons">chevron_right</i></a></li>';
+					echo '<li class="waves-effect disabled"><a href="'.$baseurl.'?p=' . ($curpg + 1) . '&s=' . $sort . '&h=' . $filter . '"><i class="material-icons">chevron_right</i></a></li>';
 				}
 
 				echo '</ul>';

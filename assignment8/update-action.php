@@ -12,13 +12,12 @@
 	$dispname = filter_var($_POST['displayname'], FILTER_SANITIZE_STRING);
 	$comment = filter_var($_POST['comment'], FILTER_SANITIZE_STRING);
 
-	if (empty($dispname)) {
-		$dispname = 'anonymous';  /*I set the db to default displayname to anonymous, but it seems php passes an empty string rather than NULL
-		so the DB default doesn't work. Using if statement to set default here*/
-	}
 
 	if($_SERVER["REQUEST_METHOD"] == "POST"){       //UPDATE FORM SENDS VIA POST
-
+		if (empty($dispname)) {
+			$dispname = 'anonymous';  /*I set the db to default displayname to anonymous, but it seems php passes an empty string rather than NULL
+			so the DB default doesn't work. Using if statement to set default here*/
+		}
 		$check = $db->prepare("SELECT * FROM $content WHERE id = ? AND email = ?");
 
 		$check->bind_param("ss", $id, $email);
@@ -64,10 +63,11 @@
 };
 
 mysqli_close($db);
+
 echo '<div class="container">';
 if ($success){
 	echo "<p class=\"green-text text-darken-3\"><i class=\"material-icons\">done</i>$success</p>";
-} else {
+} else if ($error){
 	echo "<p class=\"red-text text-darken-3\"><i class=\"material-icons\">error</i>$error</p>";
 }
 echo '</div>';
