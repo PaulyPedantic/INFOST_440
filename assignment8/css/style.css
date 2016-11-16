@@ -44,6 +44,7 @@ menu {
 	transition: background-color 0.5s ease;
 	background-color: #f9a825;
 }
+<<<<<<< Updated upstream
 
 * > p, * > div {         /*add a little breathing room above any p or div that is a child of another element*/
 	margin-top: 10px;
@@ -79,6 +80,8 @@ menu {
 	top: -2.2rem;
 	width: 25rem;
 }
+=======
+>>>>>>> Stashed changes
 
 * > p, * > div {         /*add a little breathing room above any p or div that is a child of another element*/
 	margin-top: 10px;
