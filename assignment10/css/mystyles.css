@@ -1,0 +1,102 @@
+body {
+	background-color: #333;
+	padding-bottom: 70px;
+}
+
+/*copy portion of css from bootstrap pertaining to navbar to override*/
+
+/* navbar */
+.navbar-default {
+    background-color: #1B4653;
+    border-color: #1B4653;
+}
+/* title */
+.navbar-default .navbar-brand {
+    color: #ddd;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    color: #5E5E5E;
+}
+/* link */
+.navbar-default .navbar-nav > li > a {
+    color: #ddd;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    color: #fff;
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+    color: #555;
+    background-color: #E7E7E7;
+}
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+    color: #555;
+    background-color: #D5D5D5;
+}
+/* caret */
+.navbar-default .navbar-nav > .dropdown > a .caret {
+    border-top-color: #ddd;
+    border-bottom-color: #ddd;
+}
+.navbar-default .navbar-nav > .dropdown > a:hover .caret,
+.navbar-default .navbar-nav > .dropdown > a:focus .caret {
+    border-top-color: #fff;
+    border-bottom-color: #fff;
+}
+.navbar-default .navbar-nav > .open > a .caret,
+.navbar-default .navbar-nav > .open > a:hover .caret,
+.navbar-default .navbar-nav > .open > a:focus .caret {
+    border-top-color: #555;
+    border-bottom-color: #555;
+}
+/* mobile version */
+.navbar-default .navbar-toggle {
+    border-color: #DDD;
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+    background-color: #DDD;
+}
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #ddd;
+}
+@media (max-width: 767px) {
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+        color: #ddd;
+    }
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+        color: #fff;
+    }
+}
+
+
+/*change background color of jumbotron*/
+.jumbotron {
+	background-color: #9fe4f8;
+	min-height: 70vh;
+	padding-top: 8rem;
+}
+
+@media (max-height: 500px) {
+	.jumbotron {
+		padding-top: 4rem;
+	}
+}
+
+.btn-warning {
+	color: #fff;
+	background-color: #ff880e;
+	border-color: #ff880e;
+}
+
+#foot {
+	padding-top: 1em;
+	margin-bottom: 0;
+	color: rgba(255,255,255,0.5);
+}
