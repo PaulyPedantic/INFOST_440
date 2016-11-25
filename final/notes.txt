@@ -1,3 +1,0 @@
-Additional functions I'd like to add beyond requirements:
-Allow admin user to designate other admins... admin user can specify an email address that updates the record to set a boolean 'admin' column in users table
-
