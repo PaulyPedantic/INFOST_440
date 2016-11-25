@@ -8,7 +8,7 @@
 
 2. Must have at least one Admin user.
   1. Admin can post/edit/delete any comment.
-  2. Admin can create/update/delete blog posts and moderate comments.
+  2. Admin can create/update/delete blog posts.
 
 3. Users can log out once logged in
 
@@ -18,4 +18,9 @@
 
 6. Input fields must be appropriately validated and maintain values if submission errors exist
 
-7. Blog posts and comments are paginated and sortable
+### Features I'd like to add beyond requirements
+1. Blog posts and comments are paginated and sortable
+
+2. Admin can view registered users
+
+3. Admin can block users or grand admin
