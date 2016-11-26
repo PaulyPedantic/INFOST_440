@@ -19,3 +19,9 @@
 3. Admin can block users or grand admin
 4. Built on Bootstrap v4 using flexbox grid
 5. Warns users of IE that their browser may not play nice
+6. Homepage Carousel that highlights three most recent posts
+7. Upload a header image for each post
+8. Assign each post a category
+  1. Allow selecting from list of existing categories
+  2. If category doesn't exist, allow manually entered new category
+  3. Add new to a table of possible categories
