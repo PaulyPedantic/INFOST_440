@@ -1,5 +1,24 @@
 body {
     background-image: url('../images/bch-bg.jpg');
+    font-family: 'Didact Gothic', sans-serif;
+}
+
+.asideHead,
+.mynavbrand,
+h1 {
+    font-family: 'Cabin Sketch', cursive;
+}
+
+.mynavbrand {
+    font-size: 1.5em;
+}
+
+.mynav,
+h2,
+h3,
+p.subtitle,
+p.user {
+    font-family: 'Cabin', sans-serif;
 }
 
 .bgArea {
@@ -20,7 +39,9 @@ p.user {
 }
 
 .date {
-    font-size: 0.7em;
+    font-weight: lighter;
+    padding-left: 0.5rem;
+    padding-right: 0.8rem;
 }
 
 a {
