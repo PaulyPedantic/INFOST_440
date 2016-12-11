@@ -1,54 +1,71 @@
 body {
-  background-image: url("../images/bch-bg.jpg");
+    background-image: url("../images/bch-bg.jpg");
 }
 
+.comment,
 article {
-  background-color: rgba(255, 255, 255, 0.25);
-  padding: 1em;
-  border-radius: 1rem;
+    background-color: rgba(255, 255, 255, 0.25);
+    padding: 1em;
+    border-radius: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+p.user {
+    margin-bottom: 0.2rem;
+    font-size: 1.2em;
+    color: #000099;
+}
+
+.date {
+    font-size: 0.7em;
 }
 
 a {
-  color: #138a00;
-  text-decoration: none;
-  transition: 0.2s ease;
+    color: #000099;
+    text-decoration: none;
+    transition: 0.2s ease;
 }
 
-a:hover {
-  color: darkgreen;
-  text-decoration: none;
+a > i {
+    color: #000099;
+}
+
+a:hover,
+a:hover > i {
+    color: #0000cc;
+    text-decoration: none;
 }
 
 .img-circle {
-  border-radius: 50%;
-  margin-bottom: 1rem;
+    border-radius: 50%;
+    margin-bottom: 1rem;
 }
 
 .pg-head {
-  background-color: rgba(255, 255, 255, 0.25);
-  border-radius: 1rem;
-  margin-bottom: 1.5rem;
-  padding: 0.5rem 0 0.5rem 0;
+    background-color: rgba(255, 255, 255, 0.25);
+    border-radius: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 0.5rem 0;
 }
 
-.pg-head>h1 {
-  padding: 2rem 0 1rem 0;
+.pg-head > h1 {
+    padding: 2rem 0 1rem;
 }
 
 .mybutton {
-  background-color: rgba(255, 255, 255, 0.25);
-  text-align: center;
-  padding: 0.2rem 1rem 0.2rem 1rem;
-  border-radius: 1rem;
-  margin-bottom: .5rem;
-  transition: 0.2s ease;
+    background-color: rgba(255, 255, 255, 0.25);
+    text-align: center;
+    padding: 0.2rem 1rem;
+    border-radius: 1rem;
+    margin-bottom: 0.5rem;
+    transition: 0.2s ease;
 }
 
 .mybutton:hover {
-  background-color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.6);
 }
 
 .mynav {
-  margin-left: auto;
-  margin-right: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
