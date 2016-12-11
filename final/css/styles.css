@@ -5,8 +5,13 @@ body {
 
 .asideHead,
 .mynavbrand,
+.mynavpages,
 h1 {
     font-family: 'Cabin Sketch', cursive;
+}
+
+.mynavpages {
+    font-size: 1.1em;
 }
 
 .mynavbrand {

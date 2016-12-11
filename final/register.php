@@ -1,40 +1,8 @@
-<!DOCTYPE html>
-<html lang="en-US">
+<?php
+include('scripts/header.php');
+ ?>
 
-  <head>
-    <!-- Required meta tags always come first -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap-flex.min.css">
-    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Cabin|Cabin+Sketch|Didact+Gothic" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
-    <title>Okay With Wrong</title>
-    <meta name="description" content="Okay With Wrong is a blog written by Pauly Russ that focuses on information science concepts, continuous learning, and personal growth.">
-  </head>
-
-  <body>
-    <div class="container">
-      <header class="text-xs-center pg-head">
-        <nav class="row flex-items-xs-middle">
-          <div class="text-xs-left col-xs">
-            <a class="mybutton mynavbrand" href="">Ok With Wrong</a>
-          </div>
-          <div class="text-xs-right col-xs">
-            <a class="mybutton mynav" href="">Register</a>
-            <a class="mybutton mynav" href="">Login</a>
-          </div>
-        </nav>
-
-        <h1 class="display-4">Register</h1>
-        <p class="subtitle">You must be logged in to post comments.</p>
-      </header>
-    </div>
-
-    <div class="container">
       <form>
         <div class="form-group">
           <label for="uname">Choose a User Name</label>
