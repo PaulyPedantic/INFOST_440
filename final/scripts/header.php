@@ -1,5 +1,29 @@
 <?php
 session_start();
+include('dbConfig.php');
+
+$date = '';
+$pgname = basename($_SERVER['PHP_SELF'],'.php');
+switch ($pgname) {
+  case 'index':
+    $title = 'Okay with wrong';
+    $subtitle = 'What I know, what I don\'t, and how being wrong makes me better.';
+    break;
+  case 'register':
+    $title = 'Register';
+    break;
+  case 'login':
+    $title = 'Log In';
+    break;
+  case 'createPost':
+    $title = 'Write New Post';
+    break;
+  case 'leaveComment':
+    $title = 'Leaving a comment';
+    break;
+  default:
+    $title = $pgname;
+}
  ?>
 
 <!DOCTYPE html>
@@ -20,7 +44,7 @@ session_start();
     <link rel="stylesheet" href="css/styles.css">
     
     <!-- figure out how to get title and description variable per page efficiently -->
-    <title>Okay With Wrong</title>
+    <title><?php echo $title; ?></title>
     <meta name="description" content="Okay With Wrong is a blog written by Pauly Russ that focuses on information science concepts, continuous learning, and personal growth.">
   </head>
 
@@ -29,7 +53,7 @@ session_start();
       <header class="text-xs-center pg-head">
         <nav class="row flex-items-xs-middle">
           <div class="text-xs-left col-xs">
-            <a class="mybutton mynavbrand" href="">Ok With Wrong</a> <!-- do not show on index page -->
+            <a class="mybutton mynavbrand" href="index.php">Ok With Wrong</a> <!-- do not show on index page -->
           </div>
           <div class="text-xs-right col-xs">
             <a class="mybutton mynav" href="register.php">Register</a>
@@ -37,10 +61,10 @@ session_start();
           </div>
         </nav>
         <!-- header/subtitle will vary per page -->
-        <h1 class="display-4">Blog Post 1</h1>
-        <p class="subtitle">This is a subtitle, and makes this thing start to work.</p>
+        <h1 class="display-4"><?php echo $title; ?></h1>
+        <p class="subtitle"><?php echo $subtitle; ?></p>
         <div class="text-xs-right">
-          <p class="date">November 11, 2016</p>
+          <p class="date"><?php echo $date; ?></p>
         </div>
       </header>
     
