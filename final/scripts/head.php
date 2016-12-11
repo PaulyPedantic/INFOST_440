@@ -3,14 +3,17 @@ session_start();
 include('dbConfig.php');
 
 $date = '';
+$subtitle = '';
 $pgname = basename($_SERVER['PHP_SELF'],'.php');
 switch ($pgname) {
   case 'index':
     $title = 'Okay with wrong';
     $subtitle = 'What I know, what I don\'t, and how being wrong makes me better.';
+    $description = 'Okay With Wrong is a blog written by Pauly Russ that focuses on information science concepts, continuous learning, and personal growth.'
     break;
   case 'register':
     $title = 'Register';
+    $subtitle = 'You must have an account to leave comments. Register below or <a href="login.php">log in.</a>';
     break;
   case 'login':
     $title = 'Log In';
@@ -20,6 +23,9 @@ switch ($pgname) {
     break;
   case 'leaveComment':
     $title = 'Leaving a comment';
+    break;
+  case 'viewPost':
+    # write a query to retrieve post information and include it here
     break;
   default:
     $title = $pgname;
@@ -45,7 +51,11 @@ switch ($pgname) {
     
     <!-- figure out how to get title and description variable per page efficiently -->
     <title><?php echo $title; ?></title>
-    <meta name="description" content="Okay With Wrong is a blog written by Pauly Russ that focuses on information science concepts, continuous learning, and personal growth.">
+    <?php
+    if ($description) {
+      echo '<meta name="description" content="$description">';
+    }
+    ?>
   </head>
 
   <body>
@@ -67,4 +77,6 @@ switch ($pgname) {
           <p class="date"><?php echo $date; ?></p>
         </div>
       </header>
-    
+        <?php # don't close container div above
+              # it gets closed at the start of foot.php
+              # and ensures consistent formatting ?>
