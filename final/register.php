@@ -3,7 +3,7 @@ include('scripts/head.php');
  ?>
 
       <div class="row flex-items-xs-center">
-        <form class="col-sm-8">
+        <form class="col-sm-8" action="register.php" method="POST" id="register">
           <div class="form-group">
             <label for="uname">Choose a User Name</label>
             <input type="text" class="form-control" name="uname" placeholder="Username">
@@ -37,7 +37,7 @@ include('scripts/head.php');
               Leave this box checked if it's ok for me to email you blog updates. I'll never send more than one a week.
             </label>
           </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" form="register" value="Submit" class="btn btn-primary btn-lg">Sign Up</button>
         </form>
       </div>
 

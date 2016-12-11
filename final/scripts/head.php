@@ -2,9 +2,15 @@
 session_start();
 include('dbConfig.php');
 
+#define a salt on each page that can be used with the crypt() function
+$salt = 'info5t4Forty5e3ms2HaveB3enWorth!t';
+
+#define variables to handle header content that varies by page
 $date = '';
 $subtitle = '';
 $pgname = basename($_SERVER['PHP_SELF'],'.php');
+
+#adjust page behavior based on page location
 switch ($pgname) {
   case 'index':
     $title = 'Okay with wrong';
@@ -64,7 +70,7 @@ switch ($pgname) {
     <div class="container">
       <header class="text-xs-center pg-head">
         <nav class="row flex-items-xs-middle">
-          <?php if ($home) {   ## only show home button on pages other than home
+          <?php if (!$home) {   ## only show home button on pages other than home
           echo '<div class="text-xs-left col-xs">
                   <a class="mybutton mynavbrand" href="index.php">Ok With Wrong</a>
                 </div>';

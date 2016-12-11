@@ -13,15 +13,15 @@ include('scripts/head.php');
               <input type="text" class="form-control" name="subtitle" placeholder="Subtitle">
             </div>
             <div class="form-group">
-              <label for="post">Post</label>
-              <textarea class="form-control" name="post" rows="3" maxlength="150"></textarea>
+              <label for="desc">Description</label>
+              <textarea class="form-control" name="descc" rows="3" maxlength="150"></textarea>
             </div>
+            <div class="form-group">
+              <label for="post">Post</label>
+              <textarea class="form-control" name="post" rows="18"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg">Submit</button>
           </div>
-          <div class="form-group">
-            <label for="post">Post</label>
-            <textarea class="form-control" name="post" rows="40"></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>
 

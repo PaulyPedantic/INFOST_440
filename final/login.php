@@ -11,7 +11,7 @@
       <label for="pass">Password</label>
       <input type="password" class="form-control form-control-lg" name="pass" placeholder="Password" <?php if ($pass) {echo 'value="'.$pass.'"';} ?>>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary btn-lg">Submit</button>
   </form>
 </div>
 
