@@ -1,5 +1,5 @@
 <?php
-include('scripts/header.php');
+include('scripts/head.php');
  ?>
 
 <article class="bgArea">
@@ -54,3 +54,7 @@ include('scripts/header.php');
       </li>
     </ul>
 </div>
+
+<?php
+  include('scripts/foot.php');
+?>

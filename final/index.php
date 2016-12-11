@@ -1,6 +1,6 @@
 <?php
-include('scripts/header.php');
- ?>
+  include('scripts/head.php');
+?>
 
       <div class="row">
         <section class="col-sm">
@@ -70,3 +70,7 @@ include('scripts/header.php');
           </p>
         </aside>
       </div>
+
+      <?php
+        include('scripts/foot.php');
+      ?>

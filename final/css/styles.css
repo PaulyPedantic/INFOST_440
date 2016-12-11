@@ -98,3 +98,7 @@ a:hover > i {
     margin-right: auto;
     margin-left: auto;
 }
+
+a.decorateLink {
+    text-decoration: underline;
+}
