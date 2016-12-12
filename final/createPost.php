@@ -1,5 +1,12 @@
 <?php
-include('scripts/head.php');
+include('scripts/functions.php');
+$status = authenticate();
+
+if (!$status['user']) {
+  redirect();
+} else {
+  include('scripts/head.php');
+}
  ?>
 
       <div class="row flex-items-xs-center">

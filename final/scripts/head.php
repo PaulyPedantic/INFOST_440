@@ -1,6 +1,9 @@
 <?php
-session_start();
 include('dbConfig.php');
+include('scripts/functions.php');
+
+#define a variable to track the session status
+$status = authenticate();
 
 #define variables to handle header content that varies by page
 $date = '';
@@ -24,9 +27,19 @@ switch ($pgname) {
     $subtitle = 'Login to leave a comment.';
     break;
   case 'createPost':
+    #if not admin, redirect to login page
+    if (!$status['admin']) {
+      redirect();
+      exit();
+    }
     $title = 'Write New Post';
     break;
   case 'leaveComment':
+    #if not user, redirect to login page
+    if (!$status['user']) {
+      redirect();
+      exit();
+    }
     $title = 'Leaving a comment';
     break;
   case 'viewPost':
@@ -73,8 +86,18 @@ switch ($pgname) {
                 </div>';
           } ?>
           <div class="text-xs-right col-xs">
-            <a class="mybutton mynav" href="register.php">Register</a>
-            <a class="mybutton mynav" href="login.php">Login</a>
+            <?php
+            if ($status['admin']) {
+              echo '<a class="mybutton mynav" href="createPost.php">Create Post</a>';
+            }
+            if ($status['user']) {
+              echo '<a class="mybutton mynav" href="logout.php">Logout</a>';
+            } else {
+              echo '<a class="mybutton mynav" href="register.php">Register</a>';
+              echo '<a class="mybutton mynav" href="login.php">Login</a>';
+            }
+            ?>
+            
           </div>
         </nav>
         <!-- header/subtitle will vary per page -->
@@ -85,18 +108,6 @@ switch ($pgname) {
         </div>
       </header>
         <?php
-        
-        #if the script including the page has set an error or success, echo those out as alerts
-        if (!empty($error)){
-          echo '<div class="alert alert-danger">';
-          foreach($error as $err) {
-            echo $err.'<br>';
-          }
-          echo '</div>';
-        } elseif (!empty($success)) {
-          echo '<div class="alert alert-success">'.$success.'</div>';
-        }
-              
               # I don't close container div above within the header
               # it gets closed at the start of foot.php
               # and ensures consistent formatting ?>

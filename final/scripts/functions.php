@@ -7,8 +7,7 @@
 function redirect($targetpg = 'login.php') {
 
   // Build absolute url
-  $url = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']);
-  $url = rtrim($url, '/\\');
+  $url = 'http://' . $_SERVER['HTTP_HOST'] . '/final';
   $url .= '/' . $targetpg;
 
   // Redirect the user:
@@ -20,7 +19,7 @@ function redirect($targetpg = 'login.php') {
 # function verifies the fields are filled in, and if present
 # verifies them against the database
 
-function credentialCheck($db, $username = '', $hashedpass = '') {
+function credentialCheck($db, $username = '', $pass = '') {
 
 	$error = array();
 
@@ -33,31 +32,41 @@ function credentialCheck($db, $username = '', $hashedpass = '') {
 	if (empty($pass)) {
 		$error[] = 'Please enter a password.';
 	}
-
+  
 	if (empty($error)) {
 
-		$q = "SELECT id, usernm, passhash FROM user WHERE user='$username'";
-		$r = @mysqli_query ($db, $q); // Run the query.
+		$q = "SELECT id, usernm, passhash, admin FROM user WHERE usernm='$username'";
+		$r = mysqli_query ($db, $q); // Run the query.
 
 		$row = mysqli_fetch_array ($r, MYSQLI_ASSOC);
 
     #check password with password_verify more secure than sha1
-    if (password_verify($hashedpass, $row['passhash']){
+    if (password_verify($pass, $row['passhash'])) {
 
 			return array(true, $row);
 
 		} else { // Not a match!
 			$errors[] = 'The email address and password entered do not match those on file.';
-      return array(false, $errors);
+      return array(false, $error);
 		}
 
 	}
+  return array(false, $error);
 }  #end of credentialCheck function
 
-# authenticate function checks the session and redirects if user is not logged in
+# authenticate function checks the session and returns an array with variables
+# indicating whether the current session is logged on at the user or admin level
 function authenticate() {
-  if (!isset($_SESSION['loggedInUser'])) {
-    redirect();
+  session_start();
+  $user = false;
+  $admin = false;
+  
+  if (isset($_SESSION['loggedInUser'])){
+    $user = $_SESSION['loggedInUser'];
+    if (isset($_SESSION['admin'])){
+      $admin = true;
+    }
   }
+  return array('user' => $user, 'admin' => $admin);
 }
 ?>
