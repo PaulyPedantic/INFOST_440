@@ -3,7 +3,7 @@ include('scripts/head.php');
  ?>
 
       <div class="row flex-items-xs-center">
-        <form class="col-sm-8" action="register.php" method="POST" id="register">
+        <form class="col-sm-8" action="scripts/registerAction.php" method="POST" id="register">
           <div class="form-group">
             <label for="uname">Choose a User Name</label>
             <input type="text" class="form-control" name="uname" placeholder="Username">
@@ -33,7 +33,7 @@ include('scripts/head.php');
           </div>
           <div class="form-check">
             <label class="form-check-label">
-              <input type="checkbox" class="form-check-input" value="1" checked>
+              <input type="checkbox" class="form-check-input" name="optin" value="1" checked>
               Leave this box checked if it's ok for me to email you blog updates. I'll never send more than one a week.
             </label>
           </div>

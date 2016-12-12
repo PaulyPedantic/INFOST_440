@@ -2,9 +2,6 @@
 session_start();
 include('dbConfig.php');
 
-#define a salt on each page that can be used with the crypt() function
-$salt = 'info5t4Forty5e3ms2HaveB3enWorth!t';
-
 #define variables to handle header content that varies by page
 $date = '';
 $subtitle = '';
@@ -87,6 +84,19 @@ switch ($pgname) {
           <p class="date"><?php echo $date; ?></p>
         </div>
       </header>
-        <?php # don't close container div above
+        <?php
+        
+        #if the script including the page has set an error or success, echo those out as alerts
+        if (!empty($error)){
+          echo '<div class="alert alert-danger">';
+          foreach($error as $err) {
+            echo $err.'<br>';
+          }
+          echo '</div>';
+        } elseif (!empty($success)) {
+          echo '<div class="alert alert-success">'.$success.'</div>';
+        }
+              
+              # I don't close container div above within the header
               # it gets closed at the start of foot.php
               # and ensures consistent formatting ?>
