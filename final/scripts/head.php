@@ -63,8 +63,10 @@ switch ($pgname) {
     $pgtitle = 'Leaving a comment';
     break;
   case 'viewPost':
-    include('getPost.php');
-    
+    $pi = getpostinfo($_GET['id'], $db);
+    $pgtitle = $pi['title'];
+    $subtitle = $pi['subtitle'];
+    $description = $pi['description'];
     break;
   default:
     $pgtitle = $pgname;

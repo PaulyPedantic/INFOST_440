@@ -1,34 +1,55 @@
 <?php
 include('scripts/functions.php');
 include('scripts/head.php');
- ?>
 
-<article class="bgArea">
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum...</p>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum...</p>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum...</p>
-  <div class="text-xs-right">
-    <p>Written By: Author Authario</p>
+
+echo '<article class="bgArea">';
+echo '<p>'.nl2br($pi['post']).'</p>';
+echo '  <div class="text-xs-right">
+    <p>Written By: '.$pi['fname'].' '.$pi['lname'].'<br>
+    '.$pi['date'].'</p>
   </div>
-</article>
+</article>';
 
-<div class="bgArea comment" id="comments">
+echo '<div id="comments">';
+if ($status['user']) {
+  echo '<form action="submitComment.php" method="POST" id="comment" class="text-xs-center">
+  <input type="hidden" name="id" value="'.$pi['id'].'">
+  <div class="form-group row flex-items-xs-middle">
+    <label for="comment" class="sr-only">Comment</label>
+    <div class="col-xs-9">
+      <textarea name="comment" rows="2" maxlength="500" placeholder="What do you think?" class="form-control">'.$comment.'</textarea>
+    </div>
+    <div class="col-xs-3">
+      <button type="submit" form="comment" name="submit" value="Submit" class="btn btn-lg btn-primary">Leave comment</button>
+    </div>
+  </div>
+</form>';
+} else {
+  echo '<div class="alert alert-info text-xs-center">Please <a href="login.php">log in</a> if you\'d like to post a comment</div>';
+}
+
+$q = "SELECT DATE_FORMAT(c.date, '%M %e %Y') AS date, c.comment, u.usernm FROM comment c
+LEFT OUTER JOIN user u ON c.userid = u.id
+WHERE c.postid = ".$pi['id'];
+
+$commentinfo = mysqli_query($db, $q);
+while ($row = mysqli_fetch_array($commentinfo, MYSQLI_ASSOC)){
+
+  echo '<div class="bgArea comment">
   <div class="row">
     <div class="col-sm-3">
-      <p class="user">Username1234 </p>
-      <p class="date">November 26, 2016 </p>
+      <p class="user">'.$row['usernm'].'</p>
+      <p class="date">'.$row['date'].'</p>
     </div>
     <div class="col-sm-9">
-      <p>This is my awesomely sweet comment. I'm going to write stuff on your blog man.</p>
+      <p>'.$row['comment'].'</p>
     </div>
   </div>
+</div>';
+}
+?>
 </div>
-
 <div class="bgArea mynavpages text-xs-center">
   View More Comments:
 

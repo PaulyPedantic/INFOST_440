@@ -34,9 +34,10 @@ if ($getposts) {
                       </div>
                       <div class="col-xs-4">
                         <a class="mybutton" href="viewPost.php?id='.$row['id'].'">Read Full Post <i class="fa fa-newspaper-o" aria-hidden="true"></i></a>
-                      </div>
-                      <div class="col-xs-4">
-                        <a class="mybutton" href="viewPost.php?id='.$row['id'].'#comments">3 Comments <i class="fa fa-commenting" aria-hidden="true"></i></a>
+                      </div>';
+                      $numcomments = getCommentCount($db, $row['id']);
+    echo '            <div class="col-xs-4">
+                        <a class="mybutton" href="viewPost.php?id='.$row['id'].'#comments">'.$numcomments.' Comments <i class="fa fa-commenting" aria-hidden="true"></i></a>
                       </div>
                     </div>
                   </footer>
