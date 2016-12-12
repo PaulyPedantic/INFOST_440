@@ -12,6 +12,18 @@ $pgname = basename($_SERVER['PHP_SELF'],'.php');
 #adjust page behavior based on page location
 switch ($pgname) {
   case 'logout':
+  case 'postAction':
+    if (!empty($error)) {
+      #if an error is set, this redirects to the create post page
+      if (!$status['admin']) {
+        redirect();
+        exit();
+      }
+      $pgtitle = 'Write New Post';
+      break;
+    } else {
+      #if no errors, let fall through to index
+    }
   case 'index':
     $pgtitle = 'Okay with wrong';
     $subtitle = 'What I know, what I don\'t, and how being wrong makes me better.';
@@ -51,7 +63,8 @@ switch ($pgname) {
     $pgtitle = 'Leaving a comment';
     break;
   case 'viewPost':
-    # write a query to retrieve post information and include it here
+    include('getPost.php');
+    
     break;
   default:
     $pgtitle = $pgname;

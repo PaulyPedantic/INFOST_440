@@ -21,7 +21,7 @@ if (!empty($error)){
  ?>
 
       <div class="row flex-items-xs-center">
-        <form class="col-sm-8" action="createPost.php" method="POST">
+        <form class="col-sm-8" action="postAction.php" method="POST">
           <div class="form-group">
             <label for="title">Post Title</label>
             <input type="text" class="form-control" name="title" placeholder="Title" value="<?php echo $title; ?>">
@@ -32,7 +32,7 @@ if (!empty($error)){
             </div>
             <div class="form-group">
               <label for="desc">Description</label>
-              <textarea class="form-control" name="desc" rows="3" maxlength="150" placeholder="Describe the page in 150 characters or less. This description will be used for search optimization."><?php echo $desc; ?></textarea>
+              <textarea class="form-control" name="desc" rows="2" maxlength="150" placeholder="Describe the page in 150 characters or less. This description will be used for search optimization."><?php echo $desc; ?></textarea>
             </div>
             <div class="form-group">
               <label for="post">Post</label>

@@ -1,10 +1,12 @@
 <?php
-require_once('dbConfig.php');
+require_once('scripts/dbConfig.php');
+require_once('scripts/functions.php');
+$status = authenticate();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $title = filter_var($_POST['title'],FILTER_SANITIZE_STRING);
   $subtitle = filter_var($_POST['subtitle'],FILTER_SANITIZE_STRING);
   $desc = filter_var($_POST['desc'],FILTER_SANITIZE_STRING);
-  $post = filter_var($_POST['post'],FILTER_SANITIZE_STRING);
+  $post = $_POST['post'];
   $author = $status['uid'];
   
   $q = 'INSERT INTO post (title, subtitle, authorid, post, description) VALUES (?, ?, ?, ?, ?)';

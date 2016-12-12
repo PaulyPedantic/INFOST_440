@@ -12,55 +12,41 @@ if (!empty($error)){
   echo '<div class="alert alert-success text-xs-center">'.$success.'</div>';
 }
 
+$q = 'SELECT id, title, subtitle, DATE_FORMAT(date, \'%M %e, %Y\') AS date, description, post FROM post';
+$getposts = @mysqli_query($db, $q);
+if ($getposts) {
+  echo '
+       <div class="row">
+          <section class="col-sm">';
+
+              
+  while ($row = mysqli_fetch_array($getposts, MYSQLI_ASSOC)){
+    echo '
+                <article class="bgArea">
+                  <header>
+                    <h2>'.$row['title'].'</h2>
+                  </header>
+                  <p>'.substr(nl2br($row['post']),1,1000).' ...</p>
+                  <footer>
+                    <div class="row flex-items-xs-between">
+                      <div class="col-xs-4 text-xs-center">
+                        <p>'.$row['date'].'</p>
+                      </div>
+                      <div class="col-xs-4">
+                        <a class="mybutton" href="viewPost.php?id='.$row['id'].'">Read Full Post <i class="fa fa-newspaper-o" aria-hidden="true"></i></a>
+                      </div>
+                      <div class="col-xs-4">
+                        <a class="mybutton" href="viewPost.php?id='.$row['id'].'#comments">3 Comments <i class="fa fa-commenting" aria-hidden="true"></i></a>
+                      </div>
+                    </div>
+                  </footer>
+                </article>';
+  }
+}
 ?>
 
-      <div class="row">
-        <section class="col-sm">
-          <article class="bgArea">
-            <header>
-              <h2>Blog Post 1</h2>
-            </header>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-              irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-              irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum...</p>
-            <footer>
-              <div class="row flex-items-xs-between">
-                <div class="col-xs-4 text-xs-center">
-                  <p> November 26, 2016</p>
-                </div>
-                <div class="col-xs-4">
-                  <a class="mybutton" href="#link to post page">Read Full Post <i class="fa fa-newspaper-o" aria-hidden="true"></i></a>
-                </div>
-                <div class="col-xs-4">
-                  <a class="mybutton" href="#link to post page #comments">3 Comments <i class="fa fa-commenting" aria-hidden="true"></i></a>
-                </div>
-              </div>
-            </footer>
-          </article>
 
-          <article class="bgArea">
-            <header>
-              <h2>Blog Post 2</h2>
-            </header>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-              irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-              irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum...</p>
-            <footer>
-              <div class="row flex-items-xs-between">
-                <div class="col-xs-4 text-xs-center">
-                  <p> November 26, 2016</p>
-                </div>
-                <div class="col-xs-4">
-                  <a class="mybutton" href="#link to post page">Read Full Post <i class="fa fa-newspaper-o" aria-hidden="true"></i></a>
-                </div>
-                <div class="col-xs-4">
-                  <a class="mybutton" href="#link to post page with id for comments section">3 Comments <i class="fa fa-commenting" aria-hidden="true"></i></a>
-                </div>
-              </div>
-            </footer>
-          </article>
+
 
 
           <nav class="row flex-items-xs-middle">
