@@ -2,7 +2,7 @@
   include('scripts/head.php');
 ?>
 <div class="row flex-items-xs-center">
-  <form class="col-sm-8">
+  <form class="col-sm-8" action="scripts/loginAction.php">
     <div class="form-group">
       <label for="uname">User Name</label>
       <input type="text" class="form-control form-control-lg" name="uname" placeholder="Username" <?php if ($uname) {echo 'value="'.$uname.'"';} ?>>

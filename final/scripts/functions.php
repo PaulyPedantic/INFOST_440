@@ -16,46 +16,48 @@ function redirect($targetpg = 'login.php') {
 
 }   #end redirect function
 
-#credentialCheck function is based on book check_login function
-#function verifies the fields are filled in, and if present
-#verifies them against the database
+# credentialCheck function is based on book check_login function
+# function verifies the fields are filled in, and if present
+# verifies them against the database
 
-function credentialCheck($db, $uname = '', $pass = '', $salt) {
+function credentialCheck($db, $username = '', $hashedpass = '') {
 
 	$error = array();
 
-	// Validate the email address:
-	if (empty($uname)) {
+	# Check for username
+	if (empty($username)) {
 		$error[] = 'Please enter a username.';
 	}
 
-	// Validate the password:
+	# Check for password
 	if (empty($pass)) {
 		$error[] = 'Please enter a password.';
 	}
 
-	if (empty($error)) { // If everything's OK.
+	if (empty($error)) {
 
-		$q = "SELECT id, usernm FROM user WHERE user='$uname' AND pass=SHA1('$p')";
-		$r = @mysqli_query ($dbc, $q); // Run the query.
-		
-		// Check the result:
-		if (mysqli_num_rows($r) == 1) {
+		$q = "SELECT id, usernm, passhash FROM user WHERE user='$username'";
+		$r = @mysqli_query ($db, $q); // Run the query.
 
-			// Fetch the record:
-			$row = mysqli_fetch_array ($r, MYSQLI_ASSOC);
-	
-			// Return true and the record:
+		$row = mysqli_fetch_array ($r, MYSQLI_ASSOC);
+
+    #check password with password_verify more secure than sha1
+    if (password_verify($hashedpass, $row['passhash']){
+
 			return array(true, $row);
-			
+
 		} else { // Not a match!
 			$errors[] = 'The email address and password entered do not match those on file.';
+      return array(false, $errors);
 		}
-		
-	} // End of empty($errors) IF.
-	
-	// Return false and the errors:
-	return array(false, $errors);
 
-} // End of check_login() function.
+	}
+}  #end of credentialCheck function
+
+# authenticate function checks the session and redirects if user is not logged in
+function authenticate() {
+  if (!isset($_SESSION['loggedInUser'])) {
+    redirect();
+  }
+}
 ?>
