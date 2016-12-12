@@ -1,4 +1,5 @@
 <?php
+include('scripts/functions.php');
 include('scripts/head.php');
  ?>
 
@@ -16,7 +17,7 @@ include('scripts/head.php');
   </div>
 </article>
 
-<div class="bgArea comment">
+<div class="bgArea comment" id="comments">
   <div class="row">
     <div class="col-sm-3">
       <p class="user">Username1234 </p>

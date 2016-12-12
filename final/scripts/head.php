@@ -1,6 +1,5 @@
 <?php
-include('dbConfig.php');
-include('scripts/functions.php');
+require_once('dbConfig.php');
 
 #define a variable to track the session status
 $status = authenticate();
@@ -12,18 +11,27 @@ $pgname = basename($_SERVER['PHP_SELF'],'.php');
 
 #adjust page behavior based on page location
 switch ($pgname) {
+  case 'logout':
   case 'index':
-    $title = 'Okay with wrong';
+    $pgtitle = 'Okay with wrong';
     $subtitle = 'What I know, what I don\'t, and how being wrong makes me better.';
     $description = 'Okay With Wrong is a blog written by Pauly Russ that focuses on information science concepts, continuous learning, and personal growth.';
     $home = true;
     break;
+  case 'registerAction':
+    if (!empty($error)){
+      #if an error is set, let fall through to register page
+    } else {
+      $pgtitle='Log In';
+      $subtitle = 'Login to leave a comment.';
+      break;
+    }
   case 'register':
-    $title = 'Register';
+    $pgtitle = 'Register';
     $subtitle = 'You must have an account to leave comments. Register below or <a href="login.php" class="decorateLink">log in.</a>';
     break;
   case 'login':
-    $title = 'Log In';
+    $pgtitle = 'Log In';
     $subtitle = 'Login to leave a comment.';
     break;
   case 'createPost':
@@ -32,7 +40,7 @@ switch ($pgname) {
       redirect();
       exit();
     }
-    $title = 'Write New Post';
+    $pgtitle = 'Write New Post';
     break;
   case 'leaveComment':
     #if not user, redirect to login page
@@ -40,13 +48,13 @@ switch ($pgname) {
       redirect();
       exit();
     }
-    $title = 'Leaving a comment';
+    $pgtitle = 'Leaving a comment';
     break;
   case 'viewPost':
     # write a query to retrieve post information and include it here
     break;
   default:
-    $title = $pgname;
+    $pgtitle = $pgname;
 }
  ?>
 
@@ -68,7 +76,7 @@ switch ($pgname) {
     <link rel="stylesheet" href="css/styles.css">
     
     <!-- figure out how to get title and description variable per page efficiently -->
-    <title><?php echo $title; ?></title>
+    <title><?php echo $pgtitle; ?></title>
     <?php
     if ($description) {
       echo '<meta name="description" content="$description">';
@@ -101,7 +109,7 @@ switch ($pgname) {
           </div>
         </nav>
         <!-- header/subtitle will vary per page -->
-        <h1 class="display-4"><?php echo $title; ?></h1>
+        <h1 class="display-4"><?php echo $pgtitle; ?></h1>
         <p class="subtitle"><?php echo $subtitle; ?></p>
         <div class="text-xs-right">
           <p class="date"><?php echo $date; ?></p>

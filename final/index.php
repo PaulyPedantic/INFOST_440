@@ -1,5 +1,17 @@
 <?php
-  include('scripts/head.php');
+require_once('scripts/functions.php');
+include('scripts/head.php');
+
+if (!empty($error)){
+  echo '<div class="alert alert-danger text-xs-center">';
+  foreach($error as $err) {
+    echo $err.'<br>';
+  }
+  echo '</div>';
+} elseif (!empty($success)) {
+  echo '<div class="alert alert-success text-xs-center">'.$success.'</div>';
+}
+
 ?>
 
       <div class="row">
@@ -21,7 +33,7 @@
                   <a class="mybutton" href="#link to post page">Read Full Post <i class="fa fa-newspaper-o" aria-hidden="true"></i></a>
                 </div>
                 <div class="col-xs-4">
-                  <a class="mybutton" href="#link to post page with id for comments section">3 Comments <i class="fa fa-commenting" aria-hidden="true"></i></a>
+                  <a class="mybutton" href="#link to post page #comments">3 Comments <i class="fa fa-commenting" aria-hidden="true"></i></a>
                 </div>
               </div>
             </footer>

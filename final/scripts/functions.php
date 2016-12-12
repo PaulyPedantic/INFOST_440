@@ -63,10 +63,11 @@ function authenticate() {
   
   if (isset($_SESSION['loggedInUser'])){
     $user = $_SESSION['loggedInUser'];
+    $uid = $_SESSION['uid'];
     if (isset($_SESSION['admin'])){
       $admin = true;
     }
   }
-  return array('user' => $user, 'admin' => $admin);
+  return array('user' => $user, 'admin' => $admin, 'uid' => $uid);
 }
 ?>

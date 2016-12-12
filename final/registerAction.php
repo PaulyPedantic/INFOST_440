@@ -1,5 +1,6 @@
 <?php
-include('functions.php');
+require_once('scripts/functions.php');
+require_once('scripts/dbConfig.php');
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -10,6 +11,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $email = filter_var($_POST['email'],FILTER_SANITIZE_EMAIL);
   $optin = trim(filter_var($_POST['optin'],FILTER_SANITIZE_NUMBER_INT));
   
+  #set optin to zero manually, as passing a blank to mySQL when the box is
+  #unchecked overrides the default and inserts the blank
   if (!$optin == '1') {
     $optin = '0';
   }
@@ -26,12 +29,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   mysqli_stmt_bind_param($register, 'ssssss', $uname, $fname, $lname, $email, $hashedpass, $optin);
   #execute query
   if (mysqli_execute($register)) {
-    $success = 'You have successfully registered. Please <a href ="login.php">log in</a> to post or manage comments';
+    $success = 'You have successfully registered. Please log in to post or manage comments';
+    include('login.php');
+    exit();
   } else {
     $error[] = 'Unable to register user. Please check your information and try again.';
     $error[] = mysqli_error($db);
     $error[] = 'If you already have an account, try to <a href="login.php">log in here</a>.';
+    include('register.php');
+    exit();
   }
 } else {
+  redirect();
 }
 ?>

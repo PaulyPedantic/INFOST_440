@@ -1,6 +1,6 @@
 <?php
-include('dbConfig.php');
-include ('functions.php');
+require_once('scripts/dbConfig.php');
+require_once('scripts/functions.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	#load post values into variables
@@ -13,13 +13,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	if ($check[0]) {
 		session_start();
 		$_SESSION['loggedInUser'] = $check[1]['usernm'];
+		$_SESSION['uid'] = $check[1]['id'];
+		$success = "Successfully logged in.";
 		if ($check[1]['admin'] == '1'){
 			$_SESSION['admin'] = SHA1($check[1]['usernm']);
+			$success = "Successfully logged in as administrator.";
 		}
-		redirect('index.php');
+		include('index.php');
+		exit();
 	} else {
 		$error = $check[1];
-		include('../login.php');
+		include('login.php');
 	}
 	
 } else {

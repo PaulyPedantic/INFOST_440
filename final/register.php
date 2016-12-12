@@ -1,6 +1,6 @@
 <?php
-include('scripts/head.php');
-include('scripts/registerAction.php');
+require_once('scripts/functions.php');
+require_once('scripts/head.php');
 
 
 #if the script including the page has set an error or success, echo those out as alerts
@@ -16,7 +16,7 @@ if (!empty($error)){
  ?>
 
       <div class="row flex-items-xs-center">
-        <form class="col-sm-8" action="register.php" method="POST" id="register">
+        <form class="col-sm-8" action="registerAction.php" method="POST" id="register">
           <div class="form-group">
             <label for="uname">Choose a User Name</label>
             <input type="text" class="form-control" name="uname" placeholder="Username" value="<?php echo $uname;?>">
