@@ -9,20 +9,41 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $post = $_POST['post'];
   $author = $status['uid'];
   
-  $q = 'INSERT INTO post (title, subtitle, authorid, post, description) VALUES (?, ?, ?, ?, ?)';
-  $insertpost = @mysqli_prepare($db, $q);
-  @mysqli_stmt_bind_param($insertpost, 'ssiss', $title, $subtitle, $author, $post, $desc);
-  if (@mysqli_execute($insertpost)) {
-    $success = "Post has been successfully created.";
-    include('index.php');
-    exit();
-  } else {
-    $error[] = "Unable to insert post.";
-    $error[] = mysqli_error($db);
-    $error[] = $author. $status['uid']. $status['user'];
-    include('createPost.php');
-    exit();
+  if ($_POST['source'] == 'create') {
+    $q = 'INSERT INTO post (title, subtitle, authorid, post, description) VALUES (?, ?, ?, ?, ?)';
+    $insertpost = @mysqli_prepare($db, $q);
+    @mysqli_stmt_bind_param($insertpost, 'ssiss', $title, $subtitle, $author, $post, $desc);
+    if (@mysqli_execute($insertpost)) {
+      $success = "Post has been successfully created.";
+      include('index.php');
+      exit();
+    } else {
+      $error[] = "Unable to insert post.";
+      $error[] = mysqli_error($db);
+      include('createPost.php');
+      exit();
+    }
+  } elseif ($_POST['source'] == 'update'){
+    $id = filter_var($_POST['editId'],FILTER_SANITIZE_NUMBER_INT);
+    
+    $q = 'UPDATE post SET
+            title = ?,
+            subtitle = ?,
+            description = ?,
+            post = ?
+          WHERE id = ?';
+    $updatepost = mysqli_prepare($db, $q);
+    mysqli_stmt_bind_param($updatepost, 'ssssi', $title, $subtitle, $desc, $post, $id);
+    
+    if (mysqli_execute($updatepost)) {
+      $success = "Post has been updated succesfully.";
+      include('index.php');
+    } else {
+      $error[] = 'Something went wrong while updating.';
+      $error[] = 'mysqli_error($db)';
+      $error[] = $q;
+      include('createPost.php');
+    }
   }
-  
 }
 ?>

@@ -12,7 +12,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   
   $postcomment = mysqli_prepare($db, $q);
   mysqli_stmt_bind_param($postcomment, 'sii', $comment, $id, $uid);
-  mysqli_execute($postcomment);
+  if (mysqli_execute($postcomment)) {
+    $success = "Your comment has been posted successfully.";
+  } else {
+    $error[] = 'Something went wrong while posting.';
+    $error[] = mysqli_error($db);
+  }
   
   redirect('viewPost.php?id='.$id);
 }

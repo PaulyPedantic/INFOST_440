@@ -41,14 +41,20 @@ p.user {
     color: #009;
 }
 
-p.user {
-    margin-bottom: 0.2rem;
+.pluspad {
+    padding-top: 0.8rem;
+}
+
+p.noMargin {
+    margin-bottom: 0;
+}
+
+.commentHead {
+    border-bottom: 1px solid rgba(204, 204, 204, 0.75);
 }
 
 .date {
     font-weight: lighter;
-    padding-left: 0.5rem;
-    padding-right: 0.8rem;
 }
 
 a {

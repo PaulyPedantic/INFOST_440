@@ -11,19 +11,23 @@ $pgname = basename($_SERVER['PHP_SELF'],'.php');
 
 #adjust page behavior based on page location
 switch ($pgname) {
-  case 'logout':
   case 'postAction':
     if (!empty($error)) {
-      #if an error is set, this redirects to the create post page
+      #if an error is set, the script stays on create post page
+      $pgtitle = 'Write New Post';
+      #if the user isn't logged in to an admin session, redirect to login page
       if (!$status['admin']) {
         redirect();
         exit();
       }
-      $pgtitle = 'Write New Post';
       break;
     } else {
       #if no errors, let fall through to index
     }
+  case 'logout':
+    #let logout fall through to index
+  case 'loginAction':
+    #let loginaction fall through to index
   case 'index':
     $pgtitle = 'Okay with wrong';
     $subtitle = 'What I know, what I don\'t, and how being wrong makes me better.';
@@ -110,10 +114,11 @@ switch ($pgname) {
           } ?>
           <div class="text-xs-right col-xs">
             <?php
-            if ($status['admin']) {
-              echo '<a class="mybutton mynav" href="createPost.php">Create Post</a>';
-            }
             if ($status['user']) {
+              echo 'Welcome '.$status['user'];
+              if ($status['admin']) {
+                echo '<a class="mybutton mynav" href="createPost.php">Create Post</a>';
+              }
               echo '<a class="mybutton mynav" href="logout.php">Logout</a>';
             } else {
               echo '<a class="mybutton mynav" href="register.php">Register</a>';

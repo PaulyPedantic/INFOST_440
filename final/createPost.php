@@ -18,10 +18,29 @@ if (!empty($error)){
 } elseif (!empty($success)) {
   echo '<div class="alert alert-success text-xs-center">'.$success.'</div>';
 }
+
+if (isset($_GET['eid'])) {
+  $edit = true;
+  $editid = filter_var($_GET['eid'],FILTER_SANITIZE_NUMBER_INT);
+  $editinfo = getPostInfo($editid, $db);
+  $title = $editinfo['title'];
+  $subtitle = $editinfo['subtitle'];
+  $desc = $editinfo['description'];
+  $post = $editinfo['post'];
+}
  ?>
 
       <div class="row flex-items-xs-center">
         <form class="col-sm-8" action="postAction.php" method="POST">
+          <input type="hidden" name="source" value="<?php
+          if ($edit) {
+            echo 'update';
+          } else {
+            echo 'create';
+          } ?>">
+          <input type="hidden" name="editId" value="<?php
+            echo $editid;
+          ?>">
           <div class="form-group">
             <label for="title">Post Title</label>
             <input type="text" class="form-control" name="title" placeholder="Title" value="<?php echo $title; ?>">

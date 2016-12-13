@@ -36,9 +36,9 @@ function credentialCheck($db, $username = '', $pass = '') {
 	if (empty($error)) {
 
 		$q = "SELECT id, usernm, passhash, admin FROM user WHERE usernm='$username'";
-		$r = mysqli_query ($db, $q); // Run the query.
+		$r = @mysqli_query ($db, $q); // Run the query.
 
-		$row = mysqli_fetch_array ($r, MYSQLI_ASSOC);
+		$row = @mysqli_fetch_array ($r, MYSQLI_ASSOC);
 
     #check password with password_verify more secure than sha1
     if (password_verify($pass, $row['passhash'])) {
@@ -77,8 +77,8 @@ function getPostInfo($id, $db) {
         FROM post p LEFT OUTER JOIN user u ON p.authorid = u.id
         WHERE p.id = $id";
   
-  $postinfo = mysqli_query($db, $q);
-  $pi = mysqli_fetch_array($postinfo, MYSQLI_ASSOC);
+  $postinfo = @mysqli_query($db, $q);
+  $pi = @mysqli_fetch_array($postinfo, MYSQLI_ASSOC);
   
   return $pi;
 }
@@ -86,8 +86,8 @@ function getPostInfo($id, $db) {
 function getCommentCount($db, $postid){
   $q = 'SELECT COUNT(*) as numComments FROM comment WHERE postid = '.$postid;
   
-  $result = mysqli_query($db, $q);
-  $ccnt = mysqli_fetch_array($result, MYSQLI_ASSOC);
+  $result = @mysqli_query($db, $q);
+  $ccnt = @mysqli_fetch_array($result, MYSQLI_ASSOC);
   
   return $ccnt['numComments'];
 }

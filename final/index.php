@@ -26,7 +26,7 @@ if ($getposts) {
                   <header>
                     <h2>'.$row['title'].'</h2>
                   </header>
-                  <p>'.substr(nl2br($row['post']),1,1000).' ...</p>
+                  <p>'.substr(nl2br($row['post']),0,1000).' ...</p>
                   <footer>
                     <div class="row flex-items-xs-between">
                       <div class="col-xs-4 text-xs-center">
@@ -39,8 +39,18 @@ if ($getposts) {
     echo '            <div class="col-xs-4">
                         <a class="mybutton" href="viewPost.php?id='.$row['id'].'#comments">'.$numcomments.' Comments <i class="fa fa-commenting" aria-hidden="true"></i></a>
                       </div>
-                    </div>
-                  </footer>
+                    </div>';
+                    if ($status['admin']) {
+    echo             '<div class="row flex-items-xs-around">
+                        <div class="col-xs-6 text-xs-center">
+                          <a href="createPost.php?eid='.$row['id'].'" class="mybutton">Edit Post <i class="fa fa-pencil" aria-hidden="true"></i></a>
+                        </div>
+                        <div class="col-xs-6 text-xs-center">
+                          <a href="deletePost.php?dltid='.$row['id'].'" class="mybutton">Delete Post <i class="fa fa-exclamation-circle" aria-hidden="true"></i></a>
+                        </div>
+                      </div>';
+                    }
+    echo          '</footer>
                 </article>';
   }
 }

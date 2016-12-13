@@ -8,8 +8,18 @@ echo '<p>'.nl2br($pi['post']).'</p>';
 echo '  <div class="text-xs-right">
     <p>Written By: '.$pi['fname'].' '.$pi['lname'].'<br>
     '.$pi['date'].'</p>
-  </div>
-</article>';
+  </div>';
+if ($status['admin']) {
+  echo '<div class="row flex-items-xs-around">
+      <div class="col-xs-6 text-xs-center">
+        <a href="createPost.php?eid='.$pi['id'].'" class="mybutton">Edit Post <i class="fa fa-pencil" aria-hidden="true"></i></a>
+      </div>
+      <div class="col-xs-6 text-xs-center">
+        <a href="deletePost.php?dltid='.$pi['id'].'" class="mybutton">Delete Post <i class="fa fa-exclamation-circle" aria-hidden="true"></i></a>
+      </div>
+    </div>';
+  }
+echo '</article>';
 
 echo '<div id="comments">';
 if ($status['user']) {
@@ -29,7 +39,7 @@ if ($status['user']) {
   echo '<div class="alert alert-info text-xs-center">Please <a href="login.php">log in</a> if you\'d like to post a comment</div>';
 }
 
-$q = "SELECT DATE_FORMAT(c.date, '%M %e %Y') AS date, c.comment, u.usernm FROM comment c
+$q = "SELECT DATE_FORMAT(c.date, '%M %e %Y') AS date, DATE_FORMAT(c.date, '%l:%i %p') as time, c.id, c.comment, u.usernm FROM comment c
 LEFT OUTER JOIN user u ON c.userid = u.id
 WHERE c.postid = ".$pi['id'];
 
@@ -37,16 +47,33 @@ $commentinfo = mysqli_query($db, $q);
 while ($row = mysqli_fetch_array($commentinfo, MYSQLI_ASSOC)){
 
   echo '<div class="bgArea comment">
-  <div class="row">
-    <div class="col-sm-3">
-      <p class="user">'.$row['usernm'].'</p>
-      <p class="date">'.$row['date'].'</p>
+  <div class="row commentHead flex-items-xs-middle">
+    <div class="col-sm-4 text-xs-center">
+      <p class="user noMargin">'.$row['usernm'].'</p>
     </div>
-    <div class="col-sm-9">
-      <p>'.$row['comment'].'</p>
+    <div class="col-sm-4 text-xs-center">
+      <p class="date noMargin">'.$row['date'].'</p>
+    </div>
+    <div class="col-sm-4 text-xs-center">
+      <p class="date noMargin">'.$row['time'].'</p>
     </div>
   </div>
-</div>';
+  <div class="row flex-items-xs-middle">
+    <div class="col-xs-12 pluspad">
+      <p class="noMargin">'.$row['comment'].'</p>
+    </div>
+  </div>';
+  if ($status['user'] == $row['usernm'] || !empty($status['admin'])) {
+    echo '<div class="row flex-items-xs-around pluspad">
+      <div class="col-xs-6 text-xs-center">
+        <a href="submitComment.php?cid='.$row['id'].'" class="mybutton">Edit Comment <i class="fa fa-pencil" aria-hidden="true"></i></a>
+      </div>
+      <div class="col-xs-6 text-xs-center">
+        <a href="deleteComment.php?dltcid='.$row['id'].'" class="mybutton">Delete Comment <i class="fa fa-exclamation-circle" aria-hidden="true"></i></a>
+      </div>
+    </div>';
+  }
+echo '</div>';
 }
 ?>
 </div>
