@@ -15,7 +15,7 @@ if ($status['admin']) {
         <a href="createPost.php?eid='.$pi['id'].'" class="mybutton">Edit Post <i class="fa fa-pencil" aria-hidden="true"></i></a>
       </div>
       <div class="col-xs-6 text-xs-center">
-        <a href="deletePost.php?dltid='.$pi['id'].'" class="mybutton">Delete Post <i class="fa fa-exclamation-circle" aria-hidden="true"></i></a>
+        <a href="postAction.php?dltid='.$pi['id'].'" class="mybutton">Delete Post <i class="fa fa-exclamation-circle" aria-hidden="true"></i></a>
       </div>
     </div>';
   }

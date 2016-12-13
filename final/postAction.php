@@ -35,15 +35,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $updatepost = mysqli_prepare($db, $q);
     mysqli_stmt_bind_param($updatepost, 'ssssi', $title, $subtitle, $desc, $post, $id);
     
-    if (mysqli_execute($updatepost)) {
+    if (mysqli_execute($updatepost) &&  mysqli_stmt_affected_rows($updatepost) == 1) {
       $success = "Post has been updated succesfully.";
       include('index.php');
     } else {
       $error[] = 'Something went wrong while updating.';
-      $error[] = 'mysqli_error($db)';
-      $error[] = $q;
+      $error[] = 'Unable to find a post to edit. Please be sure the desired post exists.';
       include('createPost.php');
     }
+  }
+} else if (isset($_GET['dltid']) && !empty($status['admin'])) {
+  $id = filter_var($_GET['dltid'], FILTER_SANITIZE_NUMBER_INT);
+  $q = 'DELETE FROM post WHERE id = ?';
+  $deletepost = @mysqli_prepare($db, $q);
+  @mysqli_stmt_bind_param($deletepost, 'i', $id);
+  if (@mysqli_execute($deletepost)) {
+    $success = 'This post has been deleted.';
+    include('index.php');
+  } else {
+    $error[] = 'Something went wrong while deleting.';
+    $error[] = 'mysqli_error($db)';
+    include('createPost.php');
   }
 }
 ?>

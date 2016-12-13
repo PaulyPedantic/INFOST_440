@@ -115,7 +115,7 @@ switch ($pgname) {
           <div class="text-xs-right col-xs">
             <?php
             if ($status['user']) {
-              echo 'Welcome '.$status['user'];
+              echo 'Welcome '.$status['user'].' ';
               if ($status['admin']) {
                 echo '<a class="mybutton mynav" href="createPost.php">Create Post</a>';
               }

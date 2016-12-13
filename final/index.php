@@ -12,7 +12,7 @@ if (!empty($error)){
   echo '<div class="alert alert-success text-xs-center">'.$success.'</div>';
 }
 
-$q = 'SELECT id, title, subtitle, DATE_FORMAT(date, \'%M %e, %Y\') AS date, description, post FROM post';
+$q = 'SELECT p.id, p.title, p.subtitle, DATE_FORMAT(p.date, \'%M %e, %Y\') AS mdyDate, p.description, p.post FROM post p ORDER BY p.date DESC';
 $getposts = @mysqli_query($db, $q);
 if ($getposts) {
   echo '
@@ -30,7 +30,7 @@ if ($getposts) {
                   <footer>
                     <div class="row flex-items-xs-between">
                       <div class="col-xs-4 text-xs-center">
-                        <p>'.$row['date'].'</p>
+                        <p>'.$row['mdyDate'].'</p>
                       </div>
                       <div class="col-xs-4">
                         <a class="mybutton" href="viewPost.php?id='.$row['id'].'">Read Full Post <i class="fa fa-newspaper-o" aria-hidden="true"></i></a>
@@ -46,7 +46,7 @@ if ($getposts) {
                           <a href="createPost.php?eid='.$row['id'].'" class="mybutton">Edit Post <i class="fa fa-pencil" aria-hidden="true"></i></a>
                         </div>
                         <div class="col-xs-6 text-xs-center">
-                          <a href="deletePost.php?dltid='.$row['id'].'" class="mybutton">Delete Post <i class="fa fa-exclamation-circle" aria-hidden="true"></i></a>
+                          <a href="postAction.php?dltid='.$row['id'].'" class="mybutton">Delete Post <i class="fa fa-exclamation-circle" aria-hidden="true"></i></a>
                         </div>
                       </div>';
                     }
