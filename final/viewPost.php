@@ -1,7 +1,17 @@
 <?php
 include('scripts/functions.php');
 include('scripts/head.php');
+include('submitComment.php');
 
+if (!empty($error)){
+  echo '<div class="alert alert-danger text-xs-center">';
+  foreach($error as $err) {
+    echo $err.'<br>';
+  }
+  echo '</div>';
+} elseif (!empty($success)) {
+  echo '<div class="alert alert-success text-xs-center">'.$success.'</div>';
+}
 
 echo '<article class="bgArea">';
 echo '<p>'.nl2br($pi['post']).'</p>';
@@ -23,7 +33,7 @@ echo '</article>';
 
 echo '<div id="comments">';
 if ($status['user']) {
-  echo '<form action="submitComment.php" method="POST" id="comment" class="text-xs-center">
+  echo '<form action="viewPost.php?id='.$pi['id'].'" method="POST" id="comment" class="text-xs-center">
   <input type="hidden" name="id" value="'.$pi['id'].'">
   <div class="form-group row flex-items-xs-middle">
     <label for="comment" class="sr-only">Comment</label>
@@ -63,10 +73,10 @@ while ($row = mysqli_fetch_array($commentinfo, MYSQLI_ASSOC)){
       <p class="noMargin">'.$row['comment'].'</p>
     </div>
   </div>';
-  if ($status['user'] == $row['usernm'] || !empty($status['admin'])) {
+  if ($status['user'] == $row['usernm'] || !($status['admin'])) {
     echo '<div class="row flex-items-xs-around pluspad">
       <div class="col-xs-6 text-xs-center">
-        <a href="submitComment.php?cid='.$row['id'].'" class="mybutton">Edit Comment <i class="fa fa-pencil" aria-hidden="true"></i></a>
+        <a href="editComment.php?ecid='.$row['id'].'" class="mybutton">Edit Comment <i class="fa fa-pencil" aria-hidden="true"></i></a>
       </div>
       <div class="col-xs-6 text-xs-center">
         <a href="deleteComment.php?dltcid='.$row['id'].'" class="mybutton">Delete Comment <i class="fa fa-exclamation-circle" aria-hidden="true"></i></a>

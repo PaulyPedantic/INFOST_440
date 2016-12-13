@@ -22,7 +22,7 @@ if (!empty($error)){
 if (isset($_GET['eid'])) {
   $edit = true;
   $editid = filter_var($_GET['eid'],FILTER_SANITIZE_NUMBER_INT);
-  $editinfo = getPostInfo($editid, $db);
+  $editinfo = getPostInfo($db, $editid);
   $title = $editinfo['title'];
   $subtitle = $editinfo['subtitle'];
   $desc = $editinfo['description'];

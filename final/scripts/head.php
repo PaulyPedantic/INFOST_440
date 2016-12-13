@@ -67,10 +67,17 @@ switch ($pgname) {
     $pgtitle = 'Leaving a comment';
     break;
   case 'viewPost':
-    $pi = getpostinfo($_GET['id'], $db);
+    $pi = getpostinfo($db, $_GET['id']);
     $pgtitle = $pi['title'];
     $subtitle = $pi['subtitle'];
     $description = $pi['description'];
+    break;
+  case 'editComment':
+    $pgtitle = 'Editing Comment';
+    break;
+  case 'deleteComment':
+    $pgtitle = 'Are you Sure?';
+    $subtitle = 'As in: Absolutely. Positively. 100% sure you want to do this?';
     break;
   default:
     $pgtitle = $pgname;

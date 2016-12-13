@@ -71,7 +71,7 @@ function authenticate() {
   return array('user' => $user, 'admin' => $admin, 'uid' => $uid);
 }
 
-function getPostInfo($id, $db) {
+function getPostInfo($db, $id) {
   #query selects all information for given post
   $q = "SELECT p.id, p.title, p.subtitle, p.description, p.post, DATE_FORMAT(p.date, '%M %e, %Y') AS date, u.fname, u.lname
         FROM post p LEFT OUTER JOIN user u ON p.authorid = u.id
@@ -90,5 +90,13 @@ function getCommentCount($db, $postid){
   $ccnt = @mysqli_fetch_array($result, MYSQLI_ASSOC);
   
   return $ccnt['numComments'];
+}
+
+function getCommentInfo($db, $commentid) {
+  $q = 'SELECT * FROM comment WHERE id = '.$commentid;
+  
+  $result = @mysqli_query($db, $q);
+  $commentreturn = mysqli_fetch_array($result, MYSQLI_ASSOC);
+  return @$commentreturn;
 }
 ?>

@@ -33,7 +33,7 @@ if ($getposts) {
                         <p>'.$row['mdyDate'].'</p>
                       </div>
                       <div class="col-xs-4">
-                        <a class="mybutton" href="viewPost.php?id='.$row['id'].'">Read Full Post <i class="fa fa-newspaper-o" aria-hidden="true"></i></a>
+                        <a class="mybutton" href="viewPost.php?id='.$row['id'].'">View Full Post <i class="fa fa-newspaper-o" aria-hidden="true"></i></a>
                       </div>';
                       $numcomments = getCommentCount($db, $row['id']);
     echo '            <div class="col-xs-4">
