@@ -3,11 +3,25 @@ require_once('scripts/dbConfig.php');
 require_once('scripts/functions.php');
 $status = authenticate();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  $title = filter_var($_POST['title'],FILTER_SANITIZE_STRING);
-  $subtitle = filter_var($_POST['subtitle'],FILTER_SANITIZE_STRING);
-  $desc = filter_var($_POST['desc'],FILTER_SANITIZE_STRING);
-  $post = $_POST['post'];
+  if (empty($title = filter_var($_POST['title'],FILTER_SANITIZE_STRING))){
+    $error[] = 'A title is required for all posts.';
+  }
+  if (empty($subtitle = filter_var($_POST['subtitle'],FILTER_SANITIZE_STRING))) {
+    $error[] = 'A subtitle is required for all posts';
+  }
+  if (empty($desc = filter_var($_POST['desc'],FILTER_SANITIZE_STRING))) {
+    $error[] = 'A description is required for all posts';
+  }
+  if (empty($post = $_POST['post'])) {
+    $error[] = 'The post cannot be blank.';
+  }
   $author = $status['uid'];
+  
+  if ($error) {
+    $isedit = $edit;
+    include('createPost.php');
+    exit();
+  }
   
   if ($_POST['source'] == 'create') {
     $q = 'INSERT INTO post (title, subtitle, authorid, post, description) VALUES (?, ?, ?, ?, ?)';
@@ -23,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       include('createPost.php');
       exit();
     }
-  } elseif ($_POST['source'] == 'update'){
+  } elseif ($_POST['source'] == 'update' || $edit){
     $id = filter_var($_POST['editId'],FILTER_SANITIZE_NUMBER_INT);
     
     $q = 'UPDATE post SET
@@ -40,7 +54,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       include('index.php');
     } else {
       $error[] = 'Something went wrong while updating.';
-      $error[] = 'Unable to find a post to edit. Please be sure the desired post exists.';
+      $error[] = 'You can&apos;t exactly update a post if you didn&apos;t change anything.';
+      $isedit = true;
       include('createPost.php');
     }
   }

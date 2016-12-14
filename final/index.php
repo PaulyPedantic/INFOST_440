@@ -82,7 +82,7 @@ if ($getposts) {
                           <a href="createPost.php?eid='.$row['id'].'" class="mybutton">Edit Post <i class="fa fa-pencil" aria-hidden="true"></i></a>
                         </div>
                         <div class="col-xs-6 text-xs-center">
-                          <a href="postAction.php?dltid='.$row['id'].'" class="mybutton">Delete Post <i class="fa fa-exclamation-circle" aria-hidden="true"></i></a>
+                          <a href="deletePost.php?dltid='.$row['id'].'" class="mybutton">Delete Post <i class="fa fa-exclamation-circle" aria-hidden="true"></i></a>
                         </div>
                       </div>';
                     }

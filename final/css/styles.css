@@ -4,20 +4,18 @@ body {
     background-size: cover;
     font-family: 'Didact Gothic', sans-serif;
 }
-
 /* apply title font to select elements*/
 .mynav,
+.mynavpages,
 h2,
 h3,
 p.subtitle,
 p.user {
     font-family: 'Cabin', sans-serif;
 }
-
- /* assign elements to receive cursive title font */
+/* assign elements to receive cursive title font */
 .asideHead,
 .mynavbrand,
-.mynavpages,
 h1 {
     font-family: 'Cabin Sketch', cursive;
 }
@@ -27,7 +25,6 @@ a {
     text-decoration: none;
     color: #009;
 }
-
 /* Apply link color to icons */
 a > i {
     color: #009;
@@ -38,7 +35,6 @@ a:hover > i {
     text-decoration: none;
     color: #00c;
 }
-
 /* adjust nav links*/
 .mynav {
     margin-right: auto;
@@ -52,7 +48,6 @@ a:hover > i {
 .mynavbrand {
     font-size: 1.5em;
 }
-
 /* define background colored areas */
 .bgArea {
     margin-bottom: 1.5rem;
@@ -60,12 +55,10 @@ a:hover > i {
     border-radius: 1rem;
     background-color: rgba(255, 255, 255, .25);
 }
-
 /* override padding for heading */
 .pg-head {
     padding: 0.5rem 0;
 }
-
 /* add padding to h1 in heading are */
 .pg-head > h1 {
     padding: 2rem 0 1rem;
@@ -78,7 +71,6 @@ a:hover > i {
 .date {
     font-weight: lighter;
 }
-
 /* not sure why this class was deprecated from bootstrap v3 to v4*/
 .img-circle {
     margin-bottom: 1.5rem;
@@ -101,7 +93,6 @@ a:hover > i {
 .pluspad {
     padding-top: 0.8rem;
 }
-
 /* style elements from comment area */
 p.noMargin {
     margin-bottom: 0;
@@ -112,7 +103,6 @@ p.user {
     font-size: 1.2em;
     color: #009;
 }
-
 /* define a class in the rare case I want to have an underlined link */
 a.decorateLink {
     text-decoration: underline;

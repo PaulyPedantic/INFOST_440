@@ -66,6 +66,11 @@
 			<a href="http://paulruss.uwmsois.com/assignment8/" class="btn btn-success">Assignment 8</a>
 		</div> <!-- end of 2 grid col -->
 	</div> <!-- end of row -->
+		<div class="row">
+			<div class="col-md-8 col-md-offset-4">
+				<a href="http://paulruss.uwmsois.com/final/" class="btn btn-primary btn-block" style="margin-bottom: 1.5rem;">Final</a>
+			</div>
+		</div>
   </div> <!-- end of container -->
  </body>
 </html>

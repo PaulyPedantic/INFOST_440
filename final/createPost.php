@@ -4,10 +4,9 @@ $status = authenticate();
 
 if (!$status['user']) {
   redirect();
-} else {
-  include('scripts/head.php');
-  
 }
+
+require_once('scripts/head.php');
 
 if (!empty($error)){
   echo '<div class="alert alert-danger text-xs-center">';
@@ -19,14 +18,36 @@ if (!empty($error)){
   echo '<div class="alert alert-success text-xs-center">'.$success.'</div>';
 }
 
-if (isset($_GET['eid'])) {
-  $edit = true;
+# when edit post link is clicked, navigates to this page with get method
+# and header sets $edit
+if (isset($edit) && $_SERVER['REQUEST_METHOD'] == 'GET') {
   $editid = filter_var($_GET['eid'],FILTER_SANITIZE_NUMBER_INT);
   $editinfo = getPostInfo($db, $editid);
   $title = $editinfo['title'];
   $subtitle = $editinfo['subtitle'];
   $desc = $editinfo['description'];
   $post = $editinfo['post'];
+}
+
+# if an error is encountered, this page gets redirected to using the post method
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  # check the edit flag and pull the id from the hidden field of the post method
+  # and get existing post info from database
+  if ($edit){
+    $editid = filter_var($_POST['editId'],FILTER_SANITIZE_NUMBER_INT);
+    $editinfo = getPostInfo($db, $editid);
+    $title = $editinfo['title'];
+    $subtitle = $editinfo['subtitle'];
+    $desc = $editinfo['description'];
+    $post = $editinfo['post'];
+  } else {
+    # if creating a new post failed with errors, get the posted info and set the
+    # variables to be used for making the form sticky
+    $title = $_POST['title'];
+    $subtitle = $_POST['subtitle'];
+    $desc = $_POST['desc'];
+    $post = $_POST['post'];
+  }
 }
  ?>
 
@@ -51,7 +72,8 @@ if (isset($_GET['eid'])) {
             </div>
             <div class="form-group">
               <label for="desc">Description</label>
-              <textarea class="form-control" name="desc" rows="2" maxlength="150" placeholder="Describe the page in 150 characters or less. This description will be used for search optimization."><?php echo $desc; ?></textarea>
+              <textarea class="form-control" name="desc" rows="2" maxlength="150" placeholder="Enter a page description"><?php echo $desc; ?></textarea>
+              <small class="form-text text-muted" id="descHelp">Describe the page in 150 characters or less. This won&apos;t be seen by site visitors, but presented to search engines for optimization.</small>
             </div>
             <div class="form-group">
               <label for="post">Post</label>

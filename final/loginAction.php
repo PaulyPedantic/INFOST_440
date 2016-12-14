@@ -4,7 +4,7 @@ require_once('scripts/functions.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	#load post values into variables
-	$uname = filter_var($_POST['uname'],FILTER_SANITIZE_STRING);
+	$uname = trim(filter_var($_POST['uname'],FILTER_SANITIZE_STRING));
   $pass = trim(filter_var($_POST['pass'],FILTER_SANITIZE_STRING));
 
 
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	} else {
 		foreach ($check[1] as $key => $value) {
 			$error[] = $value;
-		} 
+		}
 
 		include('login.php');
 	}

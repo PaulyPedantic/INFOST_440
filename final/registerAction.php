@@ -6,11 +6,11 @@ require_once('scripts/dbConfig.php');
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   #load post values into an array for easier checking
   $info = array(
-    'username' => filter_var($_POST['uname'],FILTER_SANITIZE_STRING),
-    'firstname' => filter_var($_POST['fname'],FILTER_SANITIZE_STRING),
-    'lastname' => filter_var($_POST['lname'],FILTER_SANITIZE_STRING),
-    'email' => filter_var($_POST['email'],FILTER_SANITIZE_EMAIL),
-    'password' => filter_var($_POST['pass'],FILTER_SANITIZE_STRING),
+    'username' => trim(filter_var($_POST['uname'],FILTER_SANITIZE_STRING)),
+    'firstname' => trim(filter_var($_POST['fname'],FILTER_SANITIZE_STRING)),
+    'lastname' => trim(filter_var($_POST['lname'],FILTER_SANITIZE_STRING)),
+    'email' => trim(filter_var($_POST['email'],FILTER_SANITIZE_EMAIL)),
+    'password' => trim(filter_var($_POST['pass'],FILTER_SANITIZE_STRING)),
   );
     $emailopt = filter_var($_POST['optin'],FILTER_SANITIZE_NUMBER_INT);
   #set optin to zero manually, as passing a blank to mySQL when the box is

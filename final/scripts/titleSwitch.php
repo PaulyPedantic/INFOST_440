@@ -7,7 +7,7 @@ $pgname = basename($_SERVER['PHP_SELF'],'.php');
 #adjust page behavior based on page location
 switch ($pgname) {
   case 'postAction':
-    if (!empty($error)) {
+    if (!empty($error) && empty($isedit)) {
       #if an error is set, the script stays on create post page
       $pgtitle = 'Write New Post';
       #if the user isn't logged in to an admin session, redirect to login page
@@ -15,6 +15,10 @@ switch ($pgname) {
         redirect();
         exit();
       }
+      break;
+    } else if ($isedit){
+      $pgtitle = 'Edit Post';
+      $edit = true;
       break;
     } else {
       #if no errors, let fall through to index
@@ -52,7 +56,12 @@ switch ($pgname) {
       redirect();
       exit();
     }
-    $pgtitle = 'Write New Post';
+    if (isset($_GET['eid'])) {
+      $pgtitle = 'Edit Post';
+      $edit = true;
+    } else {
+      $pgtitle = 'Write New Post';
+    }
     break;
   case 'leaveComment':
     #if not user, redirect to login page
@@ -72,6 +81,8 @@ switch ($pgname) {
     $pgtitle = 'Editing Comment';
     break;
   case 'deleteComment':
+    # use same info for delete comment or post
+  case 'deletePost':
     $pgtitle = 'Are you Sure?';
     $subtitle = 'As in: Absolutely. Positively. 100% sure you want to do this?';
     break;

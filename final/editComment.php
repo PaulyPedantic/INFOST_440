@@ -20,9 +20,15 @@ if ($_SERVER['REQUEST_METHOD'] != 'GET' || !$status['user']) {
       <textarea name="comment" rows="2" maxlength="500" placeholder="What do you think?" class="form-control">'.$comment.'</textarea>
     </div>
     <div class="col-xs-3">
-      <button type="submit" form="editcomment" name="submit" value="Submit" class="btn btn-lg btn-primary">Update comment</button>
+      <a href="viewPost.php?id='.$commentinfo['postid'].'" alt="exit" class="btn btn-lg btn-block btn-danger">Go Back</a>
     </div>
   </div>
+  <div class="row flex-items-xs-middle">
+    <div class="col-xs-9">
+    </div>
+    <div class="col-xs-3">
+      <button type="submit" form="editcomment" name="submit" value="Submit" class="btn btn-lg btn-block btn-primary">Update comment</button>
+    </div>
 </form>';
 }
 
