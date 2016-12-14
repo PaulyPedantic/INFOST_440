@@ -4,84 +4,8 @@ require_once('dbConfig.php');
 #define a variable to track the session status
 $status = authenticate();
 
-#define variables to handle header content that varies by page
-$date = '';
-$subtitle = '';
-$pgname = basename($_SERVER['PHP_SELF'],'.php');
-
-#adjust page behavior based on page location
-switch ($pgname) {
-  case 'postAction':
-    if (!empty($error)) {
-      #if an error is set, the script stays on create post page
-      $pgtitle = 'Write New Post';
-      #if the user isn't logged in to an admin session, redirect to login page
-      if (!$status['admin']) {
-        redirect();
-        exit();
-      }
-      break;
-    } else {
-      #if no errors, let fall through to index
-    }
-  case 'logout':
-    #let logout fall through to index
-  case 'loginAction':
-    #let loginaction fall through to index
-  case 'index':
-    $pgtitle = 'Okay with wrong';
-    $subtitle = 'What I know, what I don\'t, and how being wrong makes me better.';
-    $description = 'Okay With Wrong is a blog written by Pauly Russ that focuses on information science concepts, continuous learning, and personal growth.';
-    $home = true;
-    break;
-  case 'registerAction':
-    if (!empty($error)){
-      #if an error is set, let fall through to register page
-    } else {
-      $pgtitle='Log In';
-      $subtitle = 'Login to leave a comment.';
-      break;
-    }
-  case 'register':
-    $pgtitle = 'Register';
-    $subtitle = 'You must have an account to leave comments. Register below or <a href="login.php" class="decorateLink">log in.</a>';
-    break;
-  case 'login':
-    $pgtitle = 'Log In';
-    $subtitle = 'Login to leave a comment.';
-    break;
-  case 'createPost':
-    #if not admin, redirect to login page
-    if (!$status['admin']) {
-      redirect();
-      exit();
-    }
-    $pgtitle = 'Write New Post';
-    break;
-  case 'leaveComment':
-    #if not user, redirect to login page
-    if (!$status['user']) {
-      redirect();
-      exit();
-    }
-    $pgtitle = 'Leaving a comment';
-    break;
-  case 'viewPost':
-    $pi = getpostinfo($db, $_GET['id']);
-    $pgtitle = $pi['title'];
-    $subtitle = $pi['subtitle'];
-    $description = $pi['description'];
-    break;
-  case 'editComment':
-    $pgtitle = 'Editing Comment';
-    break;
-  case 'deleteComment':
-    $pgtitle = 'Are you Sure?';
-    $subtitle = 'As in: Absolutely. Positively. 100% sure you want to do this?';
-    break;
-  default:
-    $pgtitle = $pgname;
-}
+#script has a large switch statement to set variables for pgtitle, desc, etc.
+include('scripts/titleSwitch.php');
  ?>
 
 <!DOCTYPE html>
@@ -100,7 +24,7 @@ switch ($pgname) {
     <link href="https://fonts.googleapis.com/css?family=Cabin|Cabin+Sketch|Didact+Gothic" rel="stylesheet">
     <!-- My custom stylesheet last so I can override styles set above as needed -->
     <link rel="stylesheet" href="css/styles.css">
-    
+
     <!-- figure out how to get title and description variable per page efficiently -->
     <title><?php echo $pgtitle; ?></title>
     <?php
@@ -112,7 +36,7 @@ switch ($pgname) {
 
   <body>
     <div class="container">
-      <header class="text-xs-center pg-head">
+      <header class="text-xs-center pg-head bgArea">
         <nav class="row flex-items-xs-middle">
           <?php if (!$home) {   ## only show home button on pages other than home
           echo '<div class="text-xs-left col-xs">
@@ -132,7 +56,7 @@ switch ($pgname) {
               echo '<a class="mybutton mynav" href="login.php">Login</a>';
             }
             ?>
-            
+
           </div>
         </nav>
         <!-- header/subtitle will vary per page -->

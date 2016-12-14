@@ -12,14 +12,50 @@ if (!empty($error)){
   echo '<div class="alert alert-success text-xs-center">'.$success.'</div>';
 }
 
-$q = 'SELECT p.id, p.title, p.subtitle, DATE_FORMAT(p.date, \'%M %e, %Y\') AS mdyDate, p.description, p.post FROM post p ORDER BY p.date DESC';
+#pagination
+
+// Check if current page has already been determined.
+if (isset($_GET['p']) && is_numeric($_GET['p'])) {
+  // use + operator to ensure variable is cast as int
+  $curpg = +$_GET['p'];
+} else {
+  // Current page isn't set, start at 1
+  $curpg = 1;
+}
+
+// get the number of posts in database
+$numposts = getCount($db, 'post');
+
+// declare a variable to limit number of records on a page to 4
+$limit = 4;
+// declare a variable to track how many records were displayed on previous pages
+$skipcnt = 0;
+
+// Calculate the number of pages...
+if ($numposts > $limit) {
+  // If more than 1 page. Round up posts divided by limit to get pages
+  $pgcount = ceil ($numposts/$limit);
+  // We want to skip records shown on previous pages
+  // the number of the previous page is the number of pages already seen and
+  // we know that we've shown the limit on each page
+  $skipcnt = ($curpg -1) * $limit;
+} else {
+  // if not more than one page, hardcode 1 page and no skips
+  $pgcount = 1;
+  $skipcnt = 0;
+}
+# end of pagination
+
+# pull posts out of the database and loop through them
+$q = 'SELECT p.id, p.title, p.subtitle, DATE_FORMAT(p.date, \'%M %e, %Y\') AS mdyDate, p.description, p.post FROM post p ORDER BY p.date DESC LIMIT '.$skipcnt.','.$limit;
+
 $getposts = @mysqli_query($db, $q);
 if ($getposts) {
   echo '
        <div class="row">
           <section class="col-sm">';
 
-              
+
   while ($row = mysqli_fetch_array($getposts, MYSQLI_ASSOC)){
     echo '
                 <article class="bgArea">
@@ -33,9 +69,9 @@ if ($getposts) {
                         <p>'.$row['mdyDate'].'</p>
                       </div>
                       <div class="col-xs-4">
-                        <a class="mybutton" href="viewPost.php?id='.$row['id'].'">View Full Post <i class="fa fa-newspaper-o" aria-hidden="true"></i></a>
+                        <a class="mybutton" href="viewPost.php?id='.$row['id'].'">Read Full Post <i class="fa fa-newspaper-o" aria-hidden="true"></i></a>
                       </div>';
-                      $numcomments = getCommentCount($db, $row['id']);
+                      $numcomments = getCount($db, 'comment', $row['id'], 'postid');
     echo '            <div class="col-xs-4">
                         <a class="mybutton" href="viewPost.php?id='.$row['id'].'#comments">'.$numcomments.' Comments <i class="fa fa-commenting" aria-hidden="true"></i></a>
                       </div>
@@ -54,23 +90,27 @@ if ($getposts) {
                 </article>';
   }
 }
+
+
+if ($pgcount > 1) {
+  if ($curpg < $pgcount) {
+    $nextpg = $curpg + 1;
+    echo '<nav class="row flex-items-xs-middle">
+      <div class="text-xs-left col-xs">
+        <a class="mybutton mynavbrand" href="index.php?p='.$nextpg.'"><i class="fa fa-hand-o-left" aria-hidden="true"></i> Older Posts</a>
+      </div>';
+  }
+  if ($curpg > 1) {
+    $prevpg = $curpg - 1;
+    echo '<div class="text-xs-right col-xs">
+      <a class="mybutton mynavbrand" href="index.php?p='.$prevpg.'">Newer Posts <i class="fa fa-hand-o-right" aria-hidden="true"></i></a>
+    </div>';
+  }
+  echo '  </nav>';
+}
+
 ?>
-
-
-
-
-
-          <nav class="row flex-items-xs-middle">
-            <div class="text-xs-left col-xs">
-              <a class="mybutton mynavbrand" href=""><i class="fa fa-hand-o-left" aria-hidden="true"></i> Older Posts</a>
-            </div>
-            <div class="text-xs-right col-xs">
-              <a class="mybutton mynavbrand" href="">Newer Posts <i class="fa fa-hand-o-right" aria-hidden="true"></i></a>
-            </div>
-          </nav>
-        </section>
-
-
+  </section>
         <aside class="col-sm-3 flex-sm-first text-xs-center">
           <h2 class="h5 asideHead">About the Author: </h2>
           <img src="images/me.jpg" alt="Pauly hiking with his kids" class="img img-fluid img-circle">

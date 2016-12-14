@@ -6,10 +6,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	#load post values into variables
 	$uname = filter_var($_POST['uname'],FILTER_SANITIZE_STRING);
   $pass = trim(filter_var($_POST['pass'],FILTER_SANITIZE_STRING));
-	
-	
+
+
 	$check = credentialCheck($db, $uname, $pass);
-	
+
 	if ($check[0]) {
 		session_start();
 		$_SESSION['loggedInUser'] = $check[1]['usernm'];
@@ -22,10 +22,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		include('index.php');
 		exit();
 	} else {
-		$error = $check[1];
+		foreach ($check[1] as $key => $value) {
+			$error[] = $value;
+		} 
+
 		include('login.php');
 	}
-	
+
 } else {
 	redirect();
 }

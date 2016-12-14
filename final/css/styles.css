@@ -5,21 +5,7 @@ body {
     font-family: 'Didact Gothic', sans-serif;
 }
 
-.asideHead,
-.mynavbrand,
-.mynavpages,
-h1 {
-    font-family: 'Cabin Sketch', cursive;
-}
-
-.mynavpages {
-    font-size: 1.1em;
-}
-
-.mynavbrand {
-    font-size: 1.5em;
-}
-
+/* apply title font to select elements*/
 .mynav,
 h2,
 h3,
@@ -28,33 +14,12 @@ p.user {
     font-family: 'Cabin', sans-serif;
 }
 
-.bgArea {
-    margin-bottom: 1.5rem;
-    padding: 1em;
-    border-radius: 1rem;
-    background-color: rgba(255, 255, 255, .25);
-}
-
-p.subtitle,
-p.user {
-    font-size: 1.2em;
-    color: #009;
-}
-
-.pluspad {
-    padding-top: 0.8rem;
-}
-
-p.noMargin {
-    margin-bottom: 0;
-}
-
-.commentHead {
-    border-bottom: 1px solid rgba(204, 204, 204, 0.75);
-}
-
-.date {
-    font-weight: lighter;
+ /* assign elements to receive cursive title font */
+.asideHead,
+.mynavbrand,
+.mynavpages,
+h1 {
+    font-family: 'Cabin Sketch', cursive;
 }
 
 a {
@@ -63,6 +28,7 @@ a {
     color: #009;
 }
 
+/* Apply link color to icons */
 a > i {
     color: #009;
 }
@@ -73,20 +39,50 @@ a:hover > i {
     color: #00c;
 }
 
-.img-circle {
-    margin-bottom: 1rem;
-    border-radius: 50%;
+/* adjust nav links*/
+.mynav {
+    margin-right: auto;
+    margin-left: auto;
 }
 
-.pg-head {
+.mynavpages {
+    font-size: 1.1em;
+}
+
+.mynavbrand {
+    font-size: 1.5em;
+}
+
+/* define background colored areas */
+.bgArea {
     margin-bottom: 1.5rem;
-    padding: 0.5rem 0;
+    padding: 1em;
     border-radius: 1rem;
     background-color: rgba(255, 255, 255, .25);
 }
 
+/* override padding for heading */
+.pg-head {
+    padding: 0.5rem 0;
+}
+
+/* add padding to h1 in heading are */
 .pg-head > h1 {
     padding: 2rem 0 1rem;
+}
+
+.commentHead {
+    border-bottom: 1px solid rgba(204, 204, 204, 0.75);
+}
+
+.date {
+    font-weight: lighter;
+}
+
+/* not sure why this class was deprecated from bootstrap v3 to v4*/
+.img-circle {
+    margin-bottom: 1.5rem;
+    border-radius: 50%;
 }
 
 .mybutton {
@@ -102,11 +98,22 @@ a:hover > i {
     background-color: rgba(255, 255, 255, .6);
 }
 
-.mynav {
-    margin-right: auto;
-    margin-left: auto;
+.pluspad {
+    padding-top: 0.8rem;
 }
 
+/* style elements from comment area */
+p.noMargin {
+    margin-bottom: 0;
+}
+
+p.subtitle,
+p.user {
+    font-size: 1.2em;
+    color: #009;
+}
+
+/* define a class in the rare case I want to have an underlined link */
 a.decorateLink {
     text-decoration: underline;
 }

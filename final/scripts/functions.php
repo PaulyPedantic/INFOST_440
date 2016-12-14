@@ -32,7 +32,7 @@ function credentialCheck($db, $username = '', $pass = '') {
 	if (empty($pass)) {
 		$error[] = 'Please enter a password.';
 	}
-  
+
 	if (empty($error)) {
 
 		$q = "SELECT id, usernm, passhash, admin FROM user WHERE usernm='$username'";
@@ -46,7 +46,7 @@ function credentialCheck($db, $username = '', $pass = '') {
 			return array(true, $row);
 
 		} else { // Not a match!
-			$errors[] = 'The email address and password entered do not match those on file.';
+			$error[] = 'The email address and password entered do not match those on file.';
       return array(false, $error);
 		}
 
@@ -60,7 +60,7 @@ function authenticate() {
   session_start();
   $user = false;
   $admin = false;
-  
+
   if (isset($_SESSION['loggedInUser'])){
     $user = $_SESSION['loggedInUser'];
     $uid = $_SESSION['uid'];
@@ -76,25 +76,30 @@ function getPostInfo($db, $id) {
   $q = "SELECT p.id, p.title, p.subtitle, p.description, p.post, DATE_FORMAT(p.date, '%M %e, %Y') AS date, u.fname, u.lname
         FROM post p LEFT OUTER JOIN user u ON p.authorid = u.id
         WHERE p.id = $id";
-  
+
   $postinfo = @mysqli_query($db, $q);
   $pi = @mysqli_fetch_array($postinfo, MYSQLI_ASSOC);
-  
+
   return $pi;
 }
 
-function getCommentCount($db, $postid){
-  $q = 'SELECT COUNT(*) as numComments FROM comment WHERE postid = '.$postid;
-  
+function getCount($db, $table, $id = '', $idfield = '', $countfield = '*'){
+
+  $where = '';
+  if ($idfield && $id) {
+    $where = 'WHERE '.$idfield.' = '.$id;
+  }
+  $q = "SELECT COUNT($countfield) as qty FROM $table $where";
+
   $result = @mysqli_query($db, $q);
-  $ccnt = @mysqli_fetch_array($result, MYSQLI_ASSOC);
-  
-  return $ccnt['numComments'];
+  $cnt = @mysqli_fetch_array($result, MYSQLI_ASSOC);
+
+  return $cnt['qty'];
 }
 
 function getCommentInfo($db, $commentid) {
   $q = 'SELECT * FROM comment WHERE id = '.$commentid;
-  
+
   $result = @mysqli_query($db, $q);
   $commentreturn = mysqli_fetch_array($result, MYSQLI_ASSOC);
   return @$commentreturn;
