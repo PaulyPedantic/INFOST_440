@@ -23,7 +23,10 @@ if (!empty($error)){
       <label for="pass">Password</label>
       <input type="password" class="form-control form-control-lg" name="pass" placeholder="Password" <?php if ($pass) {echo 'value="'.$pass.'"';} ?>>
     </div>
-    <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+    <div class="text-xs-center">
+      <p class="form-text">Don&apos;t have an account? No problem. <a href="register.php" alt="register">Click here to register</a></p>
+      <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+    </div>
   </form>
 </div>
 
