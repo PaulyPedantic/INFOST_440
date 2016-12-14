@@ -73,7 +73,14 @@ function authenticate() {
 
 function getPostInfo($db, $id) {
   #query selects all information for given post
-  $q = "SELECT p.id, p.title, p.subtitle, p.description, p.post, DATE_FORMAT(p.date, '%M %e, %Y') AS date, u.fname, u.lname
+  $q = "SELECT p.id
+             , p.title
+             , p.subtitle
+             , p.description
+             , p.post
+             , DATE_FORMAT(p.date, '%M %e, %Y') AS date
+             , u.fname
+             , u.lname
         FROM post p LEFT OUTER JOIN user u ON p.authorid = u.id
         WHERE p.id = $id";
 

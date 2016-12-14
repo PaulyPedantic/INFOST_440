@@ -47,7 +47,15 @@ if ($numposts > $limit) {
 # end of pagination
 
 # pull posts out of the database and loop through them
-$q = 'SELECT p.id, p.title, p.subtitle, DATE_FORMAT(p.date, \'%M %e, %Y\') AS mdyDate, p.description, p.post FROM post p ORDER BY p.date DESC LIMIT '.$skipcnt.','.$limit;
+$q = 'SELECT p.id
+             , p.title
+             , p.subtitle
+             , DATE_FORMAT(p.date, \'%M %e, %Y\') AS mdyDate
+             , p.description
+             , p.post
+      FROM post p
+      ORDER BY p.date DESC
+      LIMIT '.$skipcnt.','.$limit;
 
 $getposts = @mysqli_query($db, $q);
 if ($getposts) {
@@ -55,7 +63,7 @@ if ($getposts) {
        <div class="row">
           <section class="col-sm">';
 
-
+# add variables to appropriate places within markup to dynamically display data
   while ($row = mysqli_fetch_array($getposts, MYSQLI_ASSOC)){
     echo '
                 <article class="bgArea">
@@ -71,12 +79,16 @@ if ($getposts) {
                       <div class="col-xs-4">
                         <a class="mybutton" href="viewPost.php?id='.$row['id'].'">Read Full Post <i class="fa fa-newspaper-o" aria-hidden="true"></i></a>
                       </div>';
-                      $numcomments = getCount($db, 'comment', $row['id'], 'postid');
+    # call getCount method from functions.php to find number of comments for
+    # each post
+    $numcomments = getCount($db, 'comment', $row['id'], 'postid');
+    
     echo '            <div class="col-xs-4">
                         <a class="mybutton" href="viewPost.php?id='.$row['id'].'#comments">'.$numcomments.' Comments <i class="fa fa-commenting" aria-hidden="true"></i></a>
                       </div>
                     </div>';
-                    if ($status['admin']) {
+    #user has to be logged in as admin to edit/delete posts
+    if ($status['admin']) {
     echo             '<div class="row flex-items-xs-around">
                         <div class="col-xs-6 text-xs-center">
                           <a href="createPost.php?eid='.$row['id'].'" class="mybutton">Edit Post <i class="fa fa-pencil" aria-hidden="true"></i></a>
@@ -91,8 +103,9 @@ if ($getposts) {
   }
 }
 
-
+# only display pagination options if page count is greater than 1
 if ($pgcount > 1) {
+  # show older posts link if it's not the last
   if ($curpg < $pgcount) {
     $nextpg = $curpg + 1;
     echo '<nav class="row flex-items-xs-middle">
@@ -100,6 +113,7 @@ if ($pgcount > 1) {
         <a class="mybutton mynavbrand" href="index.php?p='.$nextpg.'"><i class="fa fa-hand-o-left" aria-hidden="true"></i> Older Posts</a>
       </div>';
   }
+  # show newer posts link if not on the first page
   if ($curpg > 1) {
     $prevpg = $curpg - 1;
     echo '<div class="text-xs-right col-xs">
